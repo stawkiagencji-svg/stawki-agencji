@@ -142,7 +142,7 @@ export default function Comparator({ offers }: { offers: Offer[] }) {
             </label>
           </div>
           <div className="ticks" aria-hidden="true">
-            {TICKS.map((v) => <span key={v} style={{ left: `${pct(v)}%` }}>{v === 3500 ? "3 500 €+" : nf.format(v)}</span>)}
+            {TICKS.map((v) => <span key={v} className={v % 1000 ? "minor" : undefined} style={{ left: `${pct(v)}%` }}>{v === 3500 ? "3 500 €+" : nf.format(v)}</span>)}
           </div>
           <div className="offers">
             {!offers.length ? (
@@ -226,7 +226,7 @@ function CompareTable({ offers, onClear }: { offers: Offer[]; onClear: () => voi
         <button className="ghost" type="button" onClick={onClear}>Wyczyść porównanie</button>
       </div>
       <div className="cmpwrap">
-        <table>
+        <table className={`cols-${offers.length}`}>
           <thead><tr><th />{offers.map((o) => <th scope="col" key={o.id} className="colhead">{o.name}</th>)}</tr></thead>
           <tbody>
             {rows.map(([label, cell, best]) => (

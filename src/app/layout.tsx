@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Bricolage_Grotesque, Source_Sans_3, IBM_Plex_Mono } from "next/font/google";
+import ServiceWorker from "@/components/ServiceWorker";
 import "./globals.css";
 
 const display = Bricolage_Grotesque({ subsets: ["latin", "latin-ext"], weight: ["600", "800"], variable: "--font-display" });
@@ -13,14 +14,16 @@ export const metadata: Metadata = {
   description:
     "Porównaj polskie agencje delegujące opiekunki osób starszych do Niemiec: formy umów, wypłaty netto, turnusy, zwrot za dojazd i wymagany niemiecki.",
   openGraph: { type: "website", locale: "pl_PL" },
+  icons: { icon: "/icons/icon-192.png", apple: "/icons/apple-touch-icon.png" },
 };
 
-export const viewport = { width: "device-width", initialScale: 1, viewportFit: "cover" };
+export const viewport = { width: "device-width", initialScale: 1, viewportFit: "cover", themeColor: "#2448b8" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pl" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body>
+        <ServiceWorker />
         <div className="wrap">
           {children}
           <footer className="site">

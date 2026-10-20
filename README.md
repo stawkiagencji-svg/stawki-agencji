@@ -55,6 +55,13 @@ Pamiętaj o kopiach zapasowych bazy (`pg_dump`).
 | `ADMIN_PASSWORD` | Hasło do `/admin`, min. 12 znaków |
 | `SESSION_SECRET` | Losowy ciąg min. 32 znaki (`openssl rand -hex 32`) |
 | `NEXT_PUBLIC_SITE_URL` | Publiczny adres strony (mapa strony, metadane) |
+| `ANDROID_PACKAGE_NAME` | Nazwa pakietu aplikacji z Google Play (np. `pl.twojadomena.opieka`) |
+| `ANDROID_SHA256_FINGERPRINTS` | Odciski SHA-256 kluczy podpisu, oddzielone przecinkami |
+
+## Aplikacja w Google Play
+
+Strona działa jako PWA i jest gotowa do opakowania w aplikację Android.
+Instrukcja krok po kroku: [GOOGLE-PLAY.md](GOOGLE-PLAY.md). Grafiki i teksty do sklepu: folder `play-store/`.
 
 ## Przed startem sprzedaży
 

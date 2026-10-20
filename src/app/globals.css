@@ -110,6 +110,15 @@ th { font-size: 13px; color: var(--muted); font-weight: 600; width: 170px; }
 th.colhead { color: var(--ink); font-size: 16px; width: auto; }
 td.best { background: var(--good-soft); color: var(--good); font-weight: 700; }
 tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
+@media (max-width: 600px) {
+  /* Na telefonie: co druga etykieta skali i ciaśniejsza tabela porównania */
+  .ticks span.minor { display: none; }
+  .ticks span:last-child { transform: translateX(-50%); }
+  table.cols-2 { min-width: 0; }
+  #compare th, #compare td { padding: 8px 10px; font-size: 14px; }
+  #compare th { width: 96px; }
+  #compare th.colhead { font-size: 15px; }
+}
 
 .guide { margin-top: 44px; }
 .guide .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
