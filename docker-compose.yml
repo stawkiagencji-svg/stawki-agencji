@@ -1,0 +1,20 @@
+# Lokalna baza do testów: `docker compose up -d db`
+# Całość (baza + aplikacja): `docker compose up -d --build`
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: opieka
+      POSTGRES_PASSWORD: opieka
+      POSTGRES_DB: opieka
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+  app:
+    build: .
+    depends_on: [db]
+    env_file: .env
+    environment:
+      DATABASE_URL: postgres://opieka:opieka@db:5432/opieka
+    ports: ["3000:3000"]
+volumes:
+  pgdata:

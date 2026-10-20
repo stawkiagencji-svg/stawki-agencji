@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS offers (
+  id          SERIAL PRIMARY KEY,
+  name        TEXT NOT NULL,
+  website     TEXT NOT NULL DEFAULT '',
+  city        TEXT NOT NULL DEFAULT '',
+  contracts   TEXT[] NOT NULL DEFAULT '{}',
+  pay_min     INTEGER NOT NULL CHECK (pay_min >= 0),
+  pay_max     INTEGER NOT NULL CHECK (pay_max >= pay_min),
+  german      SMALLINT NOT NULL DEFAULT 0 CHECK (german BETWEEN 0 AND 3),
+  rotation    TEXT NOT NULL DEFAULT '',
+  bonus       TEXT NOT NULL DEFAULT '',
+  verified    TEXT NOT NULL DEFAULT '',
+  source      TEXT NOT NULL DEFAULT '',
+  notes       TEXT NOT NULL DEFAULT '',
+  travel      BOOLEAN NOT NULL DEFAULT FALSE,
+  a1          BOOLEAN NOT NULL DEFAULT FALSE,
+  example     BOOLEAN NOT NULL DEFAULT FALSE,
+  promoted    BOOLEAN NOT NULL DEFAULT FALSE,
+  created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at  TIMESTAMPTZ NOT NULL DEFAULT now()
+);

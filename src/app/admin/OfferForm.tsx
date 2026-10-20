@@ -1,0 +1,62 @@
+"use client";
+
+import Link from "next/link";
+import { useActionState } from "react";
+import { CONTRACTS, GERMAN, type ContractKey, type Offer } from "@/lib/types";
+import { saveOffer, type FormState } from "./actions";
+
+export default function OfferForm({ offer }: { offer: Offer | null }) {
+  const [state, action, pending] = useActionState<FormState, FormData>(saveOffer, {});
+  const o = offer;
+  // Po błędzie pokazujemy to, co wpisano; inaczej dane edytowanej oferty.
+  const sv = state.values;
+  const val = (k: string, fallback?: string | number) => (sv ? String(sv[k] ?? "") : fallback);
+  const on = (k: string, fallback?: boolean) => (sv ? sv[k] === "on" : fallback);
+  const hasContract = (k: ContractKey) => (sv ? ([] as string[]).concat(sv.contracts ?? []).includes(k) : o?.contracts.includes(k));
+  return (
+    <section className="panel">
+      <h2>{o ? `Edytuj: ${o.name}` : "Dodaj ofertę agencji"}</h2>
+      {/* key odświeża pola po każdej odpowiedzi serwera */}
+      <form action={action} className="form" key={`${o?.id ?? "new"}-${state.n ?? 0}`}>
+        {o && <input type="hidden" name="id" value={o.id} />}
+        <label>Nazwa agencji<input type="text" name="name" required defaultValue={val("name", o?.name)} /></label>
+        <label>Strona www<input type="url" name="website" placeholder="https://" defaultValue={val("website", o?.website)} /></label>
+        <label>Siedziba (miasto)<input type="text" name="city" defaultValue={val("city", o?.city)} /></label>
+        <label>Stawka od (€ netto/mies.)<input type="number" name="payMin" min={0} step={10} required defaultValue={val("payMin", o?.payMin)} /></label>
+        <label>Stawka do (€ netto/mies.)<input type="number" name="payMax" min={0} step={10} required defaultValue={val("payMax", o?.payMax)} /></label>
+        <label>Minimalny niemiecki
+          <select name="german" defaultValue={val("german", o?.german ?? 0)}>
+            {GERMAN.map((g, i) => <option key={g} value={i}>{g}</option>)}
+          </select>
+        </label>
+        <label>Długość turnusu<input type="text" name="rotation" placeholder="np. 6–12 tygodni" defaultValue={val("rotation", o?.rotation)} /></label>
+        <label>Premie / dodatki<input type="text" name="bonus" placeholder="np. 100 € świąteczna" defaultValue={val("bonus", o?.bonus)} /></label>
+        <label>Data weryfikacji<input type="text" name="verified" placeholder="RRRR-MM" defaultValue={val("verified", o?.verified)} /></label>
+        <fieldset className="full">
+          <legend>Formy umów</legend>
+          <div className="row">
+            {(Object.keys(CONTRACTS) as ContractKey[]).map((k) => (
+              <label className="chk" key={k}>
+                <input type="checkbox" name="contracts" value={k} defaultChecked={hasContract(k)} /> {CONTRACTS[k]}
+              </label>
+            ))}
+          </div>
+        </fieldset>
+        <div className="full row">
+          <label className="chk"><input type="checkbox" name="travel" defaultChecked={on("travel", o?.travel)} /> Zwrot kosztów dojazdu</label>
+          <label className="chk"><input type="checkbox" name="a1" defaultChecked={on("a1", o?.a1)} /> Ubezpieczenie / A1</label>
+          <label className="chk"><input type="checkbox" name="example" defaultChecked={on("example", o?.example)} /> Oznacz jako przykład</label>
+          <label className="chk"><input type="checkbox" name="promoted" defaultChecked={on("promoted", o?.promoted)} /> Oferta promowana (płatna)</label>
+        </div>
+        <label className="full">Źródło danych (link do ogłoszenia)<input type="url" name="source" placeholder="https://" defaultValue={val("source", o?.source)} /></label>
+        <label className="full">Uwagi<textarea name="notes" defaultValue={val("notes", o?.notes)} /></label>
+        <div className="formactions full">
+          <button className="primary" type="submit" disabled={pending}>{pending ? "Zapisuję…" : "Zapisz ofertę"}</button>
+          {o && <Link className="btn" href="/admin">Anuluj edycję</Link>}
+          {state.error && <span className="msg err" role="alert">{state.error}</span>}
+          {state.ok && <span className="msg" role="status">{state.ok}</span>}
+        </div>
+      </form>
+    </section>
+  );
+}
