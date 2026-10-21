@@ -4,7 +4,8 @@ Ostatnia aktualizacja: 2026-10-21 (część 3)
 
 ## Gotowe
 
-- [x] Prototyp w claude.ai (artefakt): https://claude.ai/artifact/9gn9Wob3eSBf4vexFooSrk
+- [x] Wersja testowa w claude.ai z 20 agencjami (do udostępnienia od razu linkiem): https://claude.ai/artifact/9gn9Wob3eSBf4vexFooSrk
+  Dane są wbudowane w stronę – zmiany wprowadza Claude na prośbę. Zgłoszenia: e-mail niki2506@outlook.com.
 - [x] Aplikacja Next.js 16 + PostgreSQL (ten folder)
   - [x] Porównywarka: filtry (umowa, stawka, niemiecki, dojazd, A1, premie), sortowanie, porównanie do 3 ofert
   - [x] Poradnik o formach umów (zlecenie, o pracę, B2B, umowa niemiecka)
