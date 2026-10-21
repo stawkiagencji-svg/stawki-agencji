@@ -50,7 +50,9 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 - [x] Domena stawkiagencji.pl kupiona (nazwa.pl, 21.10.2026)
 - [x] Kod na GitHubie: github.com/stawkiagencji-svg/stawki-agencji (prywatne), połączone z Claude
 - [x] Strona działa: https://stawki-agencji.vercel.app (Vercel Hobby + Neon, konto karolina15); diagnostyka: /api/health
-- [ ] Podłączyć domenę (krok 5)
+- [x] Domena dodana na Vercelu; na nazwa.pl ustawione zewnętrzne DNS: ns1/ns2.vercel-dns.com (21.10.2026, czekamy na propagację do 24 h)
+- [ ] Sprawdzić stawkiagencji.pl po propagacji; jeśli nie działa po dobie – sprawdzić/wyłączyć DNSSEC na nazwa.pl
+- [ ] Sprawdzić logowanie do panelu /admin (ADMIN_PASSWORD)
 
 ### Google Play
 - [ ] Założyć konto dewelopera – osobiste (25 USD)
