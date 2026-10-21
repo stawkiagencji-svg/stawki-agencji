@@ -71,7 +71,7 @@ export default function OfferForm({ offer }: { offer: Offer | null }) {
           <label className="chk"><input type="checkbox" name="a1" defaultChecked={on("a1", o?.a1)} /> Opłaca składki / ubezpieczenie</label>
           <label className="chk"><input type="checkbox" name="example" defaultChecked={on("example", o?.example)} /> Oznacz jako przykład</label>
           <label className="chk"><input type="checkbox" name="promoted" defaultChecked={on("promoted", o?.promoted)} /> Oferta promowana (płatna)</label>
-          <label className="chk"><input type="checkbox" name="affiliated" defaultChecked={on("affiliated", o?.affiliated)} /> Agencja powiązana ze mną (oznaczenie na stronie)</label>
+          <label className="chk"><input type="checkbox" name="affiliated" defaultChecked={on("affiliated", o?.affiliated)} /> Tu pracuję (oznaczenie „Tu pracuje autorka serwisu”)</label>
           <label className="chk"><input type="checkbox" name="published" defaultChecked={on("published", o ? o.published : true)} /> Opublikowana (widoczna na stronie)</label>
         </div>
         <label className="full">Źródła (każdy link w nowej linii)
