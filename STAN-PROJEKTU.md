@@ -47,7 +47,7 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 - [ ] Ustalić cennik ofert promowanych; pilnować limitu działalności nierejestrowanej
 
 ### Wdrożenie
-- [ ] Kupić domenę (propozycje w `WDROZENIE.md`, krok 1)
+- [x] Domena stawkiagencji.pl kupiona (nazwa.pl, 21.10.2026)
 - [ ] Wgrać kod na GitHub (krok 2)
 - [ ] Wdrożyć na Vercelu i dodać bazę Neon (kroki 3–4)
 - [ ] Podłączyć domenę (krok 5)
