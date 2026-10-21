@@ -5,6 +5,7 @@ pod kątem formy umowy, wypłaty netto, turnusów, zwrotu za dojazd i wymaganego
 
 - **Strona główna** (`/`): filtry, lista ofert na wspólnej skali €, porównanie do 3 ofert, poradnik o umowach.
 - **Panel właściciela** (`/admin`): logowanie hasłem, dodawanie, edycja i usuwanie ofert, oznaczanie ofert promowanych.
+- **Formularz** (`/zglos-agencje`): agencje i opiekunki zgłaszają oferty; trafiają do panelu jako szkice.
 - **Publiczne API** (`/api/offers`): lista ofert w JSON, np. dla przyszłej aplikacji mobilnej.
 - **Strony prawne**: `/regulamin`, `/polityka-prywatnosci`, `/jak-tworzymy-ranking` (do uzupełnienia, miejsca oznaczone `[UZUPEŁNIJ]`).
 

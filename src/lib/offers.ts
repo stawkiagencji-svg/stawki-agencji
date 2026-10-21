@@ -1,5 +1,5 @@
 import { pool } from "./db";
-import { CONTRACTS, DETAILS, type ContractKey, type DetailKey, type Offer, type OfferInput } from "./types";
+import { CONTRACTS, DETAILS, type AdminOffer, type ContractKey, type DetailKey, type Offer, type OfferInput } from "./types";
 
 export * from "./types";
 
@@ -32,10 +32,14 @@ export async function listPublishedOffers(): Promise<Offer[]> {
   return rows.map(fromRow);
 }
 
-/** Wszystkie oferty, szkice na początku – dla panelu administratora. */
-export async function listAllOffers(): Promise<Offer[]> {
-  const { rows } = await pool.query("SELECT * FROM offers ORDER BY published, name");
-  return rows.map(fromRow);
+/** Wszystkie oferty dla panelu administratora: najpierw nowe zgłoszenia, potem szkice, potem reszta. */
+export async function listAllOffers(): Promise<AdminOffer[]> {
+  const { rows } = await pool.query(
+    "SELECT * FROM offers ORDER BY published, (origin = 'form') DESC, created_at DESC, name",
+  );
+  return rows.map((r) => ({
+    ...fromRow(r), origin: r.origin, submitterRole: r.submitter_role, submitterEmail: r.submitter_email,
+  }));
 }
 
 export async function getOffer(id: number): Promise<Offer | null> {
@@ -45,10 +49,36 @@ export async function getOffer(id: number): Promise<Offer | null> {
 
 const values = (o: OfferInput) => COLUMNS.map(([key]) => o[key]);
 
-export async function createOffer(o: OfferInput): Promise<void> {
+export async function createOffer(o: OfferInput): Promise<number> {
   const cols = COLUMNS.map(([, col]) => col).join(", ");
   const params = COLUMNS.map((_, i) => `$${i + 1}`).join(", ");
-  await pool.query(`INSERT INTO offers (${cols}) VALUES (${params})`, values(o));
+  const { rows } = await pool.query(`INSERT INTO offers (${cols}) VALUES (${params}) RETURNING id`, values(o));
+  return rows[0].id;
+}
+
+const SUBMISSIONS_PER_HOUR = 5;
+const MAX_PENDING_SUBMISSIONS = 300;
+
+/** Zapisuje zgłoszenie z formularza jako szkic. Zwraca komunikat błędu albo null. */
+export async function createSubmission(
+  o: OfferInput, meta: { role: string; email: string; ipHash: string },
+): Promise<string | null> {
+  // Skróty adresów IP służą tylko do limitu zgłoszeń; po 30 dniach je usuwamy.
+  await pool.query("UPDATE offers SET ip_hash = NULL WHERE ip_hash IS NOT NULL AND created_at < now() - interval '30 days'");
+  const { rows } = await pool.query<{ recent: number; pending: number }>(
+    `SELECT count(*) FILTER (WHERE ip_hash = $1 AND created_at > now() - interval '1 hour')::int AS recent,
+            count(*) FILTER (WHERE origin = 'form' AND NOT published)::int AS pending
+     FROM offers`,
+    [meta.ipHash],
+  );
+  if (rows[0].recent >= SUBMISSIONS_PER_HOUR) return "Wysłano już kilka zgłoszeń z tego urządzenia. Spróbuj ponownie za godzinę.";
+  if (rows[0].pending >= MAX_PENDING_SUBMISSIONS) return "Formularz jest chwilowo przepełniony. Spróbuj ponownie za kilka dni.";
+  const id = await createOffer({ ...o, published: false, promoted: false, example: false, verified: "" });
+  await pool.query(
+    "UPDATE offers SET origin = 'form', submitter_role = $1, submitter_email = $2, ip_hash = $3 WHERE id = $4",
+    [meta.role, meta.email, meta.ipHash, id],
+  );
+  return null;
 }
 
 export async function updateOffer(id: number, o: OfferInput): Promise<void> {

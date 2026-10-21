@@ -82,7 +82,7 @@ Bez tego kroku aplikacja pokazuje u góry pasek adresu jak zwykła przeglądarka
 | Reklamy | Nie zawiera reklam. Oferty promowane to treść oznaczona etykietą, nie sieć reklamowa. Jeśli dodasz np. AdSense, zmień na „Tak” |
 | Klasyfikacja treści | Wypełnij ankietę: brak przemocy, hazardu i treści dla dorosłych. Kategoria: narzędzia / informacje |
 | Grupa docelowa | 18+ |
-| Bezpieczeństwo danych | Aplikacja nie zbiera danych użytkowników: filtry zapisują się tylko w telefonie. **Jeśli dodasz analitykę (np. Google Analytics) albo formularz kontaktowy, zaktualizuj tę odpowiedź** |
+| Bezpieczeństwo danych | Aplikacja zbiera dane: **Dane osobowe → Adres e-mail** (opcjonalny, tylko w formularzu „Zgłoś agencję”). Cel: **komunikacja z użytkownikiem**. Dane nie są udostępniane innym firmom, są szyfrowane podczas przesyłania (HTTPS), użytkownik może poprosić o ich usunięcie (e-mailem). Filtry zapisują się tylko w telefonie. **Jeśli dodasz analitykę (np. Google Analytics), zaktualizuj tę odpowiedź** |
 | Aplikacja z wiadomościami / rządowa / finansowa | Nie |
 
 ## Krok 7. Test i publikacja

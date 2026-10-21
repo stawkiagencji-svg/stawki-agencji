@@ -10,7 +10,7 @@ function secret(): string {
   return s;
 }
 
-const sign = (payload: string) => createHmac("sha256", secret()).update(payload).digest("hex");
+export const sign = (payload: string) => createHmac("sha256", secret()).update(payload).digest("hex");
 
 function safeEqual(a: string, b: string): boolean {
   const ab = Buffer.from(a), bb = Buffer.from(b);

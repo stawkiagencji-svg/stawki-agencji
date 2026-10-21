@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { isAdmin } from "@/lib/auth";
-import { getOffer, listAllOffers } from "@/lib/offers";
+import { getOffer, listAllOffers, SUBMITTER_ROLES } from "@/lib/offers";
 import { logout } from "./actions";
 import DeleteButton from "./DeleteButton";
 import LoginForm from "./LoginForm";
@@ -23,6 +23,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   }
   const { edit, saved } = await searchParams;
   const [offers, editing] = await Promise.all([listAllOffers(), edit ? getOffer(Number(edit)) : Promise.resolve(null)]);
+  const newSubmissions = offers.filter((o) => o.origin === "form" && !o.published).length;
 
   return (
     <>
@@ -37,6 +38,12 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
         </div>
       </div>
       {saved && <p className="msg" role="status">Zapisano zmiany.</p>}
+      {newSubmissions > 0 && (
+        <p className="panel" style={{ marginBottom: 16 }}>
+          <b>Nowe zgłoszenia z formularza: {newSubmissions}.</b> Są na górze tabeli poniżej. Sprawdź je, uzupełnij
+          i zaznacz „Opublikowana”, albo usuń, jeśli to spam lub duplikat.
+        </p>
+      )}
 
       {offers.some((o) => !o.published) && (
         <p className="note" style={{ marginBottom: 16 }}>
@@ -55,7 +62,15 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
           <tbody>
             {offers.map((o) => (
               <tr key={o.id}>
-                <td>{o.name}</td>
+                <td>
+                  {o.name}
+                  {o.origin === "form" && !o.published && (
+                    <div className="note">
+                      Zgłoszenie: {SUBMITTER_ROLES[o.submitterRole as keyof typeof SUBMITTER_ROLES] ?? "—"}
+                      {o.submitterEmail && <> · <a href={`mailto:${o.submitterEmail}`}>{o.submitterEmail}</a></>}
+                    </div>
+                  )}
+                </td>
                 <td className="num">{o.payMin === null && o.payMax === null ? "—" : `${o.payMin !== null ? eur(o.payMin) : "…"} – ${o.payMax !== null ? eur(o.payMax) : "…"}`}</td>
                 <td className="num">{o.verified || "—"}</td>
                 <td>

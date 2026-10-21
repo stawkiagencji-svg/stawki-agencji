@@ -53,5 +53,16 @@ export type Offer = {
 
 export type OfferInput = Omit<Offer, "id">;
 
+export const SUBMITTER_ROLES = {
+  agencja: "Pracownik agencji",
+  opiekunka: "Opiekunka / opiekun",
+  inna: "Inna osoba",
+} as const;
+
+export type SubmitterRole = keyof typeof SUBMITTER_ROLES;
+
+/** Oferta z danymi zgłoszenia – tylko dla panelu administratora. */
+export type AdminOffer = Offer & { origin: string; submitterRole: string; submitterEmail: string };
+
 export const hasPay = (o: Pick<Offer, "payMin" | "payMax">) => o.payMin !== null || o.payMax !== null;
 export const sourceLinks = (s: string) => s.split("|").map((u) => u.trim()).filter((u) => /^https?:\/\//i.test(u));

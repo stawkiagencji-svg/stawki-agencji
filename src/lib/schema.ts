@@ -35,4 +35,10 @@ ALTER TABLE offers ALTER COLUMN pay_min DROP NOT NULL;
 ALTER TABLE offers ALTER COLUMN pay_max DROP NOT NULL;
 ALTER TABLE offers ALTER COLUMN german DROP NOT NULL;
 ALTER TABLE offers ALTER COLUMN german DROP DEFAULT;
+
+-- Zgłoszenia z formularza na stronie. Te kolumny nigdy nie trafiają do publicznych widoków ani API.
+ALTER TABLE offers ADD COLUMN IF NOT EXISTS origin TEXT NOT NULL DEFAULT 'admin';
+ALTER TABLE offers ADD COLUMN IF NOT EXISTS submitter_role TEXT NOT NULL DEFAULT '';
+ALTER TABLE offers ADD COLUMN IF NOT EXISTS submitter_email TEXT NOT NULL DEFAULT '';
+ALTER TABLE offers ADD COLUMN IF NOT EXISTS ip_hash TEXT;
 `;

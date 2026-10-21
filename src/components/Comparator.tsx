@@ -113,6 +113,10 @@ export default function Comparator({ offers }: { offers: Offer[] }) {
             miesięcznie, czy opłacają dojazd i składki oraz jakie wsparcie dają na miejscu. Porównaj do trzech ofert
             obok siebie.
           </p>
+          <div className="cta">
+            <a className="btn" href="/zglos-agencje">Zgłoś agencję</a>
+            <span>Znasz agencję, której tu brakuje?</span>
+          </div>
         </div>
         <div className="stats" aria-live="polite">
           <div className="stat"><b>{offers.length}</b><span>agencji w bazie</span></div>
@@ -182,7 +186,7 @@ export default function Comparator({ offers }: { offers: Offer[] }) {
           </div>
           <div className="offers">
             {!offers.length ? (
-              <div className="empty"><h3>Baza ofert jest pusta</h3><p>Oferty agencji pojawią się tu wkrótce.</p></div>
+              <div className="empty"><h3>Baza ofert jest pusta</h3><p>Oferty agencji pojawią się tu wkrótce. Znasz agencję? <a href="/zglos-agencje">Zgłoś ją</a>.</p></div>
             ) : !visible.length ? (
               <div className="empty"><h3>Żadna agencja nie spełnia filtrów</h3><p>Obniż minimalną stawkę albo zaznacz więcej form umowy.</p></div>
             ) : (

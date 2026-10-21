@@ -28,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
           <footer className="site">
             <nav aria-label="Informacje">
+              <Link href="/zglos-agencje">Zgłoś agencję</Link>
               <Link href="/jak-tworzymy-ranking">Jak tworzymy ranking</Link>
               <Link href="/regulamin">Regulamin</Link>
               <Link href="/polityka-prywatnosci">Polityka prywatności</Link>

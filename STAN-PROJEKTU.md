@@ -22,6 +22,7 @@ Ostatnia aktualizacja: 2026-10-21 (część 3)
 - [x] 3 szkice do uzupełnienia: InterKadra, Feliza Job, Antczak Care
 - [x] Rozszerzony model ofert: składki/ubezpieczenie, transport, wsparcie, warunki na miejscu, opis stawki, wiele źródeł, „Brak informacji” zamiast zgadywania
 - [x] Nowe zrzuty do Google Play z prawdziwymi danymi
+- [x] Formularz „Zgłoś agencję” (`/zglos-agencje`): zgłoszenia trafiają do panelu jako szkice, ochrona przed spamem, opcjonalny e-mail za zgodą
 - [x] Automatyczne tworzenie bazy przy starcie – wdrożenie bez terminala
 - [x] Pełny regulamin i polityka prywatności dla osoby prywatnej (dane z ustawień `SITE_OWNER_*`)
 - [x] Instrukcja wdrożenia bez terminala: `WDROZENIE.md` (GitHub → Vercel → Neon → domena)
@@ -35,7 +36,8 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 ### Dane (najważniejsze przed startem)
 - [ ] Uzupełnić 3 szkice i opublikować (krok 6 w `WDROZENIE.md`)
 - [ ] Uzupełnić stawki u 10 agencji, które ich nie podają publicznie (telefon/e-mail)
-- [ ] Dodawać kolejne agencje z Facebooka
+- [ ] Udostępnić link do formularza w grupach dla opiekunek na Facebooku
+- [ ] Regularnie przeglądać nowe zgłoszenia w panelu
 - [ ] Co 1–2 miesiące odświeżać stawki i daty weryfikacji
 
 ### Prawo i pieniądze
@@ -58,7 +60,7 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 - [ ] Test zamknięty (jeśli konto osobiste), potem publikacja
 
 ### Pomysły na później
-- [ ] Formularz „Zgłoś agencję” na stronie (zgłoszenia trafiają jako szkice)
+- [ ] Powiadomienie e-mailem o nowym zgłoszeniu (wymaga usługi do wysyłki maili, np. Resend)
 - [ ] Import agencji z arkusza Excel w panelu admina
 - [ ] Opinie opiekunek o agencjach (z moderacją)
 - [ ] Kalkulator brutto → netto dla umowy niemieckiej

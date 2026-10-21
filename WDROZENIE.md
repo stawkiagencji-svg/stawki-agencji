@@ -88,6 +88,19 @@ oraz 3 szkice do sprawdzenia.
 5. Kolejne agencje dodawaj formularzem na górze panelu.
 6. Raz na 1–2 miesiące sprawdzaj stawki i zmieniaj datę weryfikacji. Aktualne dane to główna wartość serwisu.
 
+### Zgłoszenia od agencji i opiekunek
+
+Na stronie jest formularz `https://twoja-domena.pl/zglos-agencje`. Wrzuć ten link w grupach dla opiekunek
+na Facebooku i wyślij agencjom. Każde zgłoszenie trafia do panelu `/admin` jako szkic (na górze listy,
+z informacją, kto zgłosił, i e-mailem, jeśli ktoś go zostawił). Sprawdź je, uzupełnij i opublikuj, albo usuń.
+
+Wzór posta do grupy:
+
+> Hej! Prowadzę bezpłatną porównywarkę agencji opieki w Niemczech: stawki, umowy, transport,
+> składki i wsparcie koordynatora w jednym miejscu: [adres strony]
+> Jeśli Twojej agencji tam nie ma albo znasz aktualne warunki, zgłoś ją tutaj (1 minuta):
+> [adres strony]/zglos-agencje. Dziękuję, każde zgłoszenie pomaga innym dziewczynom! 🙂
+
 Wzór wiadomości do agencji:
 
 > Dzień dobry, prowadzę porównywarkę ofert dla opiekunek pracujących w Niemczech ([adres strony]).
