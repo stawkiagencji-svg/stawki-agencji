@@ -18,7 +18,7 @@ Ostatnia aktualizacja: 2026-10-21 (część 2)
   - [x] `/.well-known/assetlinks.json` (ustawiany zmiennymi środowiskowymi)
   - [x] Grafiki do sklepu, 4 zrzuty z telefonu, teksty wpisu (`play-store/`)
   - [x] Instrukcja publikacji (`GOOGLE-PLAY.md`)
-- [x] Szkice 7 prawdziwych agencji z ogłoszeń (`db/drafts.json`), niewidoczne na stronie do czasu weryfikacji
+- [x] Szkice 8 prawdziwych agencji z ogłoszeń (`db/drafts.json`), niewidoczne na stronie do czasu weryfikacji
 - [x] Automatyczne tworzenie bazy przy starcie – wdrożenie bez terminala
 - [x] Pełny regulamin i polityka prywatności dla osoby prywatnej (dane z ustawień `SITE_OWNER_*`)
 - [x] Instrukcja wdrożenia bez terminala: `WDROZENIE.md` (GitHub → Vercel → Neon → domena)
@@ -30,7 +30,7 @@ Ostatnia aktualizacja: 2026-10-21 (część 2)
 Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków jak w `WDROZENIE.md`.
 
 ### Dane (najważniejsze przed startem)
-- [ ] Zweryfikować u agencji 7 szkiców i opublikować (krok 6 w `WDROZENIE.md`)
+- [ ] Zweryfikować u agencji 8 szkiców i opublikować (krok 6 w `WDROZENIE.md`)
 - [ ] Dodać kolejne agencje (cel: 15–20)
 
 ### Prawo i pieniądze

@@ -58,7 +58,7 @@ GitHub przechowuje kod. Vercel pobiera go stamtąd i publikuje stronę.
    Vercel sam doda zmienną `DATABASE_URL`.
 3. Otwórz zakładkę **Deployments**, przy ostatnim wdrożeniu kliknij **⋯ → Redeploy**.
 
-Przy pierwszym uruchomieniu aplikacja sama utworzy tabele i wczyta 7 szkiców ofert do sprawdzenia.
+Przy pierwszym uruchomieniu aplikacja sama utworzy tabele i wczyta 8 szkiców ofert do sprawdzenia.
 
 ## Krok 5. Podłącz domenę
 
@@ -70,7 +70,7 @@ Przy pierwszym uruchomieniu aplikacja sama utworzy tabele i wczyta 7 szkiców of
 ## Krok 6. Sprawdź oferty i opublikuj je
 
 1. Wejdź na `https://twoja-domena.pl/admin` i zaloguj się hasłem z kroku 3.
-2. Zobaczysz 7 szkiców (Promedica24, Aterima Med, Veritas, Caring Personnel, InterKadra, Feliza Job, Carework).
+2. Zobaczysz 8 szkiców (Promedica24, Aterima Med, Veritas, Caring Personnel, InterKadra, Feliza Job, Carework, Antczak Care).
    Na stronie nie są jeszcze widoczne.
 3. Dla każdej agencji: zadzwoń lub napisz, albo sprawdź aktualne ogłoszenie, i potwierdź:
    - wynagrodzenie **netto za miesiąc** (od–do),
