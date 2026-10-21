@@ -1,4 +1,5 @@
 import { Pool } from "pg";
+import { DATABASE_URL } from "./env";
 
 const globalForPg = globalThis as unknown as { pgPool?: Pool };
 
@@ -6,7 +7,7 @@ const globalForPg = globalThis as unknown as { pgPool?: Pool };
 export const pool =
   globalForPg.pgPool ??
   new Pool({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: DATABASE_URL,
     ssl: process.env.DATABASE_SSL === "true" ? { rejectUnauthorized: false } : undefined,
     max: 5,
   });

@@ -1,5 +1,6 @@
 import { createHash, createHmac, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
+import { DATABASE_URL } from "./env";
 
 const COOKIE = "admin_session";
 const MAX_AGE = 60 * 60 * 8; // 8 godzin
@@ -9,7 +10,7 @@ function secret(): string {
   if (s && s.length >= 32) return s;
   // Bez SESSION_SECRET wyprowadzamy klucz z hasła admina i adresu bazy (zawiera losowe hasło bazy),
   // żeby wdrożenie wymagało jak najmniej ustawień. Zmiana hasła admina wylogowuje wszystkie sesje.
-  const pw = process.env.ADMIN_PASSWORD, db = process.env.DATABASE_URL;
+  const pw = process.env.ADMIN_PASSWORD, db = DATABASE_URL;
   if (!pw || !db) throw new Error("Ustaw ADMIN_PASSWORD i DATABASE_URL (albo SESSION_SECRET) w zmiennych środowiskowych.");
   return createHash("sha256").update(`stawki-agencji:${pw}:${db}`).digest("hex");
 }
