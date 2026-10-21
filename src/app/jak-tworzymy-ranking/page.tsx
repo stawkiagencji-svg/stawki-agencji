@@ -17,6 +17,12 @@ export default function RankingPage() {
         Domyślnie oferty są uporządkowane według najwyższej stawki miesięcznej netto. Możesz zmienić kolejność na stawkę
         minimalną, nazwę lub datę weryfikacji.
       </p>
+      <h2>Powiązania autorki serwisu</h2>
+      <p>
+        Serwis prowadzi osoba związana z agencją Antczak Care. Ta agencja jest na liście wyraźnie oznaczona etykietą
+        „Agencja powiązana z autorką serwisu”. Kolejność ofert od tego nie zależy: wszystkie agencje są sortowane według
+        tych samych zasad, a dane o każdej z nich pochodzą ze źródeł podanych przy ofercie.
+      </p>
       <h2>Oferty promowane</h2>
       <p>
         Agencje mogą wykupić promowanie oferty. Oferty promowane wyświetlamy na początku listy i zawsze oznaczamy etykietą

@@ -25,7 +25,8 @@
     "travelNote": "",
     "bonus": "",
     "support": "",
-    "housing": "W ofertach podawane są konkretne przerwy i warunki domu; zależne od zlecenia."
+    "housing": "W ofertach podawane są konkretne przerwy i warunki domu; zależne od zlecenia.",
+    "affiliated": false
   },
   {
     "name": "Active Intercare",
@@ -54,7 +55,8 @@
     "travelNote": "Organizuje przejazd; brak jawnej stałej kwoty zwrotu.",
     "bonus": "",
     "support": "Polskojęzyczny koordynator 24/7; deklarowana pomoc w Niemczech.",
-    "housing": ""
+    "housing": "",
+    "affiliated": false
   },
   {
     "name": "A&J Partners",
@@ -83,7 +85,8 @@
     "travelNote": "",
     "bonus": "",
     "support": "",
-    "housing": "W części ofert własny pokój, internet, czas wolny; warunki zależne od zlecenia."
+    "housing": "W części ofert własny pokój, internet, czas wolny; warunki zależne od zlecenia.",
+    "affiliated": false
   },
   {
     "name": "Agnesdaheim",
@@ -109,7 +112,8 @@
     "travelNote": "Deklaruje darmowy wyjazd; zwrot za samodzielnie kupiony bilet: brak informacji.",
     "bonus": "",
     "support": "Deklaruje bezpośrednie wsparcie po polsku.",
-    "housing": ""
+    "housing": "",
+    "affiliated": false
   },
   {
     "name": "Aterima Med",
@@ -135,7 +139,8 @@
     "travelNote": "Organizuje przejazd w obie strony busem „od drzwi do drzwi”; kwota zwrotu przy własnym transporcie: brak informacji.",
     "bonus": "",
     "support": "Ponad 50 lokalnych rezydentów w Niemczech; koordynator, wsparcie psychologiczne, językowe, medyczne i prawne.",
-    "housing": "Oferty opisują pokój/warunki osobno; zależnie od zlecenia."
+    "housing": "Oferty opisują pokój/warunki osobno; zależnie od zlecenia.",
+    "affiliated": false
   },
   {
     "name": "Avanti Medic",
@@ -164,7 +169,8 @@
     "travelNote": "Firma organizuje i opłaca przejazd; możliwy własny przejazd z pokryciem kosztów na ustalonych zasadach.",
     "bonus": "Deklaruje dodatkowe wynagrodzenie w okresie Bożego Narodzenia; kwota: brak informacji.",
     "support": "Koordynator przez cały okres zatrudnienia.",
-    "housing": "Zakwaterowanie i dodatek żywieniowy; czas wolny zależy od zlecenia."
+    "housing": "Zakwaterowanie i dodatek żywieniowy; czas wolny zależy od zlecenia.",
+    "affiliated": false
   },
   {
     "name": "CareWork",
@@ -193,7 +199,8 @@
     "travelNote": "",
     "bonus": "Premie za Boże Narodzenie/Nowy Rok, Wielkanoc i wakacje; dla pracy świątecznej gwarancja premii ma być w umowie.",
     "support": "Alarmowy telefon 24/7; deklarowana pomoc pracowników w rozwiązywaniu problemów.",
-    "housing": "Zakwaterowanie i wyżywienie zależne od oferty; szczegóły w konkretnych zleceniach."
+    "housing": "Zakwaterowanie i wyżywienie zależne od oferty; szczegóły w konkretnych zleceniach.",
+    "affiliated": false
   },
   {
     "name": "Caring Personnel",
@@ -223,7 +230,8 @@
     "travelNote": "Organizuje przejazd z uzgodnionego miejsca do domu seniora; na stronie deklarowany bezpłatny transport.",
     "bonus": "Premie, bonusy i dodatki przez cały rok; brak jednej stałej kwoty premii świątecznej.",
     "support": "Deklarowane wsparcie koordynatorki 24/7.",
-    "housing": "Szczegóły pokoju i warunków opisane w konkretnych ofertach."
+    "housing": "Szczegóły pokoju i warunków opisane w konkretnych ofertach.",
+    "affiliated": false
   },
   {
     "name": "Ethicus Care",
@@ -249,7 +257,8 @@
     "travelNote": "W ofertach podawany zwrot kosztów podróży; zasady zależą od oferty.",
     "bonus": "",
     "support": "Deklaruje koordynatora po stronie niemieckiej i pomoc 24/7.",
-    "housing": "Warunki zakwaterowania i obowiązki podane indywidualnie w ofertach."
+    "housing": "Warunki zakwaterowania i obowiązki podane indywidualnie w ofertach.",
+    "affiliated": false
   },
   {
     "name": "Eurokontakt",
@@ -278,7 +287,8 @@
     "travelNote": "",
     "bonus": "",
     "support": "Stały koordynator do bieżących spraw zlecenia.",
-    "housing": "Szczegóły zależą od oferty; zakres i stawka znane przed podjęciem decyzji."
+    "housing": "Szczegóły zależą od oferty; zakres i stawka znane przed podjęciem decyzji.",
+    "affiliated": false
   },
   {
     "name": "Frigga",
@@ -304,7 +314,8 @@
     "travelNote": "Deklaruje organizację bezpiecznego transportu; zwrot własnych kosztów: brak informacji.",
     "bonus": "",
     "support": "Deklaruje pełne wsparcie podczas wyjazdu.",
-    "housing": ""
+    "housing": "",
+    "affiliated": false
   },
   {
     "name": "MEDIPE",
@@ -330,7 +341,8 @@
     "travelNote": "Darmowy transport „od drzwi do drzwi”/organizacja przejazdu.",
     "bonus": "",
     "support": "Stały polski koordynator, całodobowy numer alarmowy; dostęp do psychologa i pielęgniarki.",
-    "housing": "Osobny pokój, często internet/TV/własna łazienka w ofertach; szczegóły zależne od zlecenia."
+    "housing": "Osobny pokój, często internet/TV/własna łazienka w ofertach; szczegóły zależne od zlecenia.",
+    "affiliated": false
   },
   {
     "name": "Medius Work",
@@ -356,7 +368,8 @@
     "travelNote": "Deklaruje zwrot kosztów podróży; szczegółowe zasady: brak informacji na stronie głównej.",
     "bonus": "",
     "support": "Deklaruje troskę o bezpieczeństwo i wsparcie; zakres na miejscu: brak informacji.",
-    "housing": ""
+    "housing": "",
+    "affiliated": false
   },
   {
     "name": "Opieka24-7",
@@ -384,7 +397,8 @@
     "travelNote": "Bezpłatny przejazd busem; firma deklaruje, że opiekunka nie ponosi kosztów dojazdu.",
     "bonus": "",
     "support": "Wsparcie zespołu podczas zlecenia; w razie niezgodności deklaruje reakcję i organizację powrotu.",
-    "housing": "Własny pokój z internetem, wyżywienie i co najmniej 1 dzień wolny w tygodniu według FAQ."
+    "housing": "Własny pokój z internetem, wyżywienie i co najmniej 1 dzień wolny w tygodniu według FAQ.",
+    "affiliated": false
   },
   {
     "name": "Opiekunki-24h",
@@ -412,7 +426,8 @@
     "travelNote": "",
     "bonus": "",
     "support": "",
-    "housing": ""
+    "housing": "",
+    "affiliated": false
   },
   {
     "name": "Pflegerin24",
@@ -438,7 +453,8 @@
     "travelNote": "Bezpłatny transport do miejsca pracy i organizacja podróży.",
     "bonus": "",
     "support": "",
-    "housing": ""
+    "housing": "",
+    "affiliated": false
   },
   {
     "name": "Prohuman",
@@ -464,7 +480,8 @@
     "travelNote": "",
     "bonus": "",
     "support": "",
-    "housing": "Warunki poznawane przy konkretnej ofercie; strona podkreśla dopasowanie profilu do zlecenia."
+    "housing": "Warunki poznawane przy konkretnej ofercie; strona podkreśla dopasowanie profilu do zlecenia.",
+    "affiliated": false
   },
   {
     "name": "Promedica24",
@@ -492,7 +509,8 @@
     "travelNote": "Organizuje wyjazd własną flotą busów; kwota zwrotu za samodzielny transport: brak informacji.",
     "bonus": "Dodatki za pracę w święta i wakacje; aktualna akcja zimowa do 500 € po spełnieniu warunków.",
     "support": "Opiekun Kontaktu, całodobowa linia alarmowa w weekendy.",
-    "housing": "Zakwaterowanie z seniorem; szczegóły w każdej ofercie."
+    "housing": "Zakwaterowanie z seniorem; szczegóły w każdej ofercie.",
+    "affiliated": false
   },
   {
     "name": "SCG",
@@ -520,7 +538,8 @@
     "travelNote": "FAQ podaje zwrot 150–170 € zależnie od wybranego środka transportu.",
     "bonus": "",
     "support": "Deklaruje wsparcie koordynatora podczas pobytu w Niemczech.",
-    "housing": ""
+    "housing": "",
+    "affiliated": false
   },
   {
     "name": "Veritas Opieka",
@@ -546,7 +565,8 @@
     "travelNote": "Deklaruje bezpłatny transport na miejsce zlecenia i powrót.",
     "bonus": "Deklaruje premie/dodatki, ale brak jawnej stałej kwoty świątecznej.",
     "support": "Deklaruje opiekę nad opiekunem od podpisania umowy do powrotu; szczegóły lokalnej pomocy: brak informacji.",
-    "housing": "Zakwaterowanie u podopiecznego; pozostałe warunki opisane w ofercie."
+    "housing": "Zakwaterowanie u podopiecznego; pozostałe warunki opisane w ofercie.",
+    "affiliated": false
   },
   {
     "name": "InterKadra",
@@ -574,7 +594,8 @@
     "travelNote": "",
     "bonus": "",
     "support": "",
-    "housing": ""
+    "housing": "",
+    "affiliated": false
   },
   {
     "name": "Feliza Job",
@@ -602,7 +623,8 @@
     "travelNote": "",
     "bonus": "",
     "support": "",
-    "housing": ""
+    "housing": "",
+    "affiliated": false
   },
   {
     "name": "Antczak Care",
@@ -612,22 +634,23 @@
     "contracts": [],
     "payMin": 2000,
     "payMax": 3000,
-    "payNote": "2 000–3 000 € miesięcznie; stawka zależy od doświadczenia, poziomu niemieckiego i stanu podopiecznego.",
+    "payNote": "2 000–3 000 € netto (na rękę) za miesiąc pracy; kwota zależy od trudności zlecenia, liczby osób do opieki i obowiązków.",
     "german": null,
     "rotation": "",
     "verified": "2026-10-21",
     "source": "https://www.antczak-care.pl/",
     "notes": "",
-    "travel": false,
+    "travel": true,
     "a1": false,
     "example": false,
     "promoted": false,
     "published": true,
     "contractNote": "Umowy bez kar umownych.",
     "insurance": "",
-    "travelNote": "",
+    "travelNote": "Transport na koszt firmy, od drzwi do drzwi.",
     "bonus": "Bonusy i programy lojalnościowe; szkolenia dla stałych opiekunek.",
-    "support": "Duże wsparcie na miejscu: zlecenia są w okolicy biura w Niemczech, więc zespół może szybko pomóc. Każdą rodzinę firma sprawdza osobiście.",
-    "housing": ""
+    "support": "Duże wsparcie na miejscu: zlecenia są w okolicy biura w Niemczech, więc zespół może szybko pomóc. Każdą rodzinę firma sprawdza osobiście. Firma deklaruje, że dba o komfort opiekunek i traktuje każdą jako część zespołu.",
+    "housing": "",
+    "affiliated": true
   }
 ]

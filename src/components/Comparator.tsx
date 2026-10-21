@@ -101,6 +101,7 @@ export default function Comparator({ offers }: { offers: Offer[] }) {
   const toggleCompare = (id: number) =>
     setSelected((s) => (s.includes(id) ? s.filter((x) => x !== id) : s.length < 3 ? [...s, id] : s));
   const compared = offers.filter((o) => selected.includes(o.id));
+  const affiliated = offers.filter((o) => o.affiliated).map((o) => o.name);
 
   return (
     <>
@@ -113,6 +114,12 @@ export default function Comparator({ offers }: { offers: Offer[] }) {
             miesięcznie, czy opłacają dojazd i składki oraz jakie wsparcie dają na miejscu. Porównaj do trzech ofert
             obok siebie.
           </p>
+          {affiliated.length > 0 && (
+            <p className="disclosure">
+              Serwis prowadzi osoba związana z agencją {affiliated.join(", ")}. Ta agencja jest oznaczona na liście, a
+              kolejność ofert od tego nie zależy: domyślnie sortujemy wszystkie agencje tak samo, według stawki.
+            </p>
+          )}
           <div className="cta">
             <a className="btn" href="/zglos-agencje">Zgłoś agencję</a>
             <span>Znasz agencję, której tu brakuje?</span>
@@ -230,6 +237,7 @@ function OfferCard({ o, minLine, selected, compareDisabled, onCompare }: {
           <div className="oname">
             <h3>{o.name}</h3>
             {o.promoted && <span className="chip promo">Oferta promowana</span>}
+            {o.affiliated && <span className="chip promo">Agencja powiązana z autorką serwisu</span>}
             {o.example && <span className="chip ex">Przykład</span>}
             {o.website && <a href={o.website} target="_blank" rel="noopener nofollow">{host(o.website)}</a>}
           </div>
@@ -298,7 +306,7 @@ function CompareTable({ offers, onClear }: { offers: Offer[]; onClear: () => voi
       </div>
       <div className="cmpwrap">
         <table className={`cols-${offers.length}`}>
-          <thead><tr><th />{offers.map((o) => <th scope="col" key={o.id} className="colhead">{o.name}</th>)}</tr></thead>
+          <thead><tr><th />{offers.map((o) => <th scope="col" key={o.id} className="colhead">{o.name}{o.affiliated && <div className="note">powiązana z autorką serwisu</div>}</th>)}</tr></thead>
           <tbody>
             {rows.map(([label, cell, best]) => (
               <tr key={label}>

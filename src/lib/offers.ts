@@ -9,7 +9,7 @@ const COLUMNS: [keyof OfferInput, string][] = [
   ["contracts", "contracts"], ["payMin", "pay_min"], ["payMax", "pay_max"], ["payNote", "pay_note"],
   ["german", "german"], ["rotation", "rotation"], ["verified", "verified"], ["source", "source"],
   ["notes", "notes"], ["travel", "travel"], ["a1", "a1"], ["example", "example"],
-  ["promoted", "promoted"], ["published", "published"], ["contractNote", "contract_note"],
+  ["promoted", "promoted"], ["affiliated", "affiliated"], ["published", "published"], ["contractNote", "contract_note"],
   ["insurance", "insurance"], ["travelNote", "travel_note"], ["bonus", "bonus"],
   ["support", "support"], ["housing", "housing"],
 ];
@@ -73,7 +73,7 @@ export async function createSubmission(
   );
   if (rows[0].recent >= SUBMISSIONS_PER_HOUR) return "Wysłano już kilka zgłoszeń z tego urządzenia. Spróbuj ponownie za godzinę.";
   if (rows[0].pending >= MAX_PENDING_SUBMISSIONS) return "Formularz jest chwilowo przepełniony. Spróbuj ponownie za kilka dni.";
-  const id = await createOffer({ ...o, published: false, promoted: false, example: false, verified: "" });
+  const id = await createOffer({ ...o, published: false, promoted: false, affiliated: false, example: false, verified: "" });
   await pool.query(
     "UPDATE offers SET origin = 'form', submitter_role = $1, submitter_email = $2, ip_hash = $3 WHERE id = $4",
     [meta.role, meta.email, meta.ipHash, id],
@@ -125,6 +125,7 @@ export function parseOfferForm(f: FormData): { ok: true; offer: OfferInput } | {
     a1: f.get("a1") === "on",
     example: f.get("example") === "on",
     promoted: f.get("promoted") === "on",
+    affiliated: f.get("affiliated") === "on",
     published: f.get("published") === "on",
     ...details,
   };

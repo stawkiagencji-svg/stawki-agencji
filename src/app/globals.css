@@ -182,4 +182,5 @@ footer.site p { margin: 10px 0 0; }
 .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .thanks { display: grid; gap: 8px; }
 .thanks p { margin: 0; }
+.disclosure { font-size: 13px; color: var(--warn); background: var(--warn-soft); border-radius: 6px; padding: 8px 12px; margin: 12px 0 0; max-width: 62ch; }
 .cta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 14px; font-size: 14px; color: var(--muted); }

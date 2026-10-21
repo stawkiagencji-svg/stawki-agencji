@@ -47,6 +47,8 @@ export type Offer = {
   a1: boolean;
   example: boolean;
   promoted: boolean;
+  /** Agencja powiązana z właścicielką serwisu – zawsze oznaczana na stronie. */
+  affiliated: boolean;
   /** false = szkic widoczny tylko w panelu administratora */
   published: boolean;
 } & Record<DetailKey, string>;
