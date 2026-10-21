@@ -56,7 +56,7 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 - [ ] Zebrać min. 12 testerów (wzór posta w `GOOGLE-PLAY.md`)
 - [ ] Wygenerować aplikację w PWABuilder, bezpiecznie zachować `signing.keystore` i hasła
 - [ ] Wgrać `.aab`, ustawić odciski SHA-256 w `.env` (krok 4 w `GOOGLE-PLAY.md`)
-- [ ] Wypełnić wpis i formularze, zrobić nowe zrzuty z prawdziwymi ofertami
+- [ ] Wypełnić wpis i formularze (zrzuty z prawdziwymi ofertami są gotowe)
 - [ ] Test zamknięty (jeśli konto osobiste), potem publikacja
 
 ### Pomysły na później
@@ -65,7 +65,6 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 - [ ] Opinie opiekunek o agencjach (z moderacją)
 - [ ] Kalkulator brutto → netto dla umowy niemieckiej
 - [ ] Wersja niemieckojęzyczna strony
-- [ ] Formularz „Zgłoś agencję” dla agencji chcących trafić do porównywarki
 - [ ] Analityka odwiedzin (wtedy zaktualizować politykę prywatności i formularz „Bezpieczeństwo danych” w Google Play)
 
 ## Jak wrócić do pracy
