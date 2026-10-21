@@ -32,15 +32,12 @@ GitHub przechowuje kod. Vercel pobiera go stamtąd i publikuje stronę.
 ## Krok 3. Opublikuj stronę na Vercelu
 
 1. Wejdź na [vercel.com](https://vercel.com) → **Sign Up** → **Continue with GitHub**. Wybierz plan **Hobby** (darmowy).
-2. Kliknij **Add New… → Project**, znajdź `porownywarka-opieki` i kliknij **Import**.
+2. Kliknij **Add New… → Project**, znajdź `stawki-agencji` i kliknij **Import**.
 3. Rozwiń **Environment Variables** i dodaj (nazwa → wartość):
 
    | Nazwa | Wartość |
    |---|---|
    | `ADMIN_PASSWORD` | Twoje hasło do panelu, min. 12 znaków. Zapisz je w bezpiecznym miejscu |
-   | `SESSION_SECRET` | Dowolny ciąg min. 32 losowych znaków (np. wygeneruj długie hasło w menedżerze haseł) |
-   | `NEXT_PUBLIC_SITE_URL` | `https://stawkiagencji.pl` |
-   | `DATABASE_SSL` | `true` |
    | `SITE_OWNER_NAME` | Twoje imię i nazwisko (do regulaminu) |
    | `SITE_OWNER_ADDRESS` | Adres do korespondencji |
    | `SITE_CONTACT_EMAIL` | E-mail kontaktowy serwisu |

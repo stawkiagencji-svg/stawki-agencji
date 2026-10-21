@@ -42,13 +42,13 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 - [ ] Co 1–2 miesiące odświeżać stawki i daty weryfikacji
 
 ### Prawo i pieniądze
-- [ ] Ustawić dane właściciela (`SITE_OWNER_NAME`, `SITE_OWNER_ADDRESS`, `SITE_CONTACT_EMAIL`) na Vercelu
+- [ ] Ustawić dane właściciela (`SITE_OWNER_NAME`, `SITE_OWNER_ADDRESS`, `SITE_CONTACT_EMAIL`) na Vercelu (jedyne wymagane ustawienie to `ADMIN_PASSWORD`)
 - [ ] Opcjonalnie: przegląd regulaminu i polityki prywatności przez prawnika
 - [ ] Ustalić cennik ofert promowanych; pilnować limitu działalności nierejestrowanej
 
 ### Wdrożenie
 - [x] Domena stawkiagencji.pl kupiona (nazwa.pl, 21.10.2026)
-- [ ] Wgrać kod na GitHub (krok 2)
+- [x] Kod na GitHubie: github.com/stawkiagencji-svg/stawki-agencji (prywatne), połączone z Claude
 - [ ] Wdrożyć na Vercelu i dodać bazę Neon (kroki 3–4)
 - [ ] Podłączyć domenę (krok 5)
 

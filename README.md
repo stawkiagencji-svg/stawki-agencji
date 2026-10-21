@@ -51,10 +51,10 @@ Pamiętaj o kopiach zapasowych bazy (`pg_dump`).
 | Zmienna | Opis |
 |---|---|
 | `DATABASE_URL` | Adres bazy PostgreSQL |
-| `DATABASE_SSL` | `true` dla baz w chmurze wymagających SSL |
+| `DATABASE_SSL` | Opcjonalnie: `true` wymusza SSL bez weryfikacji certyfikatu (zwykle niepotrzebne – Neon podaje `sslmode` w adresie) |
 | `ADMIN_PASSWORD` | Hasło do `/admin`, min. 12 znaków |
-| `SESSION_SECRET` | Losowy ciąg min. 32 znaki (`openssl rand -hex 32`) |
-| `NEXT_PUBLIC_SITE_URL` | Publiczny adres strony (mapa strony, metadane) |
+| `SESSION_SECRET` | Opcjonalnie: losowy ciąg min. 32 znaki. Bez niego klucz sesji powstaje z `ADMIN_PASSWORD` i `DATABASE_URL` |
+| `NEXT_PUBLIC_SITE_URL` | Publiczny adres strony. Na Vercelu domyślnie adres produkcyjny projektu; ustaw po podpięciu domeny |
 | `SITE_OWNER_NAME`, `SITE_OWNER_ADDRESS`, `SITE_CONTACT_EMAIL` | Dane właściciela w regulaminie i polityce prywatności |
 | `ANDROID_PACKAGE_NAME` | Nazwa pakietu aplikacji z Google Play (np. `pl.twojadomena.opieka`) |
 | `ANDROID_SHA256_FINGERPRINTS` | Odciski SHA-256 kluczy podpisu, oddzielone przecinkami |

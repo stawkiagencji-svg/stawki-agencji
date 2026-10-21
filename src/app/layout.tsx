@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Bricolage_Grotesque, Source_Sans_3, IBM_Plex_Mono } from "next/font/google";
@@ -9,7 +10,7 @@ const body = Source_Sans_3({ subsets: ["latin", "latin-ext"], weight: ["400", "6
 const mono = IBM_Plex_Mono({ subsets: ["latin", "latin-ext"], weight: ["500"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(SITE_URL),
   title: { default: "Stawki Agencji – porównaj stawki agencji opiekuńczych w Niemczech", template: "%s · Stawki Agencji" },
   description:
     "Porównaj polskie agencje delegujące opiekunki osób starszych do Niemiec: formy umów, wypłaty netto, turnusy, zwrot za dojazd i wymagany niemiecki.",
