@@ -1,4 +1,5 @@
 import Comparator from "@/components/Comparator";
+import AskAgency from "@/components/AskAgency";
 import ContractGuide from "@/components/ContractGuide";
 import { listPublishedOffers } from "@/lib/offers";
 
@@ -10,6 +11,7 @@ export default async function Home() {
   return (
     <>
       <Comparator offers={offers} />
+      <AskAgency />
       <ContractGuide />
     </>
   );

@@ -28,7 +28,7 @@ const GUIDE = [
 export default function ContractGuide() {
   return (
     <section className="guide">
-      <div className="eyebrow">Zanim podpiszesz</div>
+      <div className="eyebrow">Formy zatrudnienia</div>
       <h2>Czym różnią się formy umów</h2>
       <div className="grid">
         {GUIDE.map((g) => (

@@ -132,6 +132,12 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
   .paybig small { text-align: left; }
 }
 
+.ask { margin-top: 44px; }
+.ask ol { margin: 14px 0 0; padding-left: 22px; display: grid; gap: 10px; max-width: 75ch; }
+.ask li b { display: block; }
+.ask li span { color: var(--muted); font-size: 15px; }
+.ask li:first-child b { color: var(--pay); }
+.example { margin: 16px 0 0; max-width: 75ch; font-size: 14px; background: var(--pay-soft); border-radius: 8px; padding: 12px 14px; }
 .guide { margin-top: 44px; }
 .guide .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
 .gcard { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
