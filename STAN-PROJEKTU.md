@@ -49,7 +49,7 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 ### Wdrożenie
 - [x] Domena stawkiagencji.pl kupiona (nazwa.pl, 21.10.2026)
 - [x] Kod na GitHubie: github.com/stawkiagencji-svg/stawki-agencji (prywatne), połączone z Claude
-- [ ] Wdrożyć na Vercelu i dodać bazę Neon (kroki 3–4)
+- [x] Strona działa: https://stawki-agencji.vercel.app (Vercel Hobby + Neon, konto karolina15); diagnostyka: /api/health
 - [ ] Podłączyć domenę (krok 5)
 
 ### Google Play
