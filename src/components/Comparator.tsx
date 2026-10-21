@@ -20,13 +20,14 @@ type Filters = {
   german: number;
   travel: boolean;
   a1: boolean;
+  zusAvg: boolean;
   bonus: boolean;
   showNoPay: boolean;
   sort: SortKey;
 };
 
 const DEFAULT_FILTERS: Filters = {
-  contracts: ALL_CONTRACTS, min: 1000, german: 3, travel: false, a1: false, bonus: false, showNoPay: true, sort: "max",
+  contracts: ALL_CONTRACTS, min: 1000, german: 3, travel: false, a1: false, zusAvg: false, bonus: false, showNoPay: true, sort: "max",
 };
 
 const nf = new Intl.NumberFormat("pl-PL");
@@ -83,7 +84,7 @@ export default function Comparator({ offers }: { offers: Offer[] }) {
       const payOk = hasPay(o) ? top(o) >= f.min : f.showNoPay && f.min <= SCALE[0];
       return contractOk && payOk &&
         (o.german === null || o.german <= f.german) &&
-        (!f.travel || o.travel) && (!f.a1 || o.a1) && (!f.bonus || o.bonus.trim());
+        (!f.travel || o.travel) && (!f.a1 || o.a1) && (!f.zusAvg || o.zusAvg) && (!f.bonus || o.bonus.trim());
     });
     // Oferty promowane zawsze na górze i zawsze oznaczone (wymóg przejrzystości rankingu).
     return list.sort((a, b) => Number(b.promoted) - Number(a.promoted) || SORTERS[f.sort](a, b));
@@ -171,6 +172,7 @@ export default function Comparator({ offers }: { offers: Offer[] }) {
             <legend>Wymagam</legend>
             <label className="chk"><input type="checkbox" id="f-travel" checked={f.travel} onChange={(e) => update({ travel: e.target.checked })} /> Agencja organizuje lub opłaca dojazd</label>
             <label className="chk"><input type="checkbox" id="f-a1" checked={f.a1} onChange={(e) => update({ a1: e.target.checked })} /> Opłacane składki / ubezpieczenie</label>
+            <label className="chk"><input type="checkbox" id="f-zusavg" checked={f.zusAvg} onChange={(e) => update({ zusAvg: e.target.checked })} /> ZUS od średniej krajowej (wyższa emerytura)</label>
             <label className="chk"><input type="checkbox" id="f-bonus" checked={f.bonus} onChange={(e) => update({ bonus: e.target.checked })} /> Premie lub dodatki</label>
           </fieldset>
           <button className="ghost" type="button" onClick={() => update(DEFAULT_FILTERS)}>Wyczyść filtry</button>
@@ -249,7 +251,7 @@ function OfferCard({ o, minLine, selected, compareDisabled, onCompare }: {
               ? o.contracts.map((c) => <span className="chip" key={c}>{CONTRACTS[c]}</span>)
               : <span className="chip no">Umowa: brak informacji</span>}
             {o.travel && <span className="chip ok">Dojazd zapewniony</span>}
-            {o.a1 && <span className="chip ok">Składki opłacane</span>}
+            {o.zusAvg ? <span className="chip ok">ZUS od średniej krajowej</span> : o.a1 && <span className="chip ok">Składki opłacane</span>}
             {o.bonus && <span className="chip ok">Premie / dodatki</span>}
           </div>
         </div>

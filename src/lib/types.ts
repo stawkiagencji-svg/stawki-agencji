@@ -45,6 +45,8 @@ export type Offer = {
   travel: boolean;
   /** Agencja deklaruje opłacanie składek / ubezpieczenia (ZUS, A1 itp.). */
   a1: boolean;
+  /** Agencja deklaruje wprost składki ZUS od średniej krajowej (wyższa przyszła emerytura). */
+  zusAvg: boolean;
   example: boolean;
   promoted: boolean;
   /** Agencja, w której pracuje właścicielka serwisu – zawsze oznaczana na stronie. */

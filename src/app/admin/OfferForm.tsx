@@ -69,6 +69,7 @@ export default function OfferForm({ offer }: { offer: Offer | null }) {
         <div className="full row">
           <label className="chk"><input type="checkbox" name="travel" defaultChecked={on("travel", o?.travel)} /> Agencja organizuje lub opłaca dojazd</label>
           <label className="chk"><input type="checkbox" name="a1" defaultChecked={on("a1", o?.a1)} /> Opłaca składki / ubezpieczenie</label>
+          <label className="chk"><input type="checkbox" name="zusAvg" defaultChecked={on("zusAvg", o?.zusAvg)} /> ZUS od średniej krajowej</label>
           <label className="chk"><input type="checkbox" name="example" defaultChecked={on("example", o?.example)} /> Oznacz jako przykład</label>
           <label className="chk"><input type="checkbox" name="promoted" defaultChecked={on("promoted", o?.promoted)} /> Oferta promowana (płatna)</label>
           <label className="chk"><input type="checkbox" name="affiliated" defaultChecked={on("affiliated", o?.affiliated)} /> Tu pracuję (oznaczenie „Tu pracuje autorka serwisu”)</label>
