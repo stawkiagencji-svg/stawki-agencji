@@ -22,7 +22,7 @@ export default function RankingPage() {
         Agencje mogą wykupić promowanie oferty. Oferty promowane wyświetlamy na początku listy i zawsze oznaczamy etykietą
         „Oferta promowana”. Opłata nie wpływa na podawane stawki ani na treść oferty.
       </p>
-      <p className="todo">[UZUPEŁNIJ: cennik promowania i dane firmy prowadzącej serwis]</p>
+      <p>Pytania o promowanie ofert: napisz na adres podany w regulaminie.</p>
     </article>
   );
 }

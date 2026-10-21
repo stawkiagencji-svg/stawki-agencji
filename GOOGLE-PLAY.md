@@ -14,7 +14,8 @@ Strona jest już do tego przygotowana:
 
 - Stronę wdrożoną pod własną domeną z HTTPS (instrukcja w `README.md`).
 - Konto dewelopera Google Play: jednorazowa opłata 25 USD, [play.google.com/console](https://play.google.com/console).
-- Uzupełnioną politykę prywatności pod adresem `https://twoja-domena.pl/polityka-prywatnosci`.
+- Uzupełnioną politykę prywatności pod adresem `https://twoja-domena.pl/polityka-prywatnosci`
+  (wypełnia się sama po ustawieniu zmiennych `SITE_OWNER_*` z `WDROZENIE.md`).
 
 > **Konto osobiste czy firmowe?** Nowe konta **osobiste** muszą przed publikacją przeprowadzić
 > test zamknięty: co najmniej 12 testerów przez 14 dni bez przerwy. Konta **organizacji** (firma
@@ -22,7 +23,7 @@ Strona jest już do tego przygotowana:
 
 ## Krok 1. Wdróż stronę
 
-Opublikuj stronę pod docelową domeną. Sprawdź, czy działają:
+Opublikuj stronę pod docelową domeną (instrukcja: `WDROZENIE.md`). Sprawdź, czy działają:
 - `https://twoja-domena.pl/manifest.webmanifest`
 - `https://twoja-domena.pl/sw.js`
 
@@ -94,6 +95,26 @@ Bez tego kroku aplikacja pokazuje u góry pasek adresu jak zwykła przeglądarka
 
 Po wpisaniu prawdziwych ofert zrób nowe zrzuty ekranu: otwórz aplikację na telefonie, zrób zrzuty
 strony głównej, listy ofert, porównania i poradnika, i podmień je w Play Console.
+
+## Jak zebrać 12 testerów (konto osobiste)
+
+Testerzy potrzebują konta Google (Gmail) i telefonu z Androidem. Najłatwiej znaleźć ich w grupach
+dla opiekunek na Facebooku. To przy okazji Twoi pierwsi użytkownicy.
+
+1. W Play Console: **Testowanie → Test zamknięty → Testerzy** → utwórz listę e-mailową i dodaj adresy.
+2. Skopiuj **link dołączenia do testu** i wyślij go testerom.
+3. Testerzy muszą kliknąć link, zaakceptować udział i zainstalować aplikację. Nie mogą jej odinstalować przez 14 dni.
+4. Zbierz o kilka osób więcej niż 12, bo ktoś może odpaść.
+
+Wzór posta do grupy:
+
+> Hej! Robię bezpłatną aplikację dla opiekunek pracujących w Niemczech: porównuje agencje,
+> umowy i stawki netto w jednym miejscu. Szukam osób z telefonem z Androidem, które przez
+> 2 tygodnie przetestują aplikację (wystarczy zainstalować i czasem zajrzeć).
+> Chętne osoby proszę o adres Gmail w wiadomości prywatnej. Dziękuję! 🙂
+
+Po 14 dniach w Play Console pojawi się **Poproś o dostęp do produkcji**. Odpowiedz na kilka pytań
+o teście (ile osób testowało, jakie były uwagi) i poczekaj na decyzję Google.
 
 ## Aktualizacje
 

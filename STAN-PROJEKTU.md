@@ -1,6 +1,6 @@
 # Stan projektu – Porównywarka agencji opieki
 
-Ostatnia aktualizacja: 2026-10-21
+Ostatnia aktualizacja: 2026-10-21 (część 2)
 
 ## Gotowe
 
@@ -18,28 +18,35 @@ Ostatnia aktualizacja: 2026-10-21
   - [x] `/.well-known/assetlinks.json` (ustawiany zmiennymi środowiskowymi)
   - [x] Grafiki do sklepu, 4 zrzuty z telefonu, teksty wpisu (`play-store/`)
   - [x] Instrukcja publikacji (`GOOGLE-PLAY.md`)
+- [x] Szkice 7 prawdziwych agencji z ogłoszeń (`db/drafts.json`), niewidoczne na stronie do czasu weryfikacji
+- [x] Automatyczne tworzenie bazy przy starcie – wdrożenie bez terminala
+- [x] Pełny regulamin i polityka prywatności dla osoby prywatnej (dane z ustawień `SITE_OWNER_*`)
+- [x] Instrukcja wdrożenia bez terminala: `WDROZENIE.md` (GitHub → Vercel → Neon → domena)
+- [x] Wzór wiadomości do agencji i posta do zebrania 12 testerów
 - [x] Testy w przeglądarce: filtry, porównanie, logowanie, dodawanie/edycja/usuwanie, tryb offline, telefon, tryb ciemny
 
 ## Do zrobienia
 
-### Dane (najważniejsze przed startem)
-- [ ] Zebrać prawdziwe oferty agencji: stawki netto od–do, forma umowy, wymagany niemiecki, turnus, dojazd, A1, premie
-- [ ] Przy każdej ofercie: data weryfikacji i link do źródła
-- [ ] Usunąć 5 przykładowych ofert („Agencja A–E”)
+Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków jak w `WDROZENIE.md`.
 
-### Firma i prawo
-- [ ] Zdecydować: konto Google Play osobiste czy firmowe (firmowe = bez testu 12 osób / 14 dni, wymaga numeru D-U-N-S)
-- [ ] Uzupełnić regulamin i politykę prywatności (miejsca `[UZUPEŁNIJ]`), najlepiej z prawnikiem
-- [ ] Ustalić cennik ofert promowanych i wpisać go na stronie „Jak tworzymy ranking”
+### Dane (najważniejsze przed startem)
+- [ ] Zweryfikować u agencji 7 szkiców i opublikować (krok 6 w `WDROZENIE.md`)
+- [ ] Dodać kolejne agencje (cel: 15–20)
+
+### Prawo i pieniądze
+- [ ] Ustawić dane właściciela (`SITE_OWNER_NAME`, `SITE_OWNER_ADDRESS`, `SITE_CONTACT_EMAIL`) na Vercelu
+- [ ] Opcjonalnie: przegląd regulaminu i polityki prywatności przez prawnika
+- [ ] Ustalić cennik ofert promowanych; pilnować limitu działalności nierejestrowanej
 
 ### Wdrożenie
-- [ ] Kupić domenę
-- [ ] Wybrać hosting: Vercel + Neon/Supabase (prościej) albo własny VPS z Dockerem
-- [ ] Ustawić zmienne środowiskowe (`.env.example`) i wdrożyć stronę
-- [ ] Wgrać kod do repozytorium GitHub (kopia zapasowa, łatwe wdrożenia)
+- [ ] Kupić domenę (propozycje w `WDROZENIE.md`, krok 1)
+- [ ] Wgrać kod na GitHub (krok 2)
+- [ ] Wdrożyć na Vercelu i dodać bazę Neon (kroki 3–4)
+- [ ] Podłączyć domenę (krok 5)
 
 ### Google Play
-- [ ] Założyć konto dewelopera (25 USD)
+- [ ] Założyć konto dewelopera – osobiste (25 USD)
+- [ ] Zebrać min. 12 testerów (wzór posta w `GOOGLE-PLAY.md`)
 - [ ] Wygenerować aplikację w PWABuilder, bezpiecznie zachować `signing.keystore` i hasła
 - [ ] Wgrać `.aab`, ustawić odciski SHA-256 w `.env` (krok 4 w `GOOGLE-PLAY.md`)
 - [ ] Wypełnić wpis i formularze, zrobić nowe zrzuty z prawdziwymi ofertami

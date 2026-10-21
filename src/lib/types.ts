@@ -27,6 +27,8 @@ export type Offer = {
   a1: boolean;
   example: boolean;
   promoted: boolean;
+  /** false = szkic widoczny tylko w panelu administratora */
+  published: boolean;
 };
 
 export type OfferInput = Omit<Offer, "id">;

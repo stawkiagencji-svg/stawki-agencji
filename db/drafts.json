@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Promedica24",
+    "website": "https://promedica24.com.pl",
+    "contracts": ["zlecenie", "b2b"],
+    "payMin": 2000, "payMax": 2200, "german": 1,
+    "rotation": "6–8 tygodni (wg ogłoszeń)",
+    "source": "https://pl.jooble.org/praca-promedica24/Niemcy",
+    "notes": "Kwoty z ogłoszeń w agregatorze Jooble (2026). Firma wspomina też model Gewerbe (działalność). Do potwierdzenia: stawki, forma umowy, wymagany niemiecki, dojazd, A1."
+  },
+  {
+    "name": "Aterima Med",
+    "website": "https://www.aterima-med.pl",
+    "contracts": ["zlecenie"],
+    "payMin": 1800, "payMax": 2350, "german": 1,
+    "bonus": "Premia świąteczna (wg komunikatu firmy)",
+    "source": "https://www.aterima-med.pl/oferty-pracy",
+    "notes": "Wg wyników wyszukiwania ogłoszenia 2000–2350 € netto, na portalu Dobrasztela 1800–2135 €. Do potwierdzenia: forma umowy, niemiecki, turnus, dojazd, A1, wysokość premii."
+  },
+  {
+    "name": "Veritas",
+    "website": "https://www.veritas-opieka.pl",
+    "contracts": ["zlecenie"],
+    "payMin": 1980, "payMax": 2260, "german": 1,
+    "bonus": "100 € za przejście do agencji (wg strony)",
+    "source": "https://www.veritas-opieka.pl/oferty-pracy/",
+    "notes": "Ogłoszenia m.in. 1980 € i 2260 € netto/mies. (Duisburg), 2120 € (Trier). Do potwierdzenia: forma umowy, niemiecki, turnus, dojazd, A1."
+  },
+  {
+    "name": "Caring Personnel",
+    "website": "https://caringpersonnel.pl",
+    "contracts": ["zlecenie"],
+    "payMin": 1880, "payMax": 2240, "german": 1,
+    "bonus": "+70 € za szybki wyjazd (w części ofert)",
+    "source": "https://caringpersonnel.pl/oferty-pracy/",
+    "notes": "Ogłoszenia ok. 1880–2240 € netto/mies. (np. 2240 € Coburg). Do potwierdzenia: forma umowy, niemiecki, turnus, dojazd, A1."
+  },
+  {
+    "name": "InterKadra",
+    "website": "https://www.opiekunki.interkadra.pl",
+    "contracts": ["zlecenie"],
+    "payMin": 1500, "payMax": 1900, "german": 1,
+    "source": "https://www.opiekunki.interkadra.pl/bonusy-i-premie/",
+    "notes": "Strona podaje „do 1900 € netto”. Dolna granica 1500 € to założenie do sprawdzenia; starszy PDF agencji podaje niższe kwoty. Do potwierdzenia wszystkie warunki."
+  },
+  {
+    "name": "Feliza Job",
+    "website": "https://felizajob.pl",
+    "contracts": ["zlecenie"],
+    "payMin": 1850, "payMax": 2200, "german": 1,
+    "source": "https://felizajob.pl/oferty-pracy/",
+    "notes": "Ogłoszenia 1850 € i 2200 € netto/mies. (+ premie). Do potwierdzenia: nazwa firmy, forma umowy, niemiecki, turnus, dojazd, A1."
+  },
+  {
+    "name": "Carework",
+    "website": "https://carework.pl",
+    "contracts": ["zlecenie"],
+    "payMin": 1800, "payMax": 2300, "german": 1,
+    "source": "https://carework.pl/",
+    "notes": "UWAGA: ogłoszenia podają 3600–4700 € bez informacji, czy to brutto, netto czy kwota za cały wyjazd. Wpisane widełki to wartości zastępcze – koniecznie zapytaj agencję o kwotę netto za miesiąc."
+  }
+]

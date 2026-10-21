@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { isAdmin } from "@/lib/auth";
-import { getOffer, listOffers } from "@/lib/offers";
+import { getOffer, listAllOffers } from "@/lib/offers";
 import { logout } from "./actions";
 import DeleteButton from "./DeleteButton";
 import LoginForm from "./LoginForm";
@@ -22,7 +22,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
     );
   }
   const { edit, saved } = await searchParams;
-  const [offers, editing] = await Promise.all([listOffers(), edit ? getOffer(Number(edit)) : Promise.resolve(null)]);
+  const [offers, editing] = await Promise.all([listAllOffers(), edit ? getOffer(Number(edit)) : Promise.resolve(null)]);
 
   return (
     <>
@@ -38,6 +38,13 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
       </div>
       {saved && <p className="msg" role="status">Zapisano zmiany.</p>}
 
+      {offers.some((o) => !o.published) && (
+        <p className="note" style={{ marginBottom: 16 }}>
+          Szkice to oferty znalezione w ogłoszeniach. Nie są widoczne na stronie. Sprawdź warunki u agencji (telefon,
+          e-mail, aktualne ogłoszenie), popraw dane, wpisz datę weryfikacji i zaznacz „Opublikowana”.
+        </p>
+      )}
+
       <OfferForm offer={editing} />
 
       <div className="admintable panel">
@@ -52,6 +59,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
                 <td className="num">{eur(o.payMin)} – {eur(o.payMax)}</td>
                 <td className="num">{o.verified || "—"}</td>
                 <td>
+                  {o.published ? <span className="chip ok">Opublikowana</span> : <span className="chip no">Szkic – do weryfikacji</span>}{" "}
                   {o.promoted && <span className="chip promo">Promowana</span>}{" "}
                   {o.example && <span className="chip ex">Przykład</span>}
                 </td>

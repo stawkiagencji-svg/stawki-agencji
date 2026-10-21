@@ -18,23 +18,20 @@ Wymagania: Node.js 20+ i Docker (albo własny PostgreSQL).
 cp .env.example .env          # uzupełnij hasło i sekret
 docker compose up -d db       # baza PostgreSQL na porcie 5432
 npm install
-npm run db:migrate            # tworzy tabelę offers
-npm run db:seed               # 5 przykładowych ofert (oznaczonych "Przykład")
 npm run dev                   # http://localhost:3000
 ```
 
 Panel: http://localhost:3000/admin (hasło z `ADMIN_PASSWORD`).
 
+Przy pierwszym starcie aplikacja sama tworzy tabele (`src/instrumentation.ts`) i przy pustej bazie
+wczytuje szkice ofert z `db/drafts.json`. Szkice nie są widoczne na stronie, dopóki nie zaznaczysz
+„Opublikowana” w panelu.
+
 ## Wdrożenie
 
-### Opcja A: Vercel + Neon/Supabase (najprościej, darmowy start)
+### Opcja A: Vercel + Neon (najprościej, darmowy start)
 
-1. Wrzuć projekt na GitHub.
-2. Załóż bazę PostgreSQL w [Neon](https://neon.tech) lub [Supabase](https://supabase.com) i skopiuj adres połączenia.
-3. Uruchom raz lokalnie z tym adresem: `DATABASE_URL=... DATABASE_SSL=true npm run db:migrate` (opcjonalnie `db:seed`).
-4. W [Vercel](https://vercel.com) zaimportuj repozytorium i dodaj zmienne: `DATABASE_URL`, `DATABASE_SSL=true`,
-   `ADMIN_PASSWORD`, `SESSION_SECRET`, `NEXT_PUBLIC_SITE_URL`.
-5. Podepnij własną domenę w ustawieniach projektu.
+Instrukcja krok po kroku bez terminala: [WDROZENIE.md](WDROZENIE.md).
 
 ### Opcja B: własny serwer VPS (Docker)
 
@@ -55,6 +52,7 @@ Pamiętaj o kopiach zapasowych bazy (`pg_dump`).
 | `ADMIN_PASSWORD` | Hasło do `/admin`, min. 12 znaków |
 | `SESSION_SECRET` | Losowy ciąg min. 32 znaki (`openssl rand -hex 32`) |
 | `NEXT_PUBLIC_SITE_URL` | Publiczny adres strony (mapa strony, metadane) |
+| `SITE_OWNER_NAME`, `SITE_OWNER_ADDRESS`, `SITE_CONTACT_EMAIL` | Dane właściciela w regulaminie i polityce prywatności |
 | `ANDROID_PACKAGE_NAME` | Nazwa pakietu aplikacji z Google Play (np. `pl.twojadomena.opieka`) |
 | `ANDROID_SHA256_FINGERPRINTS` | Odciski SHA-256 kluczy podpisu, oddzielone przecinkami |
 
@@ -65,18 +63,17 @@ Instrukcja krok po kroku: [GOOGLE-PLAY.md](GOOGLE-PLAY.md). Grafiki i teksty do 
 
 ## Przed startem sprzedaży
 
-- Zastąp przykładowe oferty prawdziwymi, z datą weryfikacji i linkiem do źródła.
-- Uzupełnij regulamin, politykę prywatności i dane firmy (najlepiej z prawnikiem).
+- Zweryfikuj szkice ofert u agencji i opublikuj je (krok 6 w `WDROZENIE.md`).
+- Ustaw dane właściciela (`SITE_OWNER_*`). Regulamin i politykę prywatności warto dać do przejrzenia prawnikowi.
 - Oferty płatnie promowane muszą być wyraźnie oznaczone. Aplikacja robi to automatycznie (etykieta „Oferta promowana”),
   a strona „Jak tworzymy ranking” wyjaśnia zasady kolejności.
 
 ## Struktura
 
 ```
-db/schema.sql              tabela offers
-scripts/migrate.mjs        tworzenie tabel
-scripts/seed.mjs           dane przykładowe
-src/lib/                   baza, logika ofert, logowanie admina
+db/drafts.json             szkice ofert agencji (do weryfikacji)
+src/instrumentation.ts     automatyczne przygotowanie bazy przy starcie
+src/lib/                   baza, schemat, logika ofert, logowanie admina, dane właściciela
 src/components/            porównywarka i poradnik
 src/app/                   strony, panel /admin, API
 ```

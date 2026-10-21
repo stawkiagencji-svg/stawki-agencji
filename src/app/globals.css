@@ -139,6 +139,8 @@ footer.site p { margin: 10px 0 0; }
 .prose h1 { margin-bottom: 18px; }
 .prose h2 { margin: 28px 0 8px; font-size: 20px; }
 .prose .todo { background: var(--warn-soft); color: var(--warn); padding: 10px 14px; border-radius: 6px; }
+.prose ol, .prose ul { padding-left: 22px; }
+.prose li { margin-bottom: 6px; }
 
 /* Panel admina */
 .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 20px; }

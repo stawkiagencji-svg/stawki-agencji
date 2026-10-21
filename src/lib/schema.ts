@@ -1,3 +1,5 @@
+// Schemat bazy. Wykonywany przy każdym starcie serwera, więc każda zmiana musi być idempotentna.
+export const SCHEMA = `
 CREATE TABLE IF NOT EXISTS offers (
   id          SERIAL PRIMARY KEY,
   name        TEXT NOT NULL,
@@ -19,3 +21,7 @@ CREATE TABLE IF NOT EXISTS offers (
   created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
   updated_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+
+-- Szkice (published = false) widzi tylko administrator.
+ALTER TABLE offers ADD COLUMN IF NOT EXISTS published BOOLEAN NOT NULL DEFAULT TRUE;
+`;

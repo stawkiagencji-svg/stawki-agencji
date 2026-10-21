@@ -8,7 +8,7 @@ type Row = {
   id: number; name: string; website: string; city: string; contracts: string[];
   pay_min: number; pay_max: number; german: number; rotation: string; bonus: string;
   verified: string; source: string; notes: string; travel: boolean; a1: boolean;
-  example: boolean; promoted: boolean;
+  example: boolean; promoted: boolean; published: boolean;
 };
 
 const fromRow = (r: Row): Offer => ({
@@ -16,13 +16,20 @@ const fromRow = (r: Row): Offer => ({
   contracts: r.contracts.filter(isContract), payMin: r.pay_min, payMax: r.pay_max,
   german: r.german, rotation: r.rotation, bonus: r.bonus, verified: r.verified,
   source: r.source, notes: r.notes, travel: r.travel, a1: r.a1,
-  example: r.example, promoted: r.promoted,
+  example: r.example, promoted: r.promoted, published: r.published,
 });
 
 const isContract = (c: string): c is ContractKey => c in CONTRACTS;
 
-export async function listOffers(): Promise<Offer[]> {
-  const { rows } = await pool.query<Row>("SELECT * FROM offers ORDER BY promoted DESC, pay_max DESC, name");
+/** Oferty widoczne publicznie (bez szkiców). */
+export async function listPublishedOffers(): Promise<Offer[]> {
+  const { rows } = await pool.query<Row>("SELECT * FROM offers WHERE published ORDER BY promoted DESC, pay_max DESC, name");
+  return rows.map(fromRow);
+}
+
+/** Wszystkie oferty, szkice na początku – dla panelu administratora. */
+export async function listAllOffers(): Promise<Offer[]> {
+  const { rows } = await pool.query<Row>("SELECT * FROM offers ORDER BY published, name");
   return rows.map(fromRow);
 }
 
@@ -33,14 +40,14 @@ export async function getOffer(id: number): Promise<Offer | null> {
 
 const values = (o: OfferInput) => [
   o.name, o.website, o.city, o.contracts, o.payMin, o.payMax, o.german, o.rotation,
-  o.bonus, o.verified, o.source, o.notes, o.travel, o.a1, o.example, o.promoted,
+  o.bonus, o.verified, o.source, o.notes, o.travel, o.a1, o.example, o.promoted, o.published,
 ];
 
 export async function createOffer(o: OfferInput): Promise<void> {
   await pool.query(
     `INSERT INTO offers (name, website, city, contracts, pay_min, pay_max, german, rotation,
-       bonus, verified, source, notes, travel, a1, example, promoted)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16)`,
+       bonus, verified, source, notes, travel, a1, example, promoted, published)
+     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17)`,
     values(o),
   );
 }
@@ -49,8 +56,8 @@ export async function updateOffer(id: number, o: OfferInput): Promise<void> {
   await pool.query(
     `UPDATE offers SET name=$1, website=$2, city=$3, contracts=$4, pay_min=$5, pay_max=$6,
        german=$7, rotation=$8, bonus=$9, verified=$10, source=$11, notes=$12, travel=$13,
-       a1=$14, example=$15, promoted=$16, updated_at=now()
-     WHERE id=$17`,
+       a1=$14, example=$15, promoted=$16, published=$17, updated_at=now()
+     WHERE id=$18`,
     [...values(o), id],
   );
 }
@@ -84,6 +91,7 @@ export function parseOfferForm(f: FormData): { ok: true; offer: OfferInput } | {
     a1: f.get("a1") === "on",
     example: f.get("example") === "on",
     promoted: f.get("promoted") === "on",
+    published: f.get("published") === "on",
   };
   if (!offer.name) return { ok: false, error: "Wpisz nazwę agencji." };
   if (!Number.isFinite(offer.payMin) || !Number.isFinite(offer.payMax) || offer.payMin <= 0 || offer.payMax <= 0)
