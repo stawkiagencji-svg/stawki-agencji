@@ -1,6 +1,6 @@
 # Stan projektu – Porównywarka agencji opieki
 
-Ostatnia aktualizacja: 2026-10-21 (część 2)
+Ostatnia aktualizacja: 2026-10-21 (część 3)
 
 ## Gotowe
 
@@ -18,7 +18,10 @@ Ostatnia aktualizacja: 2026-10-21 (część 2)
   - [x] `/.well-known/assetlinks.json` (ustawiany zmiennymi środowiskowymi)
   - [x] Grafiki do sklepu, 4 zrzuty z telefonu, teksty wpisu (`play-store/`)
   - [x] Instrukcja publikacji (`GOOGLE-PLAY.md`)
-- [x] Szkice 8 prawdziwych agencji z ogłoszeń (`db/drafts.json`), niewidoczne na stronie do czasu weryfikacji
+- [x] 20 agencji z arkusza porównawczego (stan na 21.10.2026), opublikowane, ze źródłami (`db/offers.json`)
+- [x] 3 szkice do uzupełnienia: InterKadra, Feliza Job, Antczak Care
+- [x] Rozszerzony model ofert: składki/ubezpieczenie, transport, wsparcie, warunki na miejscu, opis stawki, wiele źródeł, „Brak informacji” zamiast zgadywania
+- [x] Nowe zrzuty do Google Play z prawdziwymi danymi
 - [x] Automatyczne tworzenie bazy przy starcie – wdrożenie bez terminala
 - [x] Pełny regulamin i polityka prywatności dla osoby prywatnej (dane z ustawień `SITE_OWNER_*`)
 - [x] Instrukcja wdrożenia bez terminala: `WDROZENIE.md` (GitHub → Vercel → Neon → domena)
@@ -30,8 +33,10 @@ Ostatnia aktualizacja: 2026-10-21 (część 2)
 Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków jak w `WDROZENIE.md`.
 
 ### Dane (najważniejsze przed startem)
-- [ ] Zweryfikować u agencji 8 szkiców i opublikować (krok 6 w `WDROZENIE.md`)
-- [ ] Dodać kolejne agencje (cel: 15–20)
+- [ ] Uzupełnić 3 szkice i opublikować (krok 6 w `WDROZENIE.md`)
+- [ ] Uzupełnić stawki u 10 agencji, które ich nie podają publicznie (telefon/e-mail)
+- [ ] Dodawać kolejne agencje z Facebooka
+- [ ] Co 1–2 miesiące odświeżać stawki i daty weryfikacji
 
 ### Prawo i pieniądze
 - [ ] Ustawić dane właściciela (`SITE_OWNER_NAME`, `SITE_OWNER_ADDRESS`, `SITE_CONTACT_EMAIL`) na Vercelu
@@ -53,6 +58,8 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 - [ ] Test zamknięty (jeśli konto osobiste), potem publikacja
 
 ### Pomysły na później
+- [ ] Formularz „Zgłoś agencję” na stronie (zgłoszenia trafiają jako szkice)
+- [ ] Import agencji z arkusza Excel w panelu admina
 - [ ] Opinie opiekunek o agencjach (z moderacją)
 - [ ] Kalkulator brutto → netto dla umowy niemieckiej
 - [ ] Wersja niemieckojęzyczna strony

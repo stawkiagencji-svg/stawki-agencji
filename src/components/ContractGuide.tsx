@@ -43,10 +43,11 @@ export default function ContractGuide() {
         ))}
       </div>
       <p className="disclaimer">
-        Stawki w porównywarce to kwoty orientacyjne netto za miesiąc pracy (turnus przeliczony na 30 dni), zebrane z
-        ogłoszeń i od agencji, z datą weryfikacji przy każdej ofercie. Ostateczna kwota zależy od liczby podopiecznych,
-        nocnych pobudek, prawa jazdy i znajomości języka. Zawsze poproś agencję o pisemną ofertę z kwotą brutto, formą
-        umowy i informacją o składkach.
+        Dane pochodzą z publicznych stron agencji i ich aktualnych ofert, z datą sprawdzenia i linkami do źródeł przy
+        każdej agencji. Pokazujemy kwoty miesięczne tylko wtedy, gdy agencja je podaje. Kwot za inne okresy (np. za 6
+        tygodni) nie przeliczamy na pozorną średnią miesięczną. „Brak informacji” oznacza wyłącznie, że informacja nie
+        była jawnie podana na sprawdzonych stronach, a nie że agencja danego świadczenia nie oferuje. Zawsze poproś
+        agencję o pisemną ofertę z kwotą brutto, formą umowy i informacją o składkach.
       </p>
     </section>
   );

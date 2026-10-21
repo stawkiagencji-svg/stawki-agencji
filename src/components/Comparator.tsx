@@ -1,12 +1,17 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { CONTRACTS, GERMAN, type ContractKey, type Offer } from "@/lib/types";
+import {
+  CONTRACTS, DETAILS, GERMAN, hasPay, sourceLinks,
+  type ContractKey, type DetailKey, type Offer,
+} from "@/lib/types";
 
 const SCALE: [number, number] = [1000, 3500];
 const TICKS = [1000, 1500, 2000, 2500, 3000, 3500];
 const ALL_CONTRACTS = Object.keys(CONTRACTS) as ContractKey[];
+const DETAIL_KEYS = Object.keys(DETAILS) as DetailKey[];
 const STORAGE_KEY = "pao-filters";
+const NO_INFO = "Brak informacji";
 
 type SortKey = "max" | "min" | "name" | "verified";
 type Filters = {
@@ -16,21 +21,35 @@ type Filters = {
   travel: boolean;
   a1: boolean;
   bonus: boolean;
+  showNoPay: boolean;
   sort: SortKey;
 };
 
 const DEFAULT_FILTERS: Filters = {
-  contracts: ALL_CONTRACTS, min: 1000, german: 3, travel: false, a1: false, bonus: false, sort: "max",
+  contracts: ALL_CONTRACTS, min: 1000, german: 3, travel: false, a1: false, bonus: false, showNoPay: true, sort: "max",
 };
 
 const nf = new Intl.NumberFormat("pl-PL");
 const eur = (n: number) => nf.format(Math.round(n)) + " €";
 const pct = (v: number) => Math.max(0, Math.min(100, ((v - SCALE[0]) / (SCALE[1] - SCALE[0])) * 100));
-const host = (u: string) => u.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+const host = (u: string) => u.replace(/^https?:\/\/(www\.)?/, "").replace(/\/.*$/, "");
+
+/** Stawka słowami: zakres, pojedyncza kwota, „od”/„do” albo null, gdy agencja jej nie podaje. */
+function payLabel(o: Offer): string | null {
+  const { payMin: a, payMax: b } = o;
+  if (a !== null && b !== null) return a === b ? eur(a) : `${eur(a)} – ${eur(b)}`;
+  if (a !== null) return `od ${eur(a)}`;
+  if (b !== null) return `do ${eur(b)}`;
+  return null;
+}
+
+// Do sortowania: oferty bez stawki zawsze na końcu.
+const top = (o: Offer) => o.payMax ?? o.payMin ?? -1;
+const bottom = (o: Offer) => o.payMin ?? o.payMax ?? -1;
 
 const SORTERS: Record<SortKey, (a: Offer, b: Offer) => number> = {
-  max: (a, b) => b.payMax - a.payMax,
-  min: (a, b) => b.payMin - a.payMin,
+  max: (a, b) => top(b) - top(a) || bottom(b) - bottom(a),
+  min: (a, b) => bottom(b) - bottom(a) || top(b) - top(a),
   name: (a, b) => a.name.localeCompare(b.name, "pl"),
   verified: (a, b) => b.verified.localeCompare(a.verified),
 };
@@ -54,21 +73,29 @@ export default function Comparator({ offers }: { offers: Offer[] }) {
     });
   };
 
+  const allContracts = f.contracts.length === ALL_CONTRACTS.length;
+
   const visible = useMemo(() => {
-    const list = offers.filter((o) =>
-      o.contracts.some((c) => f.contracts.includes(c)) &&
-      o.payMax >= f.min && o.german <= f.german &&
-      (!f.travel || o.travel) && (!f.a1 || o.a1) && (!f.bonus || o.bonus.trim()));
+    const list = offers.filter((o) => {
+      // Oferta bez podanej formy umowy przechodzi tylko wtedy, gdy nikt nie zawęża umów.
+      const contractOk = o.contracts.length ? o.contracts.some((c) => f.contracts.includes(c)) : allContracts;
+      // Oferta bez stawki nie spełnia progu kwotowego, więc znika, gdy użytkownik go podniesie.
+      const payOk = hasPay(o) ? top(o) >= f.min : f.showNoPay && f.min <= SCALE[0];
+      return contractOk && payOk &&
+        (o.german === null || o.german <= f.german) &&
+        (!f.travel || o.travel) && (!f.a1 || o.a1) && (!f.bonus || o.bonus.trim());
+    });
     // Oferty promowane zawsze na górze i zawsze oznaczone (wymóg przejrzystości rankingu).
     return list.sort((a, b) => Number(b.promoted) - Number(a.promoted) || SORTERS[f.sort](a, b));
-  }, [offers, f]);
+  }, [offers, f, allContracts]);
 
   const stats = useMemo(() => {
-    if (!offers.length) return null;
-    const maxs = offers.map((o) => o.payMax).sort((a, b) => a - b);
-    const mid = maxs.length / 2;
-    const median = maxs.length % 2 ? maxs[Math.floor(mid)] : (maxs[mid - 1] + maxs[mid]) / 2;
-    return { min: Math.min(...offers.map((o) => o.payMin)), max: maxs[maxs.length - 1], median };
+    const paid = offers.filter(hasPay);
+    if (!paid.length) return null;
+    const tops = paid.map(top).sort((a, b) => a - b);
+    const mid = tops.length / 2;
+    const median = tops.length % 2 ? tops[Math.floor(mid)] : (tops[mid - 1] + tops[mid]) / 2;
+    return { min: Math.min(...paid.map(bottom)), max: tops[tops.length - 1], median, count: paid.length };
   }, [offers]);
 
   const toggleCompare = (id: number) =>
@@ -82,14 +109,17 @@ export default function Comparator({ offers }: { offers: Offer[] }) {
           <div className="eyebrow">Opieka 24h · Polska → Niemcy</div>
           <h1>Porównywarka agencji opieki</h1>
           <p className="lede">
-            Zobacz, które polskie agencje delegujące opiekunki i opiekunów do Niemiec oferują jaką umowę i ile płacą
-            miesięcznie. Filtruj po formie zatrudnienia, wymaganym niemieckim i stawce, a potem porównaj do trzech ofert
+            Zobacz, które agencje delegujące opiekunki i opiekunów do Niemiec oferują jaką umowę, ile płacą
+            miesięcznie, czy opłacają dojazd i składki oraz jakie wsparcie dają na miejscu. Porównaj do trzech ofert
             obok siebie.
           </p>
         </div>
         <div className="stats" aria-live="polite">
           <div className="stat"><b>{offers.length}</b><span>agencji w bazie</span></div>
-          <div className="stat pay"><b>{stats ? `${eur(stats.min)} – ${eur(stats.max)}` : "–"}</b><span>widełki netto / mies.</span></div>
+          <div className="stat pay">
+            <b>{stats ? `${eur(stats.min)} – ${eur(stats.max)}` : "–"}</b>
+            <span>{stats ? `widełki / mies. (${stats.count} agencji podaje stawkę)` : "widełki / mies."}</span>
+          </div>
           <div className="stat"><b>{stats ? eur(stats.median) : "–"}</b><span>mediana górnej stawki</span></div>
         </div>
       </header>
@@ -107,12 +137,18 @@ export default function Comparator({ offers }: { offers: Offer[] }) {
                 {CONTRACTS[k]}
               </label>
             ))}
+            {!allContracts && <p className="hint">Ukryte są też agencje, które nie podają formy umowy.</p>}
           </fieldset>
           <fieldset>
             <legend>Chcę zarabiać co najmniej</legend>
             <input type="range" id="f-min" min={1000} max={3000} step={50} value={f.min}
               onChange={(e) => update({ min: Number(e.target.value) })} aria-describedby="f-minval" />
-            <span className="rangeval" id="f-minval">{eur(f.min)} netto</span>
+            <span className="rangeval" id="f-minval">{eur(f.min)} / mies.</span>
+            <label className="chk">
+              <input type="checkbox" id="f-nopay" checked={f.showNoPay} disabled={f.min > SCALE[0]}
+                onChange={(e) => update({ showNoPay: e.target.checked })} />
+              Pokaż agencje bez podanej stawki
+            </label>
           </fieldset>
           <fieldset>
             <legend>Mój niemiecki</legend>
@@ -122,16 +158,16 @@ export default function Comparator({ offers }: { offers: Offer[] }) {
           </fieldset>
           <fieldset>
             <legend>Wymagam</legend>
-            <label className="chk"><input type="checkbox" id="f-travel" checked={f.travel} onChange={(e) => update({ travel: e.target.checked })} /> Zwrot kosztów dojazdu</label>
-            <label className="chk"><input type="checkbox" id="f-a1" checked={f.a1} onChange={(e) => update({ a1: e.target.checked })} /> Ubezpieczenie / A1 w cenie</label>
-            <label className="chk"><input type="checkbox" id="f-bonus" checked={f.bonus} onChange={(e) => update({ bonus: e.target.checked })} /> Premie (np. świąteczna)</label>
+            <label className="chk"><input type="checkbox" id="f-travel" checked={f.travel} onChange={(e) => update({ travel: e.target.checked })} /> Agencja organizuje lub opłaca dojazd</label>
+            <label className="chk"><input type="checkbox" id="f-a1" checked={f.a1} onChange={(e) => update({ a1: e.target.checked })} /> Opłacane składki / ubezpieczenie</label>
+            <label className="chk"><input type="checkbox" id="f-bonus" checked={f.bonus} onChange={(e) => update({ bonus: e.target.checked })} /> Premie lub dodatki</label>
           </fieldset>
           <button className="ghost" type="button" onClick={() => update(DEFAULT_FILTERS)}>Wyczyść filtry</button>
         </aside>
 
         <main>
           <div className="listhead">
-            <span className="count">{visible.length} z {offers.length} ofert</span>
+            <span className="count">{visible.length} z {offers.length} agencji</span>
             <label htmlFor="sort">Sortuj
               <select id="sort" value={f.sort} onChange={(e) => update({ sort: e.target.value as SortKey })}>
                 <option value="max">Najwyższa stawka</option>
@@ -148,7 +184,7 @@ export default function Comparator({ offers }: { offers: Offer[] }) {
             {!offers.length ? (
               <div className="empty"><h3>Baza ofert jest pusta</h3><p>Oferty agencji pojawią się tu wkrótce.</p></div>
             ) : !visible.length ? (
-              <div className="empty"><h3>Żadna oferta nie spełnia filtrów</h3><p>Obniż minimalną stawkę albo zaznacz więcej form umowy.</p></div>
+              <div className="empty"><h3>Żadna agencja nie spełnia filtrów</h3><p>Obniż minimalną stawkę albo zaznacz więcej form umowy.</p></div>
             ) : (
               visible.map((o) => (
                 <OfferCard key={o.id} o={o} minLine={f.min} selected={selected.includes(o.id)}
@@ -165,9 +201,24 @@ export default function Comparator({ offers }: { offers: Offer[] }) {
   );
 }
 
+function Sources({ o }: { o: Offer }) {
+  const links = sourceLinks(o.source);
+  if (!links.length) return <>{o.verified || "—"}</>;
+  return (
+    <>
+      {o.verified && <span className="num">{o.verified} · </span>}
+      {links.map((u, i) => (
+        <span key={u}>{i > 0 && ", "}<a href={u} target="_blank" rel="noopener nofollow">źródło {links.length > 1 ? i + 1 : ""}</a></span>
+      ))}
+    </>
+  );
+}
+
 function OfferCard({ o, minLine, selected, compareDisabled, onCompare }: {
   o: Offer; minLine: number; selected: boolean; compareDisabled: boolean; onCompare: () => void;
 }) {
+  const pay = payLabel(o);
+  const from = o.payMin ?? o.payMax, to = o.payMax ?? o.payMin;
   return (
     <article className={`offer${selected ? " sel" : ""}`}>
       <div className="orow">
@@ -178,23 +229,42 @@ function OfferCard({ o, minLine, selected, compareDisabled, onCompare }: {
             {o.example && <span className="chip ex">Przykład</span>}
             {o.website && <a href={o.website} target="_blank" rel="noopener nofollow">{host(o.website)}</a>}
           </div>
-          <div className="chips">{o.contracts.map((c) => <span className="chip" key={c}>{CONTRACTS[c]}</span>)}</div>
+          {(o.description || o.city) && (
+            <p className="note">{o.description}{o.city && !o.description.includes(o.city) ? ` Siedziba: ${o.city}.` : ""}</p>
+          )}
+          <div className="chips">
+            {o.contracts.length
+              ? o.contracts.map((c) => <span className="chip" key={c}>{CONTRACTS[c]}</span>)
+              : <span className="chip no">Umowa: brak informacji</span>}
+            {o.travel && <span className="chip ok">Dojazd zapewniony</span>}
+            {o.a1 && <span className="chip ok">Składki opłacane</span>}
+            {o.bonus && <span className="chip ok">Premie / dodatki</span>}
+          </div>
         </div>
-        <div className="paybig num">{eur(o.payMin)} – {eur(o.payMax)}<small>netto / miesiąc</small></div>
+        <div className={`paybig num${pay ? "" : " nopay"}`}>
+          {pay ?? "Brak stawki"}
+          <small>{pay ? "na miesiąc" : o.payNote ? "miesięcznej – zob. niżej" : "agencja nie podaje"}</small>
+        </div>
       </div>
-      <div className="bar" role="img" aria-label={`Widełki ${eur(o.payMin)} do ${eur(o.payMax)}`}>
-        <i style={{ left: `${pct(o.payMin)}%`, width: `${Math.max(1.5, pct(o.payMax) - pct(o.payMin))}%` }} />
+      <div className="bar" role="img" aria-label={pay ? `Stawka ${pay}` : "Agencja nie podaje stawki"}>
+        {from !== null && to !== null && (
+          <i style={{ left: `${pct(from)}%`, width: `${Math.max(1.5, pct(to) - pct(from))}%` }} />
+        )}
         <span className="tick" style={{ left: `${pct(minLine)}%` }} />
       </div>
-      <dl className="meta">
-        <div><dt>Niemiecki od</dt><dd>{GERMAN[o.german]}</dd></div>
-        <div><dt>Turnus</dt><dd>{o.rotation || "—"}</dd></div>
-        <div><dt>Dojazd</dt><dd>{o.travel ? <span className="chip ok">Zwracany</span> : <span className="chip no">Na własny koszt</span>}</dd></div>
-        <div><dt>Ubezpieczenie / A1</dt><dd>{o.a1 ? <span className="chip ok">Tak</span> : <span className="chip no">Brak info</span>}</dd></div>
-        <div><dt>Premie</dt><dd>{o.bonus || "—"}</dd></div>
-        <div><dt>Sprawdzono</dt><dd className="num">{o.verified || "—"}{o.source && <> · <a href={o.source} target="_blank" rel="noopener nofollow">źródło</a></>}</dd></div>
-      </dl>
-      {o.notes && <p className="note">{o.notes}</p>}
+      {o.payNote && <p className="note paynote">Według źródła: {o.payNote}</p>}
+      <details className="more">
+        <summary>Warunki, wsparcie i źródła</summary>
+        <dl className="meta wide">
+          {DETAIL_KEYS.map((k) => (
+            <div key={k}><dt>{DETAILS[k]}</dt><dd className={o[k] ? undefined : "muted"}>{o[k] || NO_INFO}</dd></div>
+          ))}
+          {o.german !== null && <div><dt>Niemiecki od</dt><dd>{GERMAN[o.german]}</dd></div>}
+          {o.rotation && <div><dt>Turnus</dt><dd>{o.rotation}</dd></div>}
+          <div><dt>Sprawdzono</dt><dd><Sources o={o} /></dd></div>
+        </dl>
+        {o.notes && <p className="note">{o.notes}</p>}
+      </details>
       <div className="oactions">
         <button type="button" onClick={onCompare} disabled={compareDisabled}>
           {selected ? "Usuń z porównania" : "Porównaj"}
@@ -205,19 +275,16 @@ function OfferCard({ o, minLine, selected, compareDisabled, onCompare }: {
 }
 
 function CompareTable({ offers, onClear }: { offers: Offer[]; onClear: () => void }) {
-  const bestMax = Math.max(...offers.map((o) => o.payMax));
-  const bestMin = Math.max(...offers.map((o) => o.payMin));
-  const lowGerman = Math.min(...offers.map((o) => o.german));
+  const paid = offers.filter(hasPay);
+  const bestTop = paid.length ? Math.max(...paid.map(top)) : null;
+  const text = (v: string) => v || <span className="muted">{NO_INFO}</span>;
   const rows: [string, (o: Offer) => React.ReactNode, ((o: Offer) => boolean)?][] = [
-    ["Stawka od", (o) => <span className="num">{eur(o.payMin)}</span>, (o) => o.payMin === bestMin],
-    ["Stawka do", (o) => <span className="num">{eur(o.payMax)}</span>, (o) => o.payMax === bestMax],
-    ["Formy umów", (o) => o.contracts.map((c) => CONTRACTS[c]).join(", ")],
-    ["Niemiecki od", (o) => GERMAN[o.german], (o) => o.german === lowGerman],
-    ["Turnus", (o) => o.rotation || "—"],
-    ["Dojazd", (o) => (o.travel ? "Zwracany" : "Na własny koszt"), (o) => o.travel],
-    ["Ubezpieczenie / A1", (o) => (o.a1 ? "Tak" : "Brak info"), (o) => o.a1],
-    ["Premie", (o) => o.bonus || "—"],
-    ["Sprawdzono", (o) => o.verified || "—"],
+    ["Stawka / mies.", (o) => <span className="num">{payLabel(o) ?? <span className="muted">Nie podaje</span>}</span>, (o) => hasPay(o) && top(o) === bestTop],
+    ["Według źródła", (o) => text(o.payNote)],
+    ["Umowa", (o) => text(o.contractNote || o.contracts.map((c) => CONTRACTS[c]).join(", "))],
+    ...DETAIL_KEYS.filter((k) => k !== "contractNote").map((k): [string, (o: Offer) => React.ReactNode] => [DETAILS[k], (o) => text(o[k])]),
+    ["Niemiecki od", (o) => (o.german !== null ? GERMAN[o.german] : text(""))],
+    ["Sprawdzono", (o) => <Sources o={o} />],
   ];
   return (
     <section id="compare">

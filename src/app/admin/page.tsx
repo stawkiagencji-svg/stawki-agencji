@@ -56,7 +56,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
             {offers.map((o) => (
               <tr key={o.id}>
                 <td>{o.name}</td>
-                <td className="num">{eur(o.payMin)} – {eur(o.payMax)}</td>
+                <td className="num">{o.payMin === null && o.payMax === null ? "—" : `${o.payMin !== null ? eur(o.payMin) : "…"} – ${o.payMax !== null ? eur(o.payMax) : "…"}`}</td>
                 <td className="num">{o.verified || "—"}</td>
                 <td>
                   {o.published ? <span className="chip ok">Opublikowana</span> : <span className="chip no">Szkic – do weryfikacji</span>}{" "}

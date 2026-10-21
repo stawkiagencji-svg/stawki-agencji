@@ -76,7 +76,8 @@ button:disabled { opacity: .45; cursor: not-allowed; }
 .offers { display: grid; gap: 12px; }
 .offer { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: grid; gap: 12px; }
 .offer.sel { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
-.orow { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; align-items: flex-start; }
+.orow { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px 20px; align-items: start; }
+@media (max-width: 600px) { .orow { grid-template-columns: 1fr; } }
 .ohead { display: grid; gap: 6px; min-width: 0; }
 .oname { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
 .oname a { color: var(--muted); font-size: 14px; }
@@ -99,6 +100,14 @@ button:disabled { opacity: .45; cursor: not-allowed; }
 .meta dd { margin: 0; }
 .oactions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
 .note { font-size: 14px; color: var(--muted); margin: 0; }
+.muted { color: var(--muted); }
+.hint { font-size: 13px; color: var(--muted); margin: 2px 0 0; }
+.paybig.nopay { color: var(--muted); font-size: 18px; }
+.paynote { font-size: 13px; }
+details.more { border-top: 1px solid var(--line); padding-top: 10px; }
+details.more summary { cursor: pointer; font-weight: 600; font-size: 14px; color: var(--accent); width: fit-content; }
+details.more[open] summary { margin-bottom: 12px; }
+.meta.wide { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px 24px; }
 .empty { background: var(--surface); border: 1px dashed var(--line); border-radius: 10px; padding: 28px; }
 .empty p { color: var(--muted); margin: 8px 0 0; }
 
@@ -109,15 +118,18 @@ th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--li
 th { font-size: 13px; color: var(--muted); font-weight: 600; width: 170px; }
 th.colhead { color: var(--ink); font-size: 16px; width: auto; }
 td.best { background: var(--good-soft); color: var(--good); font-weight: 700; }
+#compare td { min-width: 180px; }
 tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 @media (max-width: 600px) {
   /* Na telefonie: co druga etykieta skali i ciaśniejsza tabela porównania */
   .ticks span.minor { display: none; }
   .ticks span:last-child { transform: translateX(-50%); }
   table.cols-2 { min-width: 0; }
+  #compare td { min-width: 0; }
   #compare th, #compare td { padding: 8px 10px; font-size: 14px; }
   #compare th { width: 96px; }
   #compare th.colhead { font-size: 15px; }
+  .paybig small { text-align: left; }
 }
 
 .guide { margin-top: 44px; }

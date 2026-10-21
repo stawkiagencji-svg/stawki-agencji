@@ -24,8 +24,8 @@ npm run dev                   # http://localhost:3000
 Panel: http://localhost:3000/admin (hasło z `ADMIN_PASSWORD`).
 
 Przy pierwszym starcie aplikacja sama tworzy tabele (`src/instrumentation.ts`) i przy pustej bazie
-wczytuje szkice ofert z `db/drafts.json`. Szkice nie są widoczne na stronie, dopóki nie zaznaczysz
-„Opublikowana” w panelu.
+wczytuje oferty startowe z `db/offers.json` (20 agencji z arkusza porównawczego i 3 szkice). Szkice nie są
+widoczne na stronie, dopóki nie zaznaczysz „Opublikowana” w panelu.
 
 ## Wdrożenie
 
@@ -63,7 +63,7 @@ Instrukcja krok po kroku: [GOOGLE-PLAY.md](GOOGLE-PLAY.md). Grafiki i teksty do 
 
 ## Przed startem sprzedaży
 
-- Zweryfikuj szkice ofert u agencji i opublikuj je (krok 6 w `WDROZENIE.md`).
+- Uzupełnij szkice i braki w danych (krok 6 w `WDROZENIE.md`).
 - Ustaw dane właściciela (`SITE_OWNER_*`). Regulamin i politykę prywatności warto dać do przejrzenia prawnikowi.
 - Oferty płatnie promowane muszą być wyraźnie oznaczone. Aplikacja robi to automatycznie (etykieta „Oferta promowana”),
   a strona „Jak tworzymy ranking” wyjaśnia zasady kolejności.
@@ -71,7 +71,7 @@ Instrukcja krok po kroku: [GOOGLE-PLAY.md](GOOGLE-PLAY.md). Grafiki i teksty do 
 ## Struktura
 
 ```
-db/drafts.json             szkice ofert agencji (do weryfikacji)
+db/offers.json             oferty startowe (agencje z arkusza + szkice)
 src/instrumentation.ts     automatyczne przygotowanie bazy przy starcie
 src/lib/                   baza, schemat, logika ofert, logowanie admina, dane właściciela
 src/components/            porównywarka i poradnik

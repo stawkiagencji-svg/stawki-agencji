@@ -6,9 +6,9 @@ CREATE TABLE IF NOT EXISTS offers (
   website     TEXT NOT NULL DEFAULT '',
   city        TEXT NOT NULL DEFAULT '',
   contracts   TEXT[] NOT NULL DEFAULT '{}',
-  pay_min     INTEGER NOT NULL CHECK (pay_min >= 0),
-  pay_max     INTEGER NOT NULL CHECK (pay_max >= pay_min),
-  german      SMALLINT NOT NULL DEFAULT 0 CHECK (german BETWEEN 0 AND 3),
+  pay_min     INTEGER CHECK (pay_min >= 0),
+  pay_max     INTEGER CHECK (pay_max >= pay_min),
+  german      SMALLINT CHECK (german BETWEEN 0 AND 3),
   rotation    TEXT NOT NULL DEFAULT '',
   bonus       TEXT NOT NULL DEFAULT '',
   verified    TEXT NOT NULL DEFAULT '',
@@ -22,6 +22,17 @@ CREATE TABLE IF NOT EXISTS offers (
   updated_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
--- Szkice (published = false) widzi tylko administrator.
+-- Uzupełnienia dla baz utworzonych przez starsze wersje.
 ALTER TABLE offers ADD COLUMN IF NOT EXISTS published BOOLEAN NOT NULL DEFAULT TRUE;
+ALTER TABLE offers ADD COLUMN IF NOT EXISTS description TEXT NOT NULL DEFAULT '';
+ALTER TABLE offers ADD COLUMN IF NOT EXISTS pay_note TEXT NOT NULL DEFAULT '';
+ALTER TABLE offers ADD COLUMN IF NOT EXISTS contract_note TEXT NOT NULL DEFAULT '';
+ALTER TABLE offers ADD COLUMN IF NOT EXISTS insurance TEXT NOT NULL DEFAULT '';
+ALTER TABLE offers ADD COLUMN IF NOT EXISTS travel_note TEXT NOT NULL DEFAULT '';
+ALTER TABLE offers ADD COLUMN IF NOT EXISTS support TEXT NOT NULL DEFAULT '';
+ALTER TABLE offers ADD COLUMN IF NOT EXISTS housing TEXT NOT NULL DEFAULT '';
+ALTER TABLE offers ALTER COLUMN pay_min DROP NOT NULL;
+ALTER TABLE offers ALTER COLUMN pay_max DROP NOT NULL;
+ALTER TABLE offers ALTER COLUMN german DROP NOT NULL;
+ALTER TABLE offers ALTER COLUMN german DROP DEFAULT;
 `;

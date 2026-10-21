@@ -11,13 +11,16 @@ Pracujesz albo chcesz pracować jako opiekunka lub opiekun osoby starszej w Niem
 
 Porównywarka zbiera w jednym miejscu oferty agencji delegujących opiekunów do Niemiec:
 
-• Widełki wypłaty netto na miesiąc, pokazane na jednej skali, żeby od razu było widać różnice
-• Forma umowy: umowa zlecenie, umowa o pracę, działalność gospodarcza (B2B) albo umowa niemiecka
-• Wymagany poziom niemieckiego
-• Długość turnusu
-• Zwrot kosztów dojazdu, ubezpieczenie i zaświadczenie A1
-• Premie i dodatki
-• Data sprawdzenia oferty i link do źródła
+• Wynagrodzenie miesięczne, pokazane na jednej skali, żeby od razu było widać różnice
+• Forma umowy: umowa zlecenie, umowa o pracę, działalność gospodarcza (Gewerbe) albo umowa niemiecka
+• Składki ZUS, ubezpieczenie i zaświadczenie A1
+• Transport: czy agencja organizuje lub opłaca dojazd
+• Premie świąteczne i inne dodatki
+• Wsparcie koordynatora podczas zlecenia
+• Warunki na miejscu: pokój, internet, czas wolny
+• Data sprawdzenia i linki do źródeł przy każdej agencji
+
+Gdy agencja czegoś nie podaje publicznie, piszemy wprost „Brak informacji”, zamiast zgadywać.
 
 Jak to działa:
 1. Zaznacz formy umowy, które Cię interesują.
@@ -41,5 +44,5 @@ opiekunka Niemcy, opieka nad osobami starszymi, praca w Niemczech, agencja opiek
 - `feature-graphic-1024x500.png` – grafika promocyjna
 - `screenshots/` – 4 zrzuty z telefonu (1080 × 1920)
 
-Uwaga: zrzuty pokazują przykładowe oferty. Po wpisaniu prawdziwych agencji zrób nowe zrzuty
+Zrzuty pokazują prawdziwe agencje (stan na 21.10.2026). Gdy dane mocno się zmienią, zrób nowe
 (instrukcja w `GOOGLE-PLAY.md`, krok 7).

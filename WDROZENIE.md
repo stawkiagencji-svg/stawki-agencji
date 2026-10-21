@@ -58,7 +58,8 @@ GitHub przechowuje kod. Vercel pobiera go stamtąd i publikuje stronę.
    Vercel sam doda zmienną `DATABASE_URL`.
 3. Otwórz zakładkę **Deployments**, przy ostatnim wdrożeniu kliknij **⋯ → Redeploy**.
 
-Przy pierwszym uruchomieniu aplikacja sama utworzy tabele i wczyta 8 szkiców ofert do sprawdzenia.
+Przy pierwszym uruchomieniu aplikacja sama utworzy tabele i wczyta 20 agencji z Twojego arkusza (od razu widocznych)
+oraz 3 szkice do sprawdzenia.
 
 ## Krok 5. Podłącz domenę
 
@@ -67,12 +68,13 @@ Przy pierwszym uruchomieniu aplikacja sama utworzy tabele i wczyta 8 szkiców of
 3. Zaloguj się u rejestratora domeny, otwórz **strefę DNS** i dodaj te rekordy.
 4. Po kilkunastu minutach (czasem do kilku godzin) strona zadziała pod Twoim adresem, od razu z HTTPS.
 
-## Krok 6. Sprawdź oferty i opublikuj je
+## Krok 6. Uzupełnij szkice i braki
 
 1. Wejdź na `https://twoja-domena.pl/admin` i zaloguj się hasłem z kroku 3.
-2. Zobaczysz 8 szkiców (Promedica24, Aterima Med, Veritas, Caring Personnel, InterKadra, Feliza Job, Carework, Antczak Care).
-   Na stronie nie są jeszcze widoczne.
-3. Dla każdej agencji: zadzwoń lub napisz, albo sprawdź aktualne ogłoszenie, i potwierdź:
+2. 20 agencji z Twojego arkusza jest już opublikowanych. Zobaczysz też 3 szkice (InterKadra, Feliza Job,
+   Antczak Care), których nie ma jeszcze na stronie.
+3. Dla szkiców i dla agencji z „Brak informacji” w ważnych polach (np. stawka): zadzwoń lub napisz,
+   albo sprawdź aktualne ogłoszenie, i potwierdź:
    - wynagrodzenie **netto za miesiąc** (od–do),
    - formę umowy,
    - wymagany poziom niemieckiego,
@@ -80,9 +82,11 @@ Przy pierwszym uruchomieniu aplikacja sama utworzy tabele i wczyta 8 szkiców of
    - czy zwracają koszty dojazdu,
    - czy opłacają ubezpieczenie i wystawiają A1,
    - premie.
-4. Kliknij **Edytuj**, popraw dane, wpisz **datę weryfikacji** (np. `2026-11`), usuń z uwag tekst „Do potwierdzenia”,
-   zaznacz **Opublikowana** i zapisz.
-5. Dodaj kolejne agencje formularzem na górze panelu. Im więcej, tym lepiej. Celuj w co najmniej 15–20.
+4. Kliknij **Edytuj**, popraw dane, wpisz **datę weryfikacji** (np. `2026-11-05`), usuń z uwag tekst
+   „Do potwierdzenia”, zaznacz **Opublikowana** i zapisz. Pola, których agencja nie podaje, zostaw puste.
+   Na stronie pokażą się jako „Brak informacji”.
+5. Kolejne agencje dodawaj formularzem na górze panelu.
+6. Raz na 1–2 miesiące sprawdzaj stawki i zmieniaj datę weryfikacji. Aktualne dane to główna wartość serwisu.
 
 Wzór wiadomości do agencji:
 
