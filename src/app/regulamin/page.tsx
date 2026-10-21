@@ -11,7 +11,7 @@ export default function TermsPage() {
 
       <h2>§ 1. Usługodawca</h2>
       <p>
-        Serwis „Porównywarka agencji opieki” dostępny pod adresem {owner.siteUrl} oraz w aplikacji na Androida prowadzi{" "}
+        Serwis „Stawki Agencji” dostępny pod adresem {owner.siteUrl} oraz w aplikacji na Androida prowadzi{" "}
         {owner.name}, {owner.address}, e-mail: {owner.email} (dalej: Usługodawca).
       </p>
 

@@ -109,11 +109,10 @@ export default function Comparator({ offers }: { offers: Offer[] }) {
       <header className="top">
         <div>
           <div className="eyebrow">Opieka 24h · Polska → Niemcy</div>
-          <h1>Porównywarka agencji opieki</h1>
+          <h1>Stawki Agencji</h1>
           <p className="lede">
-            Zobacz, które agencje delegujące opiekunki i opiekunów do Niemiec oferują jaką umowę, ile płacą
-            miesięcznie, czy opłacają dojazd i składki oraz jakie wsparcie dają na miejscu. Porównaj do trzech ofert
-            obok siebie.
+            Porównaj stawki agencji opiekuńczych w Niemczech: ile płacą na rękę, jaką umowę oferują, czy opłacają
+            dojazd i składki oraz jakie wsparcie dają na miejscu. Zestaw do trzech agencji obok siebie.
           </p>
           {affiliated.length > 0 && (
             <p className="disclosure">

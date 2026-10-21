@@ -1,10 +1,10 @@
 # Wpis w Google Play – gotowe teksty
 
 ## Nazwa aplikacji (max 30 znaków)
-Porównywarka Agencji Opieki
+Stawki Agencji – opieka Niemcy
 
 ## Krótki opis (max 80 znaków)
-Ile płacą agencje opieki w Niemczech? Porównaj umowy, stawki i turnusy.
+Porównaj stawki agencji opiekuńczych w Niemczech: na rękę, ZUS, umowy, dojazd.
 
 ## Pełny opis (max 4000 znaków)
 Pracujesz albo chcesz pracować jako opiekunka lub opiekun osoby starszej w Niemczech? Sprawdź, która polska agencja da Ci najlepsze warunki, zanim podpiszesz umowę.

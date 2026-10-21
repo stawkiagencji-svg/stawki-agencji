@@ -3,10 +3,10 @@ import type { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     id: "/",
-    name: "Porównywarka agencji opieki",
-    short_name: "Agencje opieki",
+    name: "Stawki Agencji",
+    short_name: "Stawki Agencji",
     description:
-      "Porównaj polskie agencje delegujące opiekunki osób starszych do Niemiec: umowy, wypłaty netto, turnusy i wymagania.",
+      "Porównaj stawki agencji opiekuńczych w Niemczech: wypłaty na rękę, umowy, ZUS, transport i wsparcie.",
     lang: "pl",
     start_url: "/",
     scope: "/",

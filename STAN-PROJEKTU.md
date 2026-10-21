@@ -1,4 +1,4 @@
-# Stan projektu – Porównywarka agencji opieki
+# Stan projektu – Stawki Agencji (stawkiagencji.pl)
 
 Ostatnia aktualizacja: 2026-10-21 (część 3)
 

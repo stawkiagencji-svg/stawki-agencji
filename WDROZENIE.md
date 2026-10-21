@@ -3,18 +3,14 @@
 Wszystko robisz w przeglądarce. Potrzebujesz około godziny i adresu e-mail.
 Koszt na start: tylko domena (ok. 10–60 zł za pierwszy rok). Vercel i Neon mają darmowe plany.
 
-## Krok 1. Wybierz i kup domenę
+## Krok 1. Kup domenę stawkiagencji.pl
 
-Propozycje nazw (sprawdź, czy są wolne, w wyszukiwarce domen u rejestratora):
+Wybrana nazwa: **Stawki Agencji**, domena **stawkiagencji.pl**.
 
-- `porownajopieke.pl`
-- `stawkiopiekunek.pl`
-- `ileplaciagencja.pl`
-- `opiekunki-porownanie.pl`
-- `agencjeopiekunek.pl`
-
-Gdzie kupić: dowolny polski rejestrator, np. OVHcloud, nazwa.pl, home.pl, cyber_Folks.
-Porównaj nie tylko cenę pierwszego roku, ale też **cenę odnowienia** – bywa kilka razy wyższa.
+1. Wejdź na stronę polskiego rejestratora (np. nazwa.pl, home.pl, OVHcloud, cyber_Folks).
+2. Wpisz `stawkiagencji.pl` w wyszukiwarkę domen.
+3. Kup ją **na swoje dane i prywatną kartą** (nie firmowe). Porównaj cenę pierwszego roku z **ceną odnowienia**.
+4. Jeśli jest zajęta, sprawdź `stawki-agencji.pl` albo napisz do Claude, żeby zaproponował inną.
 
 ## Krok 2. Załóż konto GitHub i wgraj kod
 
@@ -43,7 +39,7 @@ GitHub przechowuje kod. Vercel pobiera go stamtąd i publikuje stronę.
    |---|---|
    | `ADMIN_PASSWORD` | Twoje hasło do panelu, min. 12 znaków. Zapisz je w bezpiecznym miejscu |
    | `SESSION_SECRET` | Dowolny ciąg min. 32 losowych znaków (np. wygeneruj długie hasło w menedżerze haseł) |
-   | `NEXT_PUBLIC_SITE_URL` | `https://twoja-domena.pl` |
+   | `NEXT_PUBLIC_SITE_URL` | `https://stawkiagencji.pl` |
    | `DATABASE_SSL` | `true` |
    | `SITE_OWNER_NAME` | Twoje imię i nazwisko (do regulaminu) |
    | `SITE_OWNER_ADDRESS` | Adres do korespondencji |
@@ -70,7 +66,7 @@ oraz 2 szkice do sprawdzenia.
 
 ## Krok 6. Uzupełnij szkice i braki
 
-1. Wejdź na `https://twoja-domena.pl/admin` i zaloguj się hasłem z kroku 3.
+1. Wejdź na `https://stawkiagencji.pl/admin` i zaloguj się hasłem z kroku 3.
 2. 21 agencji jest już opublikowanych. Zobaczysz też 2 szkice (InterKadra, Feliza Job),
    których nie ma jeszcze na stronie.
 3. Dla szkiców i dla agencji z „Brak informacji” w ważnych polach (np. stawka): zadzwoń lub napisz,
@@ -90,7 +86,7 @@ oraz 2 szkice do sprawdzenia.
 
 ### Zgłoszenia od agencji i opiekunek
 
-Na stronie jest formularz `https://twoja-domena.pl/zglos-agencje`. Wrzuć ten link w grupach dla opiekunek
+Na stronie jest formularz `https://stawkiagencji.pl/zglos-agencje`. Wrzuć ten link w grupach dla opiekunek
 na Facebooku i wyślij agencjom. Każde zgłoszenie trafia do panelu `/admin` jako szkic (na górze listy,
 z informacją, kto zgłosił, i e-mailem, jeśli ktoś go zostawił). Sprawdź je, uzupełnij i opublikuj, albo usuń.
 

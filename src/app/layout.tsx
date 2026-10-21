@@ -10,7 +10,7 @@ const mono = IBM_Plex_Mono({ subsets: ["latin", "latin-ext"], weight: ["500"], v
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  title: { default: "Porównywarka agencji opieki – praca opiekunki w Niemczech", template: "%s · Porównywarka agencji opieki" },
+  title: { default: "Stawki Agencji – porównaj stawki agencji opiekuńczych w Niemczech", template: "%s · Stawki Agencji" },
   description:
     "Porównaj polskie agencje delegujące opiekunki osób starszych do Niemiec: formy umów, wypłaty netto, turnusy, zwrot za dojazd i wymagany niemiecki.",
   openGraph: { type: "website", locale: "pl_PL" },

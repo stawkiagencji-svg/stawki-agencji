@@ -14,7 +14,7 @@ Strona jest już do tego przygotowana:
 
 - Stronę wdrożoną pod własną domeną z HTTPS (instrukcja w `README.md`).
 - Konto dewelopera Google Play: jednorazowa opłata 25 USD, [play.google.com/console](https://play.google.com/console).
-- Uzupełnioną politykę prywatności pod adresem `https://twoja-domena.pl/polityka-prywatnosci`
+- Uzupełnioną politykę prywatności pod adresem `https://stawkiagencji.pl/polityka-prywatnosci`
   (wypełnia się sama po ustawieniu zmiennych `SITE_OWNER_*` z `WDROZENIE.md`).
 
 > **Konto osobiste czy firmowe?** Nowe konta **osobiste** muszą przed publikacją przeprowadzić
@@ -24,8 +24,8 @@ Strona jest już do tego przygotowana:
 ## Krok 1. Wdróż stronę
 
 Opublikuj stronę pod docelową domeną (instrukcja: `WDROZENIE.md`). Sprawdź, czy działają:
-- `https://twoja-domena.pl/manifest.webmanifest`
-- `https://twoja-domena.pl/sw.js`
+- `https://stawkiagencji.pl/manifest.webmanifest`
+- `https://stawkiagencji.pl/sw.js`
 
 Domeny nie da się później zmienić bez wydania nowej aplikacji. Wybierz ją na stałe.
 
@@ -34,9 +34,9 @@ Domeny nie da się później zmienić bez wydania nowej aplikacji. Wybierz ją n
 1. Wejdź na [pwabuilder.com](https://www.pwabuilder.com) i wpisz adres swojej strony.
 2. Kliknij **Package for stores**, potem **Android** → **Generate Package**.
 3. Ustaw w opcjach:
-   - **Package ID**: np. `pl.twojadomena.opieka` (na stałe, nie da się zmienić),
-   - **App name**: `Porównywarka Agencji Opieki`,
-   - **Launcher name**: `Agencje opieki`,
+   - **Package ID**: np. `pl.stawkiagencji.app` (na stałe, nie da się zmienić),
+   - **App name**: `Stawki Agencji`,
+   - **Launcher name**: `Stawki Agencji`,
    - **Signing key**: *Create new* (PWABuilder wygeneruje klucz).
 4. Pobierz paczkę ZIP. W środku jest:
    - plik `.aab`, który wysyłasz do Google Play,
@@ -61,10 +61,10 @@ Bez tego kroku aplikacja pokazuje u góry pasek adresu jak zwykła przeglądarka
 3. Skopiuj też odcisk SHA-256 z pliku `assetlinks.json` od PWABuilder (to Twój klucz przesyłania).
 4. Ustaw na serwerze zmienne środowiskowe i uruchom ponownie aplikację:
    ```
-   ANDROID_PACKAGE_NAME=pl.twojadomena.opieka
+   ANDROID_PACKAGE_NAME=pl.stawkiagencji.app
    ANDROID_SHA256_FINGERPRINTS=AB:CD:...(klucz Google),12:34:...(klucz PWABuilder)
    ```
-5. Sprawdź `https://twoja-domena.pl/.well-known/assetlinks.json`: powinien pokazać nazwę pakietu i oba odciski.
+5. Sprawdź `https://stawkiagencji.pl/.well-known/assetlinks.json`: powinien pokazać nazwę pakietu i oba odciski.
 
 ## Krok 5. Uzupełnij wpis w sklepie
 
@@ -77,7 +77,7 @@ Bez tego kroku aplikacja pokazuje u góry pasek adresu jak zwykła przeglądarka
 
 | Formularz | Odpowiedź |
 |---|---|
-| Polityka prywatności | `https://twoja-domena.pl/polityka-prywatnosci` |
+| Polityka prywatności | `https://stawkiagencji.pl/polityka-prywatnosci` |
 | Dostęp do aplikacji | Wszystkie funkcje dostępne bez specjalnego dostępu (panel `/admin` jest tylko dla Ciebie i nie jest częścią aplikacji dla użytkowników) |
 | Reklamy | Nie zawiera reklam. Oferty promowane to treść oznaczona etykietą, nie sieć reklamowa. Jeśli dodasz np. AdSense, zmień na „Tak” |
 | Klasyfikacja treści | Wypełnij ankietę: brak przemocy, hazardu i treści dla dorosłych. Kategoria: narzędzia / informacje |

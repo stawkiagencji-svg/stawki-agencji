@@ -1,4 +1,6 @@
-# Porównywarka agencji opieki
+# Stawki Agencji
+
+Porównywarka stawek agencji opiekuńczych w Niemczech – stawkiagencji.pl
 
 Serwis dla opiekunek i opiekunów osób starszych: porównuje polskie agencje delegujące do Niemiec
 pod kątem formy umowy, wypłaty netto, turnusów, zwrotu za dojazd i wymaganego niemieckiego.
