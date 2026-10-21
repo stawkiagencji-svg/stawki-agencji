@@ -58,8 +58,8 @@ GitHub przechowuje kod. Vercel pobiera go stamtąd i publikuje stronę.
    Vercel sam doda zmienną `DATABASE_URL`.
 3. Otwórz zakładkę **Deployments**, przy ostatnim wdrożeniu kliknij **⋯ → Redeploy**.
 
-Przy pierwszym uruchomieniu aplikacja sama utworzy tabele i wczyta 20 agencji z Twojego arkusza (od razu widocznych)
-oraz 3 szkice do sprawdzenia.
+Przy pierwszym uruchomieniu aplikacja sama utworzy tabele i wczyta 21 agencji (od razu widocznych)
+oraz 2 szkice do sprawdzenia.
 
 ## Krok 5. Podłącz domenę
 
@@ -71,8 +71,8 @@ oraz 3 szkice do sprawdzenia.
 ## Krok 6. Uzupełnij szkice i braki
 
 1. Wejdź na `https://twoja-domena.pl/admin` i zaloguj się hasłem z kroku 3.
-2. 20 agencji z Twojego arkusza jest już opublikowanych. Zobaczysz też 3 szkice (InterKadra, Feliza Job,
-   Antczak Care), których nie ma jeszcze na stronie.
+2. 21 agencji jest już opublikowanych. Zobaczysz też 2 szkice (InterKadra, Feliza Job),
+   których nie ma jeszcze na stronie.
 3. Dla szkiców i dla agencji z „Brak informacji” w ważnych polach (np. stawka): zadzwoń lub napisz,
    albo sprawdź aktualne ogłoszenie, i potwierdź:
    - wynagrodzenie **netto za miesiąc** (od–do),

@@ -25,7 +25,7 @@ npm run dev                   # http://localhost:3000
 Panel: http://localhost:3000/admin (hasło z `ADMIN_PASSWORD`).
 
 Przy pierwszym starcie aplikacja sama tworzy tabele (`src/instrumentation.ts`) i przy pustej bazie
-wczytuje oferty startowe z `db/offers.json` (20 agencji z arkusza porównawczego i 3 szkice). Szkice nie są
+wczytuje oferty startowe z `db/offers.json` (21 agencji i 2 szkice). Szkice nie są
 widoczne na stronie, dopóki nie zaznaczysz „Opublikowana” w panelu.
 
 ## Wdrożenie

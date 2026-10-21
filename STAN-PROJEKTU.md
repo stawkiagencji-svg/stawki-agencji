@@ -19,8 +19,8 @@ Ostatnia aktualizacja: 2026-10-21 (część 3)
   - [x] `/.well-known/assetlinks.json` (ustawiany zmiennymi środowiskowymi)
   - [x] Grafiki do sklepu, 4 zrzuty z telefonu, teksty wpisu (`play-store/`)
   - [x] Instrukcja publikacji (`GOOGLE-PLAY.md`)
-- [x] 20 agencji z arkusza porównawczego (stan na 21.10.2026), opublikowane, ze źródłami (`db/offers.json`)
-- [x] 3 szkice do uzupełnienia: InterKadra, Feliza Job, Antczak Care
+- [x] 21 opublikowanych agencji: 20 z arkusza porównawczego + Antczak Care (stan na 21.10.2026), ze źródłami (`db/offers.json`)
+- [x] 2 szkice do uzupełnienia: InterKadra, Feliza Job
 - [x] Rozszerzony model ofert: składki/ubezpieczenie, transport, wsparcie, warunki na miejscu, opis stawki, wiele źródeł, „Brak informacji” zamiast zgadywania
 - [x] Nowe zrzuty do Google Play z prawdziwymi danymi
 - [x] Formularz „Zgłoś agencję” (`/zglos-agencje`): zgłoszenia trafiają do panelu jako szkice, ochrona przed spamem, opcjonalny e-mail za zgodą
@@ -35,7 +35,7 @@ Ostatnia aktualizacja: 2026-10-21 (część 3)
 Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków jak w `WDROZENIE.md`.
 
 ### Dane (najważniejsze przed startem)
-- [ ] Uzupełnić 3 szkice i opublikować (krok 6 w `WDROZENIE.md`)
+- [ ] Uzupełnić 2 szkice i opublikować (krok 6 w `WDROZENIE.md`)
 - [ ] Uzupełnić stawki u 10 agencji, które ich nie podają publicznie (telefon/e-mail)
 - [ ] Udostępnić link do formularza w grupach dla opiekunek na Facebooku
 - [ ] Regularnie przeglądać nowe zgłoszenia w panelu

@@ -247,7 +247,7 @@ function OfferCard({ o, minLine, selected, compareDisabled, onCompare }: {
         </div>
         <div className={`paybig num${pay ? "" : " nopay"}`}>
           {pay ?? "Brak stawki"}
-          <small>{pay ? "na miesiąc" : o.payNote ? "miesięcznej – zob. niżej" : "agencja nie podaje"}</small>
+          <small>{pay ? "na miesiąc" : /\d.*€/.test(o.payNote) ? "miesięcznej – zob. niżej" : "agencja nie podaje"}</small>
         </div>
       </div>
       <div className="bar" role="img" aria-label={pay ? `Stawka ${pay}` : "Agencja nie podaje stawki"}>
