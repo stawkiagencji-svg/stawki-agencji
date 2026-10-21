@@ -5,7 +5,7 @@ import { createOffer } from "./offers";
 import type { ContractKey } from "./types";
 
 type Draft = {
-  name: string; website: string; contracts: string[]; payMin: number; payMax: number;
+  name: string; website: string; city?: string; contracts: string[]; payMin: number; payMax: number;
   german: number; rotation?: string; bonus?: string; source: string; notes: string;
 };
 
@@ -15,7 +15,7 @@ export async function setupDatabase(): Promise<void> {
   if (rows[0].n > 0) return;
   for (const d of drafts as Draft[]) {
     await createOffer({
-      name: d.name, website: d.website, city: "", contracts: d.contracts as ContractKey[],
+      name: d.name, website: d.website, city: d.city ?? "", contracts: d.contracts as ContractKey[],
       payMin: d.payMin, payMax: d.payMax, german: d.german, rotation: d.rotation ?? "",
       bonus: d.bonus ?? "", verified: "", source: d.source, notes: d.notes,
       travel: false, a1: false, example: false, promoted: false, published: false,

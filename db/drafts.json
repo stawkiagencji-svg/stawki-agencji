@@ -90,14 +90,15 @@
   },
   {
     "name": "Antczak Care",
-    "website": "https://antczakcare.pl",
+    "website": "https://www.antczak-care.pl",
     "contracts": [
       "zlecenie"
     ],
     "payMin": 1600,
     "payMax": 2300,
     "german": 1,
-    "source": "",
-    "notes": "UWAGA: brak danych w internecie. Widełki to typowy przedział rynkowy (wartości zastępcze), a adres strony to założenie. Do potwierdzenia u agencji: adres strony, stawki netto/mies., forma umowy, niemiecki, turnus, dojazd, A1, premie."
+    "source": "https://www.antczak-care.pl/oferty-pracy",
+    "notes": "Oddziały: Katowice (rekrutacja po polsku) i Gifhorn w Niemczech (dwujęzyczny zespół sprawdza zlecenia na miejscu). Firma deklaruje umowy bez kar umownych. Stawka zależy od doświadczenia, niemieckiego i stanu podopiecznego. UWAGA: strona nie podaje kwot – widełki 1600–2300 € to wartości zastępcze. Do potwierdzenia (info@antczak-care.pl): stawki netto/mies., forma umowy, niemiecki, turnus, dojazd, A1, premie.",
+    "city": "Katowice"
   }
 ]
