@@ -1,7 +1,7 @@
 export const CONTRACTS = {
   zlecenie: "Umowa zlecenie",
   praca: "Umowa o pracę",
-  b2b: "Działalność (B2B)",
+  b2b: "Działalność (Gewerbe/B2B)",
   de: "Umowa niemiecka",
 } as const;
 

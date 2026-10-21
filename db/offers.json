@@ -632,7 +632,8 @@
     "website": "https://www.antczak-care.pl",
     "city": "Wrocław",
     "contracts": [
-      "zlecenie"
+      "zlecenie",
+      "b2b"
     ],
     "payMin": 2000,
     "payMax": 3000,
@@ -647,7 +648,7 @@
     "example": false,
     "promoted": false,
     "published": true,
-    "contractNote": "Umowa zlecenie, bez kar umownych.",
+    "contractNote": "Umowa zlecenie albo niemiecka działalność (Gewerbe); bez kar umownych.",
     "insurance": "Składki ZUS od średniej krajowej.",
     "travelNote": "Transport na koszt firmy, od drzwi do drzwi.",
     "bonus": "Bonusy i programy lojalnościowe; szkolenia dla stałych opiekunek.",
