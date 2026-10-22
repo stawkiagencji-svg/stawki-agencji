@@ -1,6 +1,6 @@
 # Stan projektu – Stawki Agencji (stawkiagencji.pl)
 
-Ostatnia aktualizacja: 2026-10-21 (część 3)
+Ostatnia aktualizacja: 2026-10-22
 
 ## Gotowe
 
@@ -51,7 +51,7 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 - [x] Kod na GitHubie: github.com/stawkiagencji-svg/stawki-agencji (prywatne), połączone z Claude
 - [x] Strona działa: https://stawki-agencji.vercel.app (Vercel Hobby + Neon, konto karolina15); diagnostyka: /api/health
 - [x] Domena dodana na Vercelu; na nazwa.pl ustawione zewnętrzne DNS: ns1/ns2.vercel-dns.com (21.10.2026, czekamy na propagację do 24 h)
-- [ ] Sprawdzić stawkiagencji.pl po propagacji (DNSSEC wyłączony automatycznie przez nazwa.pl przy zmianie na zewnętrzne DNS)
+- [x] **https://stawkiagencji.pl działa** (22.10.2026)
 - [ ] Sprawdzić logowanie do panelu /admin (ADMIN_PASSWORD)
 
 ### Google Play
