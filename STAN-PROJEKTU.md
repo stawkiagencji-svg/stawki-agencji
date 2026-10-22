@@ -56,7 +56,8 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 
 ### Google Play
 - [x] Konto dewelopera Google Play – osobiste, opłacone 25 USD (22.10.2026)
-- [x] Weryfikacja tożsamości w Play Console – potwierdzona (22.10.2026)
+- [ ] Weryfikacja tożsamości w Play Console – dokumenty wysłane 22.10.2026, czekamy na zatwierdzenie przez Google
+- [ ] Potem: weryfikacja numeru telefonu (przycisk „Zweryfikuj” pojawi się dopiero po zatwierdzeniu tożsamości)
 - [ ] Zebrać min. 12 testerów (wzór posta w `GOOGLE-PLAY.md`)
 - [x] Paczka Android z PWABuilder (pl.stawkiagencji.app); klucz i hasła u Karoliny – NIE w repozytorium
 - [x] Odcisk klucza przesyłania dodany do /.well-known/assetlinks.json (src/lib/android.ts)
