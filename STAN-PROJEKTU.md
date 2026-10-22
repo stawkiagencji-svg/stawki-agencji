@@ -58,8 +58,10 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 - [x] Konto dewelopera Google Play – osobiste, opłacone 25 USD (22.10.2026)
 - [x] Weryfikacja tożsamości w Play Console – potwierdzona (22.10.2026)
 - [ ] Zebrać min. 12 testerów (wzór posta w `GOOGLE-PLAY.md`)
-- [ ] Wygenerować aplikację w PWABuilder, bezpiecznie zachować `signing.keystore` i hasła
-- [ ] Wgrać `.aab`, ustawić odciski SHA-256 w `.env` (krok 4 w `GOOGLE-PLAY.md`)
+- [x] Paczka Android z PWABuilder (pl.stawkiagencji.app); klucz i hasła u Karoliny – NIE w repozytorium
+- [x] Odcisk klucza przesyłania dodany do /.well-known/assetlinks.json (src/lib/android.ts)
+- [ ] Utworzyć aplikację w Play Console i wgrać .aab do testu zamkniętego
+- [ ] Dopisać odcisk „klucza podpisywania aplikacji” Google do src/lib/android.ts
 - [ ] Wypełnić wpis i formularze (zrzuty z prawdziwymi ofertami są gotowe)
 - [ ] Test zamknięty (jeśli konto osobiste), potem publikacja
 
