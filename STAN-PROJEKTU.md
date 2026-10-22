@@ -52,7 +52,7 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 - [x] Strona działa: https://stawki-agencji.vercel.app (Vercel Hobby + Neon, konto karolina15); diagnostyka: /api/health
 - [x] Domena dodana na Vercelu; na nazwa.pl ustawione zewnętrzne DNS: ns1/ns2.vercel-dns.com (21.10.2026, czekamy na propagację do 24 h)
 - [x] **https://stawkiagencji.pl działa** (22.10.2026)
-- [ ] Sprawdzić logowanie do panelu /admin (ADMIN_PASSWORD)
+- [x] Panel /admin działa – Karolina edytuje oferty sama (22.10.2026). Uwaga: aktualne dane są w bazie Neon, a `db/offers.json` to tylko dane startowe
 
 ### Google Play
 - [x] Konto dewelopera Google Play – osobiste, opłacone 25 USD (22.10.2026)
