@@ -52,7 +52,9 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 - [x] Strona działa: https://stawki-agencji.vercel.app (Vercel Hobby + Neon, konto karolina15); diagnostyka: /api/health
 - [x] Domena dodana na Vercelu; na nazwa.pl ustawione zewnętrzne DNS: ns1/ns2.vercel-dns.com (21.10.2026, czekamy na propagację do 24 h)
 - [x] **https://stawkiagencji.pl działa** (22.10.2026)
-- [ ] 22.10: stawkiagencji.pl działa na komputerze, na telefonie jeszcze nie (vercel.app działa). DNSSEC w nazwa.pl wyłączony – czekamy na odświeżenie DNS (do 48 h). Sprawdzić 23.10 na telefonie, potem wrzucić post na FB
+- [x] Strona działa też na telefonie (22.10.2026)
+- [ ] Przed wgraniem aplikacji do Google Play: na Vercelu (Settings → Domains) ustawić **stawkiagencji.pl** (bez www) jako domenę główną, a www przekierować na nią – aplikacja i assetlinks są dla stawkiagencji.pl
+- [ ] Wrzucić post na FB (tekst i zdjęcia gotowe)
 - [x] Panel /admin działa – Karolina edytuje oferty sama (22.10.2026). Uwaga: aktualne dane są w bazie Neon, a `db/offers.json` to tylko dane startowe
 
 ### Google Play
