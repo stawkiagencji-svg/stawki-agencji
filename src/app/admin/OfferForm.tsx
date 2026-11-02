@@ -31,6 +31,7 @@ export default function OfferForm({ offer }: { offer: Offer | null }) {
         {o && <input type="hidden" name="id" value={o.id} />}
         <label>Nazwa agencji<input type="text" name="name" required defaultValue={val("name", o?.name)} /></label>
         <label>Strona www<input type="url" name="website" placeholder="https://" defaultValue={val("website", o?.website)} /></label>
+        <label>Link do formularza aplikacyjnego agencji<input type="url" name="applyUrl" placeholder="https://" defaultValue={val("applyUrl", o?.applyUrl)} /></label>
         <label>Siedziba (miasto)<input type="text" name="city" defaultValue={val("city", o?.city)} /></label>
         <label className="full">Krótki opis agencji<textarea name="description" defaultValue={val("description", o?.description)} /></label>
 

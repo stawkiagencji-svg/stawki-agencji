@@ -43,4 +43,20 @@ ALTER TABLE offers ADD COLUMN IF NOT EXISTS submitter_email TEXT NOT NULL DEFAUL
 ALTER TABLE offers ADD COLUMN IF NOT EXISTS ip_hash TEXT;
 ALTER TABLE offers ADD COLUMN IF NOT EXISTS affiliated BOOLEAN NOT NULL DEFAULT FALSE;
 ALTER TABLE offers ADD COLUMN IF NOT EXISTS zus_avg BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE offers ADD COLUMN IF NOT EXISTS apply_url TEXT NOT NULL DEFAULT '';
+
+-- Opinie opiekunek. Nowe czekają na sprawdzenie (published = false); ip_hash służy tylko do limitu i znika po 30 dniach.
+CREATE TABLE IF NOT EXISTS reviews (
+  id          SERIAL PRIMARY KEY,
+  offer_id    INTEGER NOT NULL REFERENCES offers(id) ON DELETE CASCADE,
+  rating      SMALLINT NOT NULL CHECK (rating BETWEEN 1 AND 5),
+  nickname    TEXT NOT NULL DEFAULT '',
+  worked      TEXT NOT NULL DEFAULT '',
+  body        TEXT NOT NULL,
+  published   BOOLEAN NOT NULL DEFAULT FALSE,
+  reported    BOOLEAN NOT NULL DEFAULT FALSE,
+  ip_hash     TEXT,
+  created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS reviews_offer_idx ON reviews (offer_id) WHERE published;
 `;

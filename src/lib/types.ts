@@ -26,6 +26,8 @@ export type Offer = {
   name: string;
   description: string;
   website: string;
+  /** Strona agencji z formularzem aplikacyjnym (przycisk „Aplikuj”). */
+  applyUrl: string;
   city: string;
   /** Formy umowy podane wprost przez agencję (do filtrowania). Pusta lista = brak informacji. */
   contracts: ContractKey[];
@@ -70,3 +72,9 @@ export type AdminOffer = Offer & { origin: string; submitterRole: string; submit
 
 export const hasPay = (o: Pick<Offer, "payMin" | "payMax">) => o.payMin !== null || o.payMax !== null;
 export const sourceLinks = (s: string) => s.split("|").map((u) => u.trim()).filter((u) => /^https?:\/\//i.test(u));
+
+/** Opinia opiekunki o agencji, widoczna publicznie po sprawdzeniu. */
+export type Review = { id: number; offerId: number; rating: number; nickname: string; worked: string; body: string; date: string };
+
+/** Opinia z danymi moderacji – tylko dla panelu administratora. */
+export type AdminReview = Review & { offerName: string; published: boolean; reported: boolean };

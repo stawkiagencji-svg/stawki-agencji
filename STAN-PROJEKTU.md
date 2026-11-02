@@ -1,6 +1,6 @@
 # Stan projektu – Stawki Agencji (stawkiagencji.pl)
 
-Ostatnia aktualizacja: 2026-10-22
+Ostatnia aktualizacja: 2026-11-02
 
 ## Gotowe
 
@@ -28,6 +28,9 @@ Ostatnia aktualizacja: 2026-10-22
 - [x] Pełny regulamin i polityka prywatności dla osoby prywatnej (dane z ustawień `SITE_OWNER_*`)
 - [x] Instrukcja wdrożenia bez terminala: `WDROZENIE.md` (GitHub → Vercel → Neon → domena)
 - [x] Wzór wiadomości do agencji i posta do zebrania 12 testerów
+- [x] Filtry według kategorii (Umowa, ZUS i składki, Warunki, Opinie) nad listą agencji (02.11.2026)
+- [x] Opinie opiekunek: formularz `/opinia`, sprawdzanie w panelu `/admin`, średnia ocena, „Zgłoś naruszenie”, zasady w regulaminie § 7 (02.11.2026)
+- [x] Przycisk „Aplikuj na stronie agencji” – link wpisywany w panelu przy każdej agencji (02.11.2026)
 - [x] Testy w przeglądarce: filtry, porównanie, logowanie, dodawanie/edycja/usuwanie, tryb offline, telefon, tryb ciemny
 
 ## Do zrobienia
@@ -35,6 +38,7 @@ Ostatnia aktualizacja: 2026-10-22
 Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków jak w `WDROZENIE.md`.
 
 ### Dane (najważniejsze przed startem)
+- [ ] Wpisać w panelu linki „Aplikuj” (strona z formularzem aplikacyjnym) dla agencji
 - [ ] Uzupełnić 2 szkice i opublikować (krok 6 w `WDROZENIE.md`)
 - [ ] Uzupełnić stawki u 10 agencji, które ich nie podają publicznie (telefon/e-mail)
 - [ ] Udostępnić link do formularza w grupach dla opiekunek na Facebooku
@@ -72,7 +76,6 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 ### Pomysły na później
 - [ ] Powiadomienie e-mailem o nowym zgłoszeniu (wymaga usługi do wysyłki maili, np. Resend)
 - [ ] Import agencji z arkusza Excel w panelu admina
-- [ ] Opinie opiekunek o agencjach (z moderacją)
 - [ ] Kalkulator brutto → netto dla umowy niemieckiej
 - [ ] Wersja niemieckojęzyczna strony
 - [ ] Analityka odwiedzin (wtedy zaktualizować politykę prywatności i formularz „Bezpieczeństwo danych” w Google Play)

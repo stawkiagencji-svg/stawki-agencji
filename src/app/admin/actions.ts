@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { checkPassword, endSession, isAdmin, startSession } from "@/lib/auth";
 import { createOffer, deleteOffer, parseOfferForm, updateOffer } from "@/lib/offers";
+import { deleteReview, setReviewPublished } from "@/lib/reviews";
 
 export type FormState = {
   error?: string;
@@ -53,6 +54,16 @@ export async function saveOffer(_: FormState, form: FormData): Promise<FormState
 export async function removeOffer(form: FormData): Promise<void> {
   if (!(await isAdmin())) redirect("/admin");
   await deleteOffer(Number(form.get("id")));
+  revalidatePath("/");
+  revalidatePath("/admin");
+}
+
+export async function moderateReview(form: FormData): Promise<void> {
+  if (!(await isAdmin())) redirect("/admin");
+  const id = Number(form.get("id"));
+  const action = String(form.get("action"));
+  if (action === "delete") await deleteReview(id);
+  else await setReviewPublished(id, action === "publish");
   revalidatePath("/");
   revalidatePath("/admin");
 }

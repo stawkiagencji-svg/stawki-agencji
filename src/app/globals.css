@@ -190,3 +190,34 @@ footer.site p { margin: 10px 0 0; }
 .thanks p { margin: 0; }
 .disclosure { font-size: 13px; color: var(--warn); background: var(--warn-soft); border-radius: 6px; padding: 8px 12px; margin: 12px 0 0; max-width: 62ch; }
 .cta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 14px; font-size: 14px; color: var(--muted); }
+
+/* Opinie */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.stars-input { display: inline-flex; flex-direction: row-reverse; gap: 4px; }
+.stars-input input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.stars-input label { font-size: 34px; line-height: 1; color: var(--line); cursor: pointer; }
+.stars-input label:hover, .stars-input label:hover ~ label,
+.stars-input label:has(input:checked), .stars-input label:has(input:checked) ~ label { color: var(--pay); }
+.stars-input input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.stars { color: var(--pay); letter-spacing: 1px; }
+.rating { display: inline-flex; gap: 6px; align-items: baseline; font-size: 14px; color: var(--muted); }
+.rating b { color: var(--ink); }
+.reviews { display: grid; gap: 12px; margin-top: 8px; }
+.reviews h4 { margin: 8px 0 0; font-size: 15px; }
+.review { border-top: 1px solid var(--line); padding-top: 10px; }
+.review p { margin: 4px 0; white-space: pre-line; }
+.review .by { font-size: 13px; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.review form { display: inline; }
+.review .linkbtn { background: none; border: 0; padding: 0; font: inherit; font-size: 12px; color: var(--muted); text-decoration: underline; cursor: pointer; }
+
+/* Szybkie filtry według kategorii */
+.quick { display: grid; gap: 10px; margin-bottom: 16px; }
+.quick .group { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.quick .group > span { font-size: 13px; font-weight: 700; color: var(--muted); min-width: 92px; }
+.qchip { font: 600 14px var(--body); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.qchip[aria-pressed=true] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+@media (max-width: 600px) {
+  /* Na telefonie nazwa kategorii nad przyciskami, żeby żaden przycisk nie chował się za krawędzią */
+  .quick .group > span { flex-basis: 100%; }
+  .qchip { font-size: 13px; padding: 5px 10px; }
+}

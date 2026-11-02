@@ -7,7 +7,7 @@ export default function PrivacyPage() {
   return (
     <article className="prose">
       <h1>Polityka prywatności</h1>
-      <p className="note">Obowiązuje od 1 listopada 2026 r.</p>
+      <p className="note">Obowiązuje od 10 listopada 2026 r.</p>
 
       <h2>Administrator danych</h2>
       <p>
@@ -36,14 +36,24 @@ export default function PrivacyPage() {
           Dane zgłaszającego nigdy nie są publikowane.
         </li>
         <li>
-          <b>Ochrona przed spamem.</b> Przy wysyłce formularza zapisujemy zaszyfrowany skrót adresu IP (nie sam
-          adres), żeby ograniczyć liczbę zgłoszeń z jednego urządzenia. Skrót usuwamy po 30 dniach. Podstawa: prawnie
+          <b>Opinie o agencjach.</b> Przetwarzamy ocenę, treść opinii, podpis i okres współpracy, jeśli je podasz.
+          Publikujemy je przy agencji. Podstawa: prawnie uzasadniony interes, czyli informowanie innych opiekunek
+          o warunkach pracy (art. 6 ust. 1 lit. f RODO). Opinię przechowujemy, dopóki agencja jest w serwisie albo do
+          czasu Twojej prośby o usunięcie. Nie wpisuj w opinii danych, po których można Cię rozpoznać, jeśli tego nie chcesz.
+        </li>
+        <li>
+          <b>Ochrona przed spamem.</b> Przy wysyłce formularza lub opinii zapisujemy zaszyfrowany skrót adresu IP (nie sam
+          adres), żeby ograniczyć liczbę zgłoszeń i opinii z jednego urządzenia. Skrót usuwamy po 30 dniach. Podstawa: prawnie
           uzasadniony interes (art. 6 ust. 1 lit. f RODO).
         </li>
         <li>
           <b>Korespondencja.</b> Jeśli napiszesz do nas e-mail, przetwarzamy Twój adres i treść wiadomości, żeby
           odpowiedzieć. Podstawa: prawnie uzasadniony interes (art. 6 ust. 1 lit. f RODO). Przechowujemy korespondencję
           do 2 lat od zakończenia sprawy.
+        </li>
+        <li>
+          <b>Aplikowanie do agencji.</b> Przycisk „Aplikuj na stronie agencji” otwiera stronę agencji. Dane wpisane
+          w jej formularzu otrzymuje wyłącznie agencja, która jest ich administratorem. My ich nie widzimy.
         </li>
         <li>
           <b>Dane agencji.</b> Przy ofertach prezentujemy publicznie dostępne informacje o agencjach (nazwa, strona

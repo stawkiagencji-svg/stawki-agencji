@@ -3,6 +3,7 @@
     "name": "Active Care",
     "description": "Agencja rekrutująca opiekunki do Niemiec; publikuje opisy zleceń, w tym wymagania, obowiązki, przerwy i warunki mieszkaniowe.",
     "website": "https://activecare24.pl",
+    "applyUrl": "",
     "city": "",
     "contracts": [
       "de"
@@ -33,6 +34,7 @@
     "name": "Active Intercare",
     "description": "Warszawska agencja, działa od 2006 r.; organizuje wyjazd i kontakt podczas całego zlecenia.",
     "website": "https://active-intercare.pl",
+    "applyUrl": "",
     "city": "Warszawa",
     "contracts": [
       "de",
@@ -64,6 +66,7 @@
     "name": "A&J Partners",
     "description": "Agencja z ofertami w całych Niemczech; w ogłoszeniach podaje opis seniora, wymagania, pokój i konkretne stawki.",
     "website": "https://opiekunki.ajpartners.pl",
+    "applyUrl": "",
     "city": "",
     "contracts": [
       "zlecenie",
@@ -95,6 +98,7 @@
     "name": "Agnesdaheim",
     "description": "Firma opiekuńcza prezentująca pracę w Niemczech i Polsce; deklaruje stałe stawki w euro i wsparcie po polsku.",
     "website": "https://agnesdaheim.de/pl/",
+    "applyUrl": "",
     "city": "",
     "contracts": [],
     "payMin": null,
@@ -123,6 +127,7 @@
     "name": "Aterima Med",
     "description": "Duża firma pośrednicząca; publikuje wiele aktualnych ofert, organizuje szkolenia i konsultacje specjalistyczne.",
     "website": "https://www.aterima-med.pl",
+    "applyUrl": "",
     "city": "",
     "contracts": [],
     "payMin": 1800,
@@ -151,6 +156,7 @@
     "name": "Avanti Medic",
     "description": "Firma działająca od 2012 r.; podaje warunki, obowiązki i wymagania przed przyjęciem zlecenia.",
     "website": "https://avanti-medic.eu",
+    "applyUrl": "",
     "city": "",
     "contracts": [
       "de",
@@ -182,6 +188,7 @@
     "name": "CareWork",
     "description": "Firma opiekuńcza; publikuje oferty i opisuje warunki pracy oraz różne modele współpracy.",
     "website": "https://carework.pl",
+    "applyUrl": "",
     "city": "",
     "contracts": [
       "zlecenie",
@@ -213,6 +220,7 @@
     "name": "Caring Personnel",
     "description": "Firma organizuje pracę opiekunek w Niemczech i Szwajcarii; oferuje trzy modele zatrudnienia.",
     "website": "https://caringpersonnel.pl",
+    "applyUrl": "",
     "city": "",
     "contracts": [
       "zlecenie",
@@ -245,6 +253,7 @@
     "name": "Ethicus Care",
     "description": "Rekrutuje do prywatnych domów i placówek; aktualne oferty zawierają konkretne warunki oraz wynagrodzenie.",
     "website": "https://ethicuscare.com",
+    "applyUrl": "",
     "city": "",
     "contracts": [],
     "payMin": 2100,
@@ -273,6 +282,7 @@
     "name": "Eurokontakt",
     "description": "Polska firma z Chełma; zatrudnia bezpośrednio i publikuje szczegółowe oferty z wynagrodzeniem.",
     "website": "https://eurokontakt.net.pl",
+    "applyUrl": "",
     "city": "Chełm",
     "contracts": [
       "praca",
@@ -304,6 +314,7 @@
     "name": "Frigga",
     "description": "Agencja z Bydgoszczy; organizuje pracę w Niemczech i Luksemburgu, działa od 17 lat (deklaracja strony).",
     "website": "https://friggawork.pl",
+    "applyUrl": "",
     "city": "Bydgoszcz",
     "contracts": [],
     "payMin": null,
@@ -332,6 +343,7 @@
     "name": "MEDIPE",
     "description": "Firma oferuje opiekę nad seniorem w Niemczech; organizuje logistykę wyjazdu i wsparcie specjalistów.",
     "website": "https://medipe.pl",
+    "applyUrl": "",
     "city": "",
     "contracts": [],
     "payMin": null,
@@ -360,6 +372,7 @@
     "name": "Medius Work",
     "description": "Firma oferująca pracę opiekunek na terenie całych Niemiec; publikuje oferty i informacje o podróży.",
     "website": "https://medius-work.pl",
+    "applyUrl": "",
     "city": "",
     "contracts": [],
     "payMin": null,
@@ -388,6 +401,7 @@
     "name": "Opieka24-7",
     "description": "Polska firma z Bytomia, zatrudnia bezpośrednio do pracy u seniorów w całych Niemczech.",
     "website": "https://opieka24-7.pl",
+    "applyUrl": "",
     "city": "Bytom",
     "contracts": [
       "zlecenie"
@@ -418,6 +432,7 @@
     "name": "Opiekunki-24h",
     "description": "Firma publikuje oferty dla opiekunek i informacje o legalnym zatrudnieniu w Niemczech.",
     "website": "https://www.opiekunki-24h.pl",
+    "applyUrl": "",
     "city": "",
     "contracts": [
       "zlecenie"
@@ -448,6 +463,7 @@
     "name": "Pflegerin24",
     "description": "Polska agencja kierująca opiekunki do pracy w Niemczech; deklaruje legalność i organizację wyjazdu.",
     "website": "https://pflegerin24.pl",
+    "applyUrl": "",
     "city": "",
     "contracts": [],
     "payMin": null,
@@ -476,6 +492,7 @@
     "name": "Prohuman",
     "description": "Firma zatrudniająca opiekunów; publikuje oferty i wyjaśnia proces doboru zlecenia.",
     "website": "https://prohuman.pl",
+    "applyUrl": "",
     "city": "",
     "contracts": [],
     "payMin": null,
@@ -504,6 +521,7 @@
     "name": "Promedica24",
     "description": "Duża firma opiekuńcza z ofertami w Niemczech; organizuje transport, szkolenia językowe i premie.",
     "website": "https://promedica24.com.pl",
+    "applyUrl": "",
     "city": "",
     "contracts": [
       "zlecenie"
@@ -534,6 +552,7 @@
     "name": "SCG",
     "description": "Agencja pracy rekrutująca do opieki w Niemczech; w ofertach przedstawia opis zlecenia i wsparcie koordynatora.",
     "website": "https://www.scg-agencjapracy.pl",
+    "applyUrl": "",
     "city": "",
     "contracts": [
       "zlecenie"
@@ -564,6 +583,7 @@
     "name": "Veritas Opieka",
     "description": "Agencja oferująca zlecenia w Niemczech; organizuje wyjazdy i publikuje stawki w ofertach.",
     "website": "https://www.veritas-opieka.pl",
+    "applyUrl": "",
     "city": "",
     "contracts": [],
     "payMin": 1970,
@@ -592,6 +612,7 @@
     "name": "InterKadra",
     "description": "",
     "website": "https://www.opiekunki.interkadra.pl",
+    "applyUrl": "",
     "city": "",
     "contracts": [
       "zlecenie"
@@ -622,6 +643,7 @@
     "name": "Feliza Job",
     "description": "",
     "website": "https://felizajob.pl",
+    "applyUrl": "",
     "city": "",
     "contracts": [
       "zlecenie"
@@ -652,6 +674,7 @@
     "name": "Antczak Care",
     "description": "Firma z dwoma oddziałami – w Polsce i w Niemczech – bez pośredników. Zlecenia są w okolicy niemieckiego biura, a każdą rodzinę firma sprawdza osobiście.",
     "website": "https://www.antczak-care.pl",
+    "applyUrl": "",
     "city": "Wrocław",
     "contracts": [
       "zlecenie",

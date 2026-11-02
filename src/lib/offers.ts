@@ -5,7 +5,7 @@ export * from "./types";
 
 /** Pole oferty → kolumna w bazie. Jedno miejsce, z którego budujemy INSERT, UPDATE i odczyt. */
 const COLUMNS: [keyof OfferInput, string][] = [
-  ["name", "name"], ["description", "description"], ["website", "website"], ["city", "city"],
+  ["name", "name"], ["description", "description"], ["website", "website"], ["applyUrl", "apply_url"], ["city", "city"],
   ["contracts", "contracts"], ["payMin", "pay_min"], ["payMax", "pay_max"], ["payNote", "pay_note"],
   ["german", "german"], ["rotation", "rotation"], ["verified", "verified"], ["source", "source"],
   ["notes", "notes"], ["travel", "travel"], ["a1", "a1"], ["zusAvg", "zus_avg"], ["example", "example"],
@@ -110,6 +110,7 @@ export function parseOfferForm(f: FormData): { ok: true; offer: OfferInput } | {
     name: text(f, "name", 120),
     description: text(f, "description", 600),
     website: url(f, "website"),
+    applyUrl: url(f, "applyUrl"),
     city: text(f, "city", 80),
     contracts: f.getAll("contracts").map(String).filter(isContract),
     payMin: optionalNumber(f, "payMin"),

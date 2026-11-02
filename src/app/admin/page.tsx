@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { isAdmin } from "@/lib/auth";
 import { getOffer, listAllOffers, SUBMITTER_ROLES } from "@/lib/offers";
-import { logout } from "./actions";
+import { listAllReviews } from "@/lib/reviews";
+import { logout, moderateReview } from "./actions";
 import DeleteButton from "./DeleteButton";
 import LoginForm from "./LoginForm";
 import OfferForm from "./OfferForm";
@@ -22,8 +23,11 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
     );
   }
   const { edit, saved } = await searchParams;
-  const [offers, editing] = await Promise.all([listAllOffers(), edit ? getOffer(Number(edit)) : Promise.resolve(null)]);
+  const [offers, editing, reviews] = await Promise.all([
+    listAllOffers(), edit ? getOffer(Number(edit)) : Promise.resolve(null), listAllReviews(),
+  ]);
   const newSubmissions = offers.filter((o) => o.origin === "form" && !o.published).length;
+  const reviewsToCheck = reviews.filter((r) => !r.published || r.reported).length;
 
   return (
     <>
@@ -42,6 +46,12 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
         <p className="panel" style={{ marginBottom: 16 }}>
           <b>Nowe zgłoszenia z formularza: {newSubmissions}.</b> Są na górze tabeli poniżej. Sprawdź je, uzupełnij
           i zaznacz „Opublikowana”, albo usuń, jeśli to spam lub duplikat.
+        </p>
+      )}
+
+      {reviewsToCheck > 0 && (
+        <p className="panel" style={{ marginBottom: 16 }}>
+          <b>Opinie do sprawdzenia: {reviewsToCheck}.</b> Są w sekcji „Opinie opiekunek” na dole strony.
         </p>
       )}
 
@@ -84,6 +94,44 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
               </tr>
             ))}
             {!offers.length && <tr><td colSpan={5}>Brak ofert. Dodaj pierwszą agencję powyżej.</td></tr>}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 style={{ margin: "32px 0 8px" }}>Opinie opiekunek</h2>
+      <p className="note" style={{ marginBottom: 12 }}>
+        Publikuj każdą opinię zgodną z regulaminem, także krytyczną. Odrzucaj tylko obraźliwe, z danymi osobowymi
+        (nazwiska, telefony, adresy), reklamy i spam. Te same zasady dla każdej agencji, również dla Twojej.
+      </p>
+      <div className="admintable panel">
+        <table>
+          <thead>
+            <tr><th scope="col">Agencja</th><th scope="col">Opinia</th><th scope="col">Status</th><th scope="col" /></tr>
+          </thead>
+          <tbody>
+            {reviews.map((r) => (
+              <tr key={r.id}>
+                <td>{r.offerName}<div className="note num">{r.date}</div></td>
+                <td>
+                  <span className="stars">{"★".repeat(r.rating)}{"☆".repeat(5 - r.rating)}</span>{" "}
+                  <b>{r.nickname || "Opiekunka"}</b>{r.worked && <span className="note"> · pracowała: {r.worked}</span>}
+                  <p style={{ margin: "4px 0 0", whiteSpace: "pre-line" }}>{r.body}</p>
+                </td>
+                <td>
+                  {r.reported && <span className="chip promo">Zgłoszona przez czytelnika</span>}{" "}
+                  {r.published ? <span className="chip ok">Opublikowana</span> : <span className="chip no">Do sprawdzenia</span>}
+                </td>
+                <td style={{ whiteSpace: "nowrap" }}>
+                  <form action={moderateReview} style={{ display: "inline-flex", gap: 6 }}>
+                    <input type="hidden" name="id" value={r.id} />
+                    {(!r.published || r.reported) && <button type="submit" name="action" value="publish" className="primary">{r.reported ? "Zostaw" : "Opublikuj"}</button>}
+                    {r.published && <button type="submit" name="action" value="hide" className="ghost">Ukryj</button>}
+                    <button type="submit" name="action" value="delete" className="ghost danger">Usuń</button>
+                  </form>
+                </td>
+              </tr>
+            ))}
+            {!reviews.length && <tr><td colSpan={4}>Nie ma jeszcze opinii.</td></tr>}
           </tbody>
         </table>
       </div>
