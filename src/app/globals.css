@@ -210,14 +210,3 @@ footer.site p { margin: 10px 0 0; }
 .review form { display: inline; }
 .review .linkbtn { background: none; border: 0; padding: 0; font: inherit; font-size: 12px; color: var(--muted); text-decoration: underline; cursor: pointer; }
 
-/* Szybkie filtry według kategorii */
-.quick { display: grid; gap: 10px; margin-bottom: 16px; }
-.quick .group { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
-.quick .group > span { font-size: 13px; font-weight: 700; color: var(--muted); min-width: 92px; }
-.qchip { font: 600 14px var(--body); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
-.qchip[aria-pressed=true] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
-@media (max-width: 600px) {
-  /* Na telefonie nazwa kategorii nad przyciskami, żeby żaden przycisk nie chował się za krawędzią */
-  .quick .group > span { flex-basis: 100%; }
-  .qchip { font-size: 13px; padding: 5px 10px; }
-}

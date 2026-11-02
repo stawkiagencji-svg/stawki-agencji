@@ -65,12 +65,12 @@ const SORTERS: Record<SortKey, (a: Offer, b: Offer) => number> = {
   verified: (a, b) => b.verified.localeCompare(a.verified),
 };
 
-/** Przełączniki „tak/nie” w szybkich filtrach, pogrupowane w kategorie. */
+/** Przełączniki „tak/nie” w panelu filtrów, pogrupowane w kategorie. */
 type Toggle = "zusAvg" | "a1" | "travel" | "bonus" | "housing" | "support" | "reviewed";
 const CATEGORIES: { label: string; toggles: [Toggle, string][] }[] = [
-  { label: "ZUS i składki", toggles: [["zusAvg", "ZUS od średniej krajowej"], ["a1", "Składki opłacane"]] },
-  { label: "Warunki", toggles: [["travel", "Dojazd zapewniony"], ["bonus", "Premie / dodatki"], ["housing", "Opisane warunki na miejscu"], ["support", "Wsparcie na miejscu"]] },
-  { label: "Opinie", toggles: [["reviewed", "Ma opinie opiekunek"]] },
+  { label: "ZUS i ubezpieczenie", toggles: [["zusAvg", "ZUS od średniej krajowej (wyższa emerytura)"], ["a1", "Opłacane składki / ubezpieczenie"]] },
+  { label: "Warunki", toggles: [["travel", "Agencja organizuje lub opłaca dojazd"], ["bonus", "Premie lub dodatki"], ["housing", "Opisane warunki na miejscu (pokój, przerwy)"], ["support", "Wsparcie na miejscu (koordynator)"]] },
+  { label: "Opinie", toggles: [["reviewed", "Tylko agencje z opiniami opiekunek"]] },
 ];
 
 export default function Comparator({ offers, reviews }: { offers: Offer[]; reviews: Review[] }) {
@@ -98,12 +98,6 @@ export default function Comparator({ offers, reviews }: { offers: Offer[]; revie
     for (const r of reviews) m.set(r.offerId, [...(m.get(r.offerId) ?? []), r]);
     return m;
   }, [reviews]);
-
-  // Pierwsze kliknięcie zawęża do jednej formy umowy, kolejne dokładają lub odejmują. Pusty wybór = wszystkie.
-  const toggleContract = (k: ContractKey) => {
-    const next = allContracts ? [k] : f.contracts.includes(k) ? f.contracts.filter((c) => c !== k) : [...f.contracts, k];
-    update({ contracts: next.length ? next : ALL_CONTRACTS });
-  };
 
   const visible = useMemo(() => {
     const list = offers.filter((o) => {
@@ -184,28 +178,33 @@ export default function Comparator({ offers, reviews }: { offers: Offer[]; revie
               {[3, 2, 1, 0].map((g) => <option key={g} value={g}>{GERMAN[g]}</option>)}
             </select>
           </fieldset>
+          <fieldset>
+            <legend>Forma umowy</legend>
+            {ALL_CONTRACTS.map((k) => (
+              <label className="chk" key={k}>
+                <input
+                  type="checkbox" id={`f-${k}`} checked={f.contracts.includes(k)}
+                  onChange={(e) => update({ contracts: e.target.checked ? [...f.contracts, k] : f.contracts.filter((c) => c !== k) })}
+                />
+                {CONTRACTS[k]}
+              </label>
+            ))}
+            {!allContracts && <p className="hint">Ukryte są też agencje, które nie podają formy umowy.</p>}
+          </fieldset>
+          {CATEGORIES.map((c) => (
+            <fieldset key={c.label}>
+              <legend>{c.label}</legend>
+              {c.toggles.map(([k, label]) => (
+                <label className="chk" key={k}>
+                  <input type="checkbox" id={`f-${k}`} checked={f[k]} onChange={(e) => update({ [k]: e.target.checked })} /> {label}
+                </label>
+              ))}
+            </fieldset>
+          ))}
           <button className="ghost" type="button" onClick={() => update(DEFAULT_FILTERS)}>Wyczyść filtry</button>
         </aside>
 
         <main>
-          <div className="quick" role="group" aria-label="Filtry według kategorii">
-            <div className="group">
-              <span>Umowa</span>
-              {ALL_CONTRACTS.map((k) => (
-                <button type="button" key={k} className="qchip" aria-pressed={!allContracts && f.contracts.includes(k)}
-                  onClick={() => toggleContract(k)}>{CONTRACTS[k]}</button>
-              ))}
-            </div>
-            {CATEGORIES.map((c) => (
-              <div className="group" key={c.label}>
-                <span>{c.label}</span>
-                {c.toggles.map(([k, label]) => (
-                  <button type="button" key={k} className="qchip" aria-pressed={f[k]} onClick={() => update({ [k]: !f[k] })}>{label}</button>
-                ))}
-              </div>
-            ))}
-            {!allContracts && <p className="hint">Ukryte są też agencje, które nie podają formy umowy.</p>}
-          </div>
           <div className="listhead">
             <span className="count">{visible.length} z {offers.length} agencji</span>
             <label htmlFor="sort">Sortuj

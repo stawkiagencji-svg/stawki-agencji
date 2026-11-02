@@ -28,7 +28,7 @@ Ostatnia aktualizacja: 2026-11-02
 - [x] Pełny regulamin i polityka prywatności dla osoby prywatnej (dane z ustawień `SITE_OWNER_*`)
 - [x] Instrukcja wdrożenia bez terminala: `WDROZENIE.md` (GitHub → Vercel → Neon → domena)
 - [x] Wzór wiadomości do agencji i posta do zebrania 12 testerów
-- [x] Filtry według kategorii (Umowa, ZUS i składki, Warunki, Opinie) nad listą agencji (02.11.2026)
+- [x] Filtry według kategorii w panelu filtrów: kwota, niemiecki, umowa, ZUS i ubezpieczenie, warunki, opinie (02.11.2026)
 - [x] Opinie opiekunek: formularz `/opinia`, sprawdzanie w panelu `/admin`, średnia ocena, „Zgłoś naruszenie”, zasady w regulaminie § 7 (02.11.2026)
 - [x] Przycisk „Aplikuj na stronie agencji” – link wpisywany w panelu przy każdej agencji (02.11.2026)
 - [x] Testy w przeglądarce: filtry, porównanie, logowanie, dodawanie/edycja/usuwanie, tryb offline, telefon, tryb ciemny
