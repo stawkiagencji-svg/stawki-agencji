@@ -46,8 +46,7 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 - [ ] Co 1–2 miesiące odświeżać stawki i daty weryfikacji
 
 ### Prawo i pieniądze
-- [x] Dane właściciela wpisane w `src/lib/owner.ts`: Karolina Woźniak, Wrocław, stawkiagencji@gmail.com (02.11.2026)
-- [ ] Dopisać adres do korespondencji (poste restante we Wrocławiu – nazwa i kod placówki) w `src/lib/owner.ts`
+- [x] Dane właściciela wpisane w `src/lib/owner.ts`: Karolina Woźniak, Wrocław, poste restante UP Wrocław 59 (54-160), stawkiagencji@gmail.com (02.11.2026)
 - [ ] Opcjonalnie: przegląd regulaminu i polityki prywatności przez prawnika
 - [ ] Ustalić cennik ofert promowanych; pilnować limitu działalności nierejestrowanej
 
