@@ -1,12 +1,11 @@
 import { SITE_URL } from "./site";
 
 // Dane właściciela serwisu do regulaminu i polityki prywatności.
-// Ustawiasz je w zmiennych środowiskowych (np. w ustawieniach projektu na Vercelu).
-const missing = (what: string) => `[UZUPEŁNIJ: ${what}]`;
-
+// Zmienne środowiskowe (np. w ustawieniach projektu na Vercelu) mają pierwszeństwo przed wartościami poniżej.
 export const owner = {
-  name: process.env.SITE_OWNER_NAME || missing("imię i nazwisko"),
-  address: process.env.SITE_OWNER_ADDRESS || missing("adres do korespondencji"),
-  email: process.env.SITE_CONTACT_EMAIL || missing("adres e-mail"),
+  name: process.env.SITE_OWNER_NAME || "Karolina Woźniak",
+  // Miejsce zamieszkania; adres do korespondencji (poste restante) dopiszemy, gdy będzie wybrana poczta.
+  address: process.env.SITE_OWNER_ADDRESS || "Wrocław",
+  email: process.env.SITE_CONTACT_EMAIL || "stawkiagencji@gmail.com",
   siteUrl: SITE_URL,
 };

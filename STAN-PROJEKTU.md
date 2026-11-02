@@ -46,7 +46,8 @@ Decyzje: konto osobiste (bez firmy), hosting Vercel + Neon. Kolejność kroków 
 - [ ] Co 1–2 miesiące odświeżać stawki i daty weryfikacji
 
 ### Prawo i pieniądze
-- [ ] Ustawić dane właściciela (`SITE_OWNER_NAME`, `SITE_OWNER_ADDRESS`, `SITE_CONTACT_EMAIL`) na Vercelu (jedyne wymagane ustawienie to `ADMIN_PASSWORD`)
+- [x] Dane właściciela wpisane w `src/lib/owner.ts`: Karolina Woźniak, Wrocław, stawkiagencji@gmail.com (02.11.2026)
+- [ ] Dopisać adres do korespondencji (poste restante we Wrocławiu – nazwa i kod placówki) w `src/lib/owner.ts`
 - [ ] Opcjonalnie: przegląd regulaminu i polityki prywatności przez prawnika
 - [ ] Ustalić cennik ofert promowanych; pilnować limitu działalności nierejestrowanej
 

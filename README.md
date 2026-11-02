@@ -9,7 +9,7 @@ pod kątem formy umowy, wypłaty netto, turnusów, zwrotu za dojazd i wymaganego
 - **Panel właściciela** (`/admin`): logowanie hasłem, dodawanie, edycja i usuwanie ofert, oznaczanie ofert promowanych.
 - **Formularz** (`/zglos-agencje`): agencje i opiekunki zgłaszają oferty; trafiają do panelu jako szkice.
 - **Publiczne API** (`/api/offers`): lista ofert w JSON, np. dla przyszłej aplikacji mobilnej.
-- **Strony prawne**: `/regulamin`, `/polityka-prywatnosci`, `/jak-tworzymy-ranking` (do uzupełnienia, miejsca oznaczone `[UZUPEŁNIJ]`).
+- **Strony prawne**: `/regulamin`, `/polityka-prywatnosci`, `/jak-tworzymy-ranking` (dane właściciela w `src/lib/owner.ts`).
 
 Technologia: Next.js 16, React 19, PostgreSQL (biblioteka `pg`), TypeScript.
 
