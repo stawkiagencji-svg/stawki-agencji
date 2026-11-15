@@ -3,7 +3,7 @@ import Link from "next/link";
 import { isAdmin } from "@/lib/auth";
 import { getOffer, listAllOffers, SUBMITTER_ROLES } from "@/lib/offers";
 import { listAllReviews } from "@/lib/reviews";
-import { logout, moderateReview } from "./actions";
+import { logout, moderateReview, replyToReview } from "./actions";
 import DeleteButton from "./DeleteButton";
 import LoginForm from "./LoginForm";
 import OfferForm from "./OfferForm";
@@ -102,6 +102,8 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
       <p className="note" style={{ marginBottom: 12 }}>
         Publikuj każdą opinię zgodną z regulaminem, także krytyczną. Odrzucaj tylko obraźliwe, z danymi osobowymi
         (nazwiska, telefony, adresy), reklamy i spam. Te same zasady dla każdej agencji, również dla Twojej.
+        Odpowiedź agencji wpisuj tylko taką, jaką agencja przysłała (np. e-mailem). Odpowiedź nigdy nie zastępuje
+        ani nie usuwa opinii.
       </p>
       <div className="admintable panel">
         <table>
@@ -116,6 +118,12 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
                   <span className="stars">{"★".repeat(r.rating)}{"☆".repeat(5 - r.rating)}</span>{" "}
                   <b>{r.nickname || "Opiekunka"}</b>{r.worked && <span className="note"> · pracowała: {r.worked}</span>}
                   <p style={{ margin: "4px 0 0", whiteSpace: "pre-line" }}>{r.body}</p>
+                  <form action={replyToReview} className="replyform">
+                    <input type="hidden" name="id" value={r.id} />
+                    <textarea name="reply" maxLength={2000} defaultValue={r.reply}
+                      placeholder="Odpowiedź agencji (wklej tekst, który przysłała agencja; puste = brak)" />
+                    <button type="submit" className="ghost">Zapisz odpowiedź agencji</button>
+                  </form>
                 </td>
                 <td>
                   {r.reported && <span className="chip promo">Zgłoszona przez czytelnika</span>}{" "}

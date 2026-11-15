@@ -31,6 +31,7 @@ Ostatnia aktualizacja: 2026-11-02
 - [x] Filtry według kategorii w panelu filtrów: kwota, niemiecki, umowa, ZUS i ubezpieczenie, warunki, opinie (02.11.2026)
 - [x] Opinie opiekunek: formularz `/opinia`, sprawdzanie w panelu `/admin`, średnia ocena, „Zgłoś naruszenie”, zasady w regulaminie § 7 (02.11.2026)
 - [x] Przycisk „Aplikuj na stronie agencji” – link wpisywany w panelu przy każdej agencji (02.11.2026)
+- [x] Pakiety dla agencji – funkcje: logo wgrywane w panelu, znaczek „Dane potwierdzone przez agencję” z datą, odpowiedzi agencji pod opiniami (15.11.2026)
 - [x] Testy w przeglądarce: filtry, porównanie, logowanie, dodawanie/edycja/usuwanie, tryb offline, telefon, tryb ciemny
 
 ## Do zrobienia

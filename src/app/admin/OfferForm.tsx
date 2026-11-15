@@ -49,6 +49,18 @@ export default function OfferForm({ offer }: { offer: Offer | null }) {
         </label>
         <label>Długość turnusu<input type="text" name="rotation" placeholder="np. 6–12 tygodni" defaultValue={val("rotation", o?.rotation)} /></label>
         <label>Data weryfikacji<input type="text" name="verified" placeholder="RRRR-MM-DD" defaultValue={val("verified", o?.verified)} /></label>
+        <label>Dane potwierdzone przez agencję (data)
+          <input type="text" name="confirmed" placeholder="RRRR-MM-DD, puste = nie" defaultValue={val("confirmed", o?.confirmed)} />
+        </label>
+        <div className="full logofield">
+          <label>Logo agencji (PNG, JPG lub WEBP, do 300 KB)
+            <input type="file" name="logo" accept="image/png,image/jpeg,image/webp" />
+          </label>
+          {o?.logo && (
+            <span className="logonow"><img src={o.logo} alt="Obecne logo" />
+              <label className="chk"><input type="checkbox" name="removeLogo" /> Usuń logo</label></span>
+          )}
+        </div>
 
         <fieldset className="full">
           <legend>Formy umów podane wprost (do filtrów)</legend>

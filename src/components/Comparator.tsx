@@ -273,6 +273,12 @@ function Reviews({ o, reviews }: { o: Offer; reviews: Review[] }) {
             <div className="by"><span className="stars" aria-label={`Ocena ${r.rating} z 5`}>{stars(r.rating)}</span>
               <b>{r.nickname || "Opiekunka"}</b>{r.worked && <span>pracowała: {r.worked}</span>}<span className="num">{r.date}</span></div>
             <p>{r.body}</p>
+            {r.reply && (
+              <div className="reply">
+                <div className="by"><b>Odpowiedź agencji {o.name}</b><span className="num">{r.replyDate}</span></div>
+                <p>{r.reply}</p>
+              </div>
+            )}
             <div className="by"><ReportButton id={r.id} /></div>
           </div>
         ))}
@@ -298,6 +304,7 @@ function OfferCard({ o, reviews, minLine, selected, compareDisabled, onCompare }
       <div className="orow">
         <div className="ohead">
           <div className="oname">
+            {o.logo && <img className="ologo" src={o.logo} alt="" width={96} height={40} loading="lazy" />}
             <h3>{o.name}</h3>
             {o.promoted && <span className="chip promo">Oferta promowana</span>}
             {o.affiliated && <span className="chip promo">Tu pracuje autorka serwisu</span>}
@@ -312,6 +319,7 @@ function OfferCard({ o, reviews, minLine, selected, compareDisabled, onCompare }
             <p className="note">{o.description}{o.city && !o.description.includes(o.city) ? ` Siedziba: ${o.city}.` : ""}</p>
           )}
           <div className="chips">
+            {o.confirmed && <span className="chip ok" title="Agencja sama potwierdziła te informacje">✓ Dane potwierdzone przez agencję · {o.confirmed}</span>}
             {o.contracts.length
               ? o.contracts.map((c) => <span className="chip" key={c}>{CONTRACTS[c]}</span>)
               : <span className="chip no">Umowa: brak informacji</span>}

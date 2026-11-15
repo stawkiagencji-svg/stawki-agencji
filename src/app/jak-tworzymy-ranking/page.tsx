@@ -12,6 +12,12 @@ export default function RankingPage() {
         Stawki i warunki zbieramy z publicznych ogłoszeń agencji oraz z informacji przekazanych przez agencje. Przy każdej
         ofercie podajemy datę ostatniej weryfikacji i, jeśli to możliwe, link do źródła.
       </p>
+      <h2>„Dane potwierdzone przez agencję”</h2>
+      <p>
+        Ten znaczek oznacza, że agencja sama sprawdziła i potwierdziła informacje o swojej ofercie w podanym dniu. Nie
+        oznacza, że my je zweryfikowaliśmy ani że oferta jest lepsza od innych. Znaczek i logo agencji mogą być częścią
+        płatnego pakietu, ale nie wpływają na kolejność ofert, stawki ani opinie.
+      </p>
       <h2>Kolejność ofert</h2>
       <p>
         Domyślnie oferty są uporządkowane według najwyższej stawki miesięcznej netto. Możesz zmienić kolejność na stawkę

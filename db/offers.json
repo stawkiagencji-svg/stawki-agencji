@@ -28,7 +28,8 @@
     "support": "",
     "housing": "W ofertach podawane są konkretne przerwy i warunki domu; zależne od zlecenia.",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "Active Intercare",
@@ -60,7 +61,8 @@
     "support": "Polskojęzyczny koordynator 24/7; deklarowana pomoc w Niemczech.",
     "housing": "",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "A&J Partners",
@@ -92,7 +94,8 @@
     "support": "",
     "housing": "W części ofert własny pokój, internet, czas wolny; warunki zależne od zlecenia.",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "Agnesdaheim",
@@ -121,7 +124,8 @@
     "support": "Deklaruje bezpośrednie wsparcie po polsku.",
     "housing": "",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "Aterima Med",
@@ -150,7 +154,8 @@
     "support": "Ponad 50 lokalnych rezydentów w Niemczech; koordynator, wsparcie psychologiczne, językowe, medyczne i prawne.",
     "housing": "Oferty opisują pokój/warunki osobno; zależnie od zlecenia.",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "Avanti Medic",
@@ -182,7 +187,8 @@
     "support": "Koordynator przez cały okres zatrudnienia.",
     "housing": "Zakwaterowanie i dodatek żywieniowy; czas wolny zależy od zlecenia.",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "CareWork",
@@ -214,7 +220,8 @@
     "support": "Alarmowy telefon 24/7; deklarowana pomoc pracowników w rozwiązywaniu problemów.",
     "housing": "Zakwaterowanie i wyżywienie zależne od oferty; szczegóły w konkretnych zleceniach.",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "Caring Personnel",
@@ -247,7 +254,8 @@
     "support": "Deklarowane wsparcie koordynatorki 24/7.",
     "housing": "Szczegóły pokoju i warunków opisane w konkretnych ofertach.",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "Ethicus Care",
@@ -276,7 +284,8 @@
     "support": "Deklaruje koordynatora po stronie niemieckiej i pomoc 24/7.",
     "housing": "Warunki zakwaterowania i obowiązki podane indywidualnie w ofertach.",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "Eurokontakt",
@@ -308,7 +317,8 @@
     "support": "Stały koordynator do bieżących spraw zlecenia.",
     "housing": "Szczegóły zależą od oferty; zakres i stawka znane przed podjęciem decyzji.",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "Frigga",
@@ -337,7 +347,8 @@
     "support": "Deklaruje pełne wsparcie podczas wyjazdu.",
     "housing": "",
     "affiliated": false,
-    "zusAvg": true
+    "zusAvg": true,
+    "confirmed": ""
   },
   {
     "name": "MEDIPE",
@@ -366,7 +377,8 @@
     "support": "Stały polski koordynator, całodobowy numer alarmowy; dostęp do psychologa i pielęgniarki.",
     "housing": "Osobny pokój, często internet/TV/własna łazienka w ofertach; szczegóły zależne od zlecenia.",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "Medius Work",
@@ -395,7 +407,8 @@
     "support": "Deklaruje troskę o bezpieczeństwo i wsparcie; zakres na miejscu: brak informacji.",
     "housing": "",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "Opieka24-7",
@@ -426,7 +439,8 @@
     "support": "Wsparcie zespołu podczas zlecenia; w razie niezgodności deklaruje reakcję i organizację powrotu.",
     "housing": "Własny pokój z internetem, wyżywienie i co najmniej 1 dzień wolny w tygodniu według FAQ.",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "Opiekunki-24h",
@@ -457,7 +471,8 @@
     "support": "",
     "housing": "",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "Pflegerin24",
@@ -486,7 +501,8 @@
     "support": "",
     "housing": "",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "Prohuman",
@@ -515,7 +531,8 @@
     "support": "",
     "housing": "Warunki poznawane przy konkretnej ofercie; strona podkreśla dopasowanie profilu do zlecenia.",
     "affiliated": false,
-    "zusAvg": true
+    "zusAvg": true,
+    "confirmed": ""
   },
   {
     "name": "Promedica24",
@@ -546,7 +563,8 @@
     "support": "Opiekun Kontaktu, całodobowa linia alarmowa w weekendy.",
     "housing": "Zakwaterowanie z seniorem; szczegóły w każdej ofercie.",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "SCG",
@@ -577,7 +595,8 @@
     "support": "Deklaruje wsparcie koordynatora podczas pobytu w Niemczech.",
     "housing": "",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "Veritas Opieka",
@@ -606,7 +625,8 @@
     "support": "Deklaruje opiekę nad opiekunem od podpisania umowy do powrotu; szczegóły lokalnej pomocy: brak informacji.",
     "housing": "Zakwaterowanie u podopiecznego; pozostałe warunki opisane w ofercie.",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "InterKadra",
@@ -637,7 +657,8 @@
     "support": "",
     "housing": "",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "Feliza Job",
@@ -668,7 +689,8 @@
     "support": "",
     "housing": "",
     "affiliated": false,
-    "zusAvg": false
+    "zusAvg": false,
+    "confirmed": ""
   },
   {
     "name": "Antczak Care",
@@ -700,6 +722,7 @@
     "support": "Duże wsparcie na miejscu: zlecenia są w okolicy biura w Niemczech, więc zespół może szybko pomóc. Każdą rodzinę firma sprawdza osobiście. Firma deklaruje, że dba o komfort opiekunek i traktuje każdą jako część zespołu.",
     "housing": "2 godziny wolnego dziennie i jeden cały dzień wolny w tygodniu. Czas wolny firma ustala z podopiecznym lub jego rodziną przed przyjęciem zlecenia, żeby opiekunka mogła świadomie podjąć decyzję.",
     "affiliated": true,
-    "zusAvg": true
+    "zusAvg": true,
+    "confirmed": ""
   }
 ]

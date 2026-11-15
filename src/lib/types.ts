@@ -55,9 +55,13 @@ export type Offer = {
   affiliated: boolean;
   /** false = szkic widoczny tylko w panelu administratora */
   published: boolean;
+  /** Data (RRRR-MM-DD), kiedy agencja potwierdziła swoje dane; puste = nie potwierdziła. */
+  confirmed: string;
+  /** Adres logo wgranego w panelu; puste = brak logo. */
+  logo: string;
 } & Record<DetailKey, string>;
 
-export type OfferInput = Omit<Offer, "id">;
+export type OfferInput = Omit<Offer, "id" | "logo">;
 
 export const SUBMITTER_ROLES = {
   agencja: "Pracownik agencji",
@@ -74,7 +78,11 @@ export const hasPay = (o: Pick<Offer, "payMin" | "payMax">) => o.payMin !== null
 export const sourceLinks = (s: string) => s.split("|").map((u) => u.trim()).filter((u) => /^https?:\/\//i.test(u));
 
 /** Opinia opiekunki o agencji, widoczna publicznie po sprawdzeniu. */
-export type Review = { id: number; offerId: number; rating: number; nickname: string; worked: string; body: string; date: string };
+export type Review = {
+  id: number; offerId: number; rating: number; nickname: string; worked: string; body: string; date: string;
+  /** Odpowiedź agencji; puste = brak. */
+  reply: string; replyDate: string;
+};
 
 /** Opinia z danymi moderacji – tylko dla panelu administratora. */
 export type AdminReview = Review & { offerName: string; published: boolean; reported: boolean };

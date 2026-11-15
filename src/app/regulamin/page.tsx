@@ -56,6 +56,7 @@ export default function TermsPage() {
         <li>Zasady sprawdzania są takie same dla wszystkich agencji, także dla agencji, w której pracuje Usługodawca. Ta agencja jest oznaczona na stronie.</li>
         <li>Opinie wyrażają zdanie ich autorów, a nie Usługodawcy. Średnia ocena to zwykła średnia wszystkich opublikowanych ocen. Opinie nie wpływają na kolejność agencji na liście.</li>
         <li>Każdy może zgłosić opinię naruszającą regulamin przyciskiem „Zgłoś naruszenie”. Agencja może też napisać na {owner.email}. Usługodawca rozpatruje zgłoszenie w ciągu 14 dni.</li>
+        <li>Agencja może odpowiedzieć na opinię o sobie, wysyłając odpowiedź na {owner.email}. Odpowiedź jest publikowana pod opinią i oznaczona jako odpowiedź agencji. Odpowiedź nie powoduje usunięcia ani zmiany opinii.</li>
         <li>Autor może poprosić o usunięcie swojej opinii, pisząc na {owner.email} i wskazując agencję, datę i treść opinii.</li>
       </ol>
 

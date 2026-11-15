@@ -11,8 +11,12 @@ const COLUMNS: [keyof OfferInput, string][] = [
   ["notes", "notes"], ["travel", "travel"], ["a1", "a1"], ["zusAvg", "zus_avg"], ["example", "example"],
   ["promoted", "promoted"], ["affiliated", "affiliated"], ["published", "published"], ["contractNote", "contract_note"],
   ["insurance", "insurance"], ["travelNote", "travel_note"], ["bonus", "bonus"],
-  ["support", "support"], ["housing", "housing"],
+  ["support", "support"], ["housing", "housing"], ["confirmed", "confirmed"],
 ];
+
+// Bez samego pliku logo: wczytywanie obrazków przy każdej liście byłoby zbędnym obciążeniem.
+const SELECT = `SELECT id, ${COLUMNS.map(([, c]) => c).join(", ")}, origin, submitter_role, submitter_email,
+  logo_type, extract(epoch FROM updated_at)::bigint AS version FROM offers`;
 
 const isContract = (c: string): c is ContractKey => c in CONTRACTS;
 
@@ -20,6 +24,7 @@ function fromRow(r: Record<string, unknown>): Offer {
   const o = { id: r.id } as Record<string, unknown>;
   for (const [key, col] of COLUMNS) o[key] = r[col];
   o.contracts = (r.contracts as string[]).filter(isContract);
+  o.logo = r.logo_type ? `/logo/${r.id}?v=${r.version}` : "";
   return o as Offer;
 }
 
@@ -28,14 +33,14 @@ const ORDER = "promoted DESC, pay_max DESC NULLS LAST, pay_min DESC NULLS LAST, 
 
 /** Oferty widoczne publicznie (bez szkiców). */
 export async function listPublishedOffers(): Promise<Offer[]> {
-  const { rows } = await pool.query(`SELECT * FROM offers WHERE published ORDER BY ${ORDER}`);
+  const { rows } = await pool.query(`${SELECT} WHERE published ORDER BY ${ORDER}`);
   return rows.map(fromRow);
 }
 
 /** Wszystkie oferty dla panelu administratora: najpierw nowe zgłoszenia, potem szkice, potem reszta. */
 export async function listAllOffers(): Promise<AdminOffer[]> {
   const { rows } = await pool.query(
-    "SELECT * FROM offers ORDER BY published, (origin = 'form') DESC, created_at DESC, name",
+    `${SELECT} ORDER BY published, (origin = 'form') DESC, created_at DESC, name`,
   );
   return rows.map((r) => ({
     ...fromRow(r), origin: r.origin, submitterRole: r.submitter_role, submitterEmail: r.submitter_email,
@@ -43,7 +48,7 @@ export async function listAllOffers(): Promise<AdminOffer[]> {
 }
 
 export async function getOffer(id: number): Promise<Offer | null> {
-  const { rows } = await pool.query("SELECT * FROM offers WHERE id = $1", [id]);
+  const { rows } = await pool.query(`${SELECT} WHERE id = $1`, [id]);
   return rows[0] ? fromRow(rows[0]) : null;
 }
 
@@ -73,7 +78,7 @@ export async function createSubmission(
   );
   if (rows[0].recent >= SUBMISSIONS_PER_HOUR) return "Wysłano już kilka zgłoszeń z tego urządzenia. Spróbuj ponownie za godzinę.";
   if (rows[0].pending >= MAX_PENDING_SUBMISSIONS) return "Formularz jest chwilowo przepełniony. Spróbuj ponownie za kilka dni.";
-  const id = await createOffer({ ...o, published: false, promoted: false, affiliated: false, example: false, verified: "" });
+  const id = await createOffer({ ...o, published: false, promoted: false, affiliated: false, example: false, verified: "", confirmed: "" });
   await pool.query(
     "UPDATE offers SET origin = 'form', submitter_role = $1, submitter_email = $2, ip_hash = $3 WHERE id = $4",
     [meta.role, meta.email, meta.ipHash, id],
@@ -84,6 +89,20 @@ export async function createSubmission(
 export async function updateOffer(id: number, o: OfferInput): Promise<void> {
   const sets = COLUMNS.map(([, col], i) => `${col}=$${i + 1}`).join(", ");
   await pool.query(`UPDATE offers SET ${sets}, updated_at=now() WHERE id=$${COLUMNS.length + 1}`, [...values(o), id]);
+}
+
+export const LOGO_TYPES = ["image/png", "image/jpeg", "image/webp"];
+export const LOGO_MAX_BYTES = 300 * 1024;
+
+/** Zapisuje albo usuwa (null) logo agencji. */
+export async function setOfferLogo(id: number, logo: { data: Buffer; type: string } | null): Promise<void> {
+  await pool.query("UPDATE offers SET logo = $1, logo_type = $2, updated_at = now() WHERE id = $3",
+    [logo?.data ?? null, logo?.type ?? "", id]);
+}
+
+export async function getOfferLogo(id: number): Promise<{ data: Buffer; type: string } | null> {
+  const { rows } = await pool.query("SELECT logo, logo_type FROM offers WHERE id = $1 AND published AND logo IS NOT NULL", [id]);
+  return rows[0] ? { data: rows[0].logo, type: rows[0].logo_type } : null;
 }
 
 export async function deleteOffer(id: number): Promise<void> {
@@ -129,6 +148,7 @@ export function parseOfferForm(f: FormData): { ok: true; offer: OfferInput } | {
     promoted: f.get("promoted") === "on",
     affiliated: f.get("affiliated") === "on",
     published: f.get("published") === "on",
+    confirmed: /^\d{4}-\d{2}-\d{2}$/.test(text(f, "confirmed", 10)) ? text(f, "confirmed", 10) : "",
     ...details,
   };
   if (!offer.name) return { ok: false, error: "Wpisz nazwę agencji." };

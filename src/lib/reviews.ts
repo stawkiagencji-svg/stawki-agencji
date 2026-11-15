@@ -5,6 +5,7 @@ function fromRow(r: Record<string, unknown>): Review {
   return {
     id: r.id as number, offerId: r.offer_id as number, rating: r.rating as number, nickname: r.nickname as string,
     worked: r.worked as string, body: r.body as string, date: (r.created_at as Date).toISOString().slice(0, 10),
+    reply: r.reply as string, replyDate: r.reply_at ? (r.reply_at as Date).toISOString().slice(0, 10) : "",
   };
 }
 
@@ -58,6 +59,11 @@ export async function reportReview(id: number): Promise<void> {
 
 export async function setReviewPublished(id: number, published: boolean): Promise<void> {
   await pool.query("UPDATE reviews SET published = $1, reported = FALSE WHERE id = $2", [published, id]);
+}
+
+/** Odpowiedź agencji pod opinią; pusty tekst usuwa odpowiedź. */
+export async function setReviewReply(id: number, reply: string): Promise<void> {
+  await pool.query("UPDATE reviews SET reply = $1, reply_at = CASE WHEN $1 = '' THEN NULL ELSE now() END WHERE id = $2", [reply, id]);
 }
 
 export async function deleteReview(id: number): Promise<void> {

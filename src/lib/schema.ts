@@ -44,6 +44,10 @@ ALTER TABLE offers ADD COLUMN IF NOT EXISTS ip_hash TEXT;
 ALTER TABLE offers ADD COLUMN IF NOT EXISTS affiliated BOOLEAN NOT NULL DEFAULT FALSE;
 ALTER TABLE offers ADD COLUMN IF NOT EXISTS zus_avg BOOLEAN NOT NULL DEFAULT FALSE;
 ALTER TABLE offers ADD COLUMN IF NOT EXISTS apply_url TEXT NOT NULL DEFAULT '';
+-- Data, kiedy agencja potwierdziła swoje dane (znaczek przy ofercie), i logo wgrane w panelu.
+ALTER TABLE offers ADD COLUMN IF NOT EXISTS confirmed TEXT NOT NULL DEFAULT '';
+ALTER TABLE offers ADD COLUMN IF NOT EXISTS logo BYTEA;
+ALTER TABLE offers ADD COLUMN IF NOT EXISTS logo_type TEXT NOT NULL DEFAULT '';
 
 -- Opinie opiekunek. Nowe czekają na sprawdzenie (published = false); ip_hash służy tylko do limitu i znika po 30 dniach.
 CREATE TABLE IF NOT EXISTS reviews (
@@ -58,5 +62,8 @@ CREATE TABLE IF NOT EXISTS reviews (
   ip_hash     TEXT,
   created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+-- Odpowiedź agencji pod opinią, wpisywana w panelu.
+ALTER TABLE reviews ADD COLUMN IF NOT EXISTS reply TEXT NOT NULL DEFAULT '';
+ALTER TABLE reviews ADD COLUMN IF NOT EXISTS reply_at TIMESTAMPTZ;
 CREATE INDEX IF NOT EXISTS reviews_offer_idx ON reviews (offer_id) WHERE published;
 `;
