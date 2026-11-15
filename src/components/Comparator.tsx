@@ -21,7 +21,6 @@ type Filters = {
   german: number;
   travel: boolean;
   a1: boolean;
-  zusAvg: boolean;
   bonus: boolean;
   housing: boolean;
   support: boolean;
@@ -31,7 +30,7 @@ type Filters = {
 };
 
 const DEFAULT_FILTERS: Filters = {
-  contracts: ALL_CONTRACTS, min: 1000, german: 3, travel: false, a1: false, zusAvg: false, bonus: false,
+  contracts: ALL_CONTRACTS, min: 1000, german: 3, travel: false, a1: false, bonus: false,
   housing: false, support: false, reviewed: false, showNoPay: true, sort: "max",
 };
 
@@ -66,9 +65,9 @@ const SORTERS: Record<SortKey, (a: Offer, b: Offer) => number> = {
 };
 
 /** Przełączniki „tak/nie” w panelu filtrów, pogrupowane w kategorie. */
-type Toggle = "zusAvg" | "a1" | "travel" | "bonus" | "housing" | "support" | "reviewed";
+type Toggle = "a1" | "travel" | "bonus" | "housing" | "support" | "reviewed";
 const CATEGORIES: { label: string; toggles: [Toggle, string][] }[] = [
-  { label: "ZUS i ubezpieczenie", toggles: [["zusAvg", "ZUS od średniej krajowej (wyższa emerytura)"], ["a1", "Opłacane składki / ubezpieczenie"]] },
+  { label: "ZUS i ubezpieczenie", toggles: [["a1", "Opłacane składki ZUS / ubezpieczenie"]] },
   { label: "Warunki", toggles: [["travel", "Agencja organizuje lub opłaca dojazd"], ["bonus", "Premie lub dodatki"], ["housing", "Opisane warunki na miejscu (pokój, przerwy)"], ["support", "Wsparcie na miejscu (koordynator)"]] },
   { label: "Opinie", toggles: [["reviewed", "Tylko agencje z opiniami opiekunek"]] },
 ];
@@ -107,7 +106,7 @@ export default function Comparator({ offers, reviews }: { offers: Offer[]; revie
       const payOk = hasPay(o) ? top(o) >= f.min : f.showNoPay && f.min <= SCALE[0];
       return contractOk && payOk &&
         (o.german === null || o.german <= f.german) &&
-        (!f.travel || o.travel) && (!f.a1 || o.a1 || o.zusAvg) && (!f.zusAvg || o.zusAvg) && (!f.bonus || o.bonus.trim()) &&
+        (!f.travel || o.travel) && (!f.a1 || o.a1 || o.zusAvg) && (!f.bonus || o.bonus.trim()) &&
         (!f.housing || o.housing.trim()) && (!f.support || o.support.trim()) && (!f.reviewed || reviewsOf.has(o.id));
     });
     // Oferty promowane zawsze na górze i zawsze oznaczone (wymóg przejrzystości rankingu).
@@ -317,7 +316,7 @@ function OfferCard({ o, reviews, minLine, selected, compareDisabled, onCompare }
               ? o.contracts.map((c) => <span className="chip" key={c}>{CONTRACTS[c]}</span>)
               : <span className="chip no">Umowa: brak informacji</span>}
             {o.travel && <span className="chip ok">Dojazd zapewniony</span>}
-            {o.zusAvg ? <span className="chip ok">ZUS od średniej krajowej</span> : o.a1 && <span className="chip ok">Składki opłacane</span>}
+            {(o.a1 || o.zusAvg) && <span className="chip ok">Składki ZUS opłacane</span>}
             {o.bonus && <span className="chip ok">Premie / dodatki</span>}
           </div>
         </div>
