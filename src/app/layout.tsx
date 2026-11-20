@@ -33,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/jak-tworzymy-ranking">Jak tworzymy ranking</Link>
               <Link href="/regulamin">Regulamin</Link>
               <Link href="/polityka-prywatnosci">Polityka prywatności</Link>
+              <Link href="/regulamin-agencji">Dla agencji</Link>
             </nav>
             <p>Dane mają charakter informacyjny i nie stanowią oferty pracy. Zawsze potwierdź warunki bezpośrednio u agencji.</p>
           </footer>
