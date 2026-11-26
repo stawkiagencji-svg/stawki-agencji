@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { checkPassword, endSession, isAdmin, startSession } from "@/lib/auth";
 import { createOffer, deleteOffer, LOGO_MAX_BYTES, parseOfferForm, setOfferLogo, updateOffer } from "@/lib/offers";
+import { deleteOrder, ORDER_STATUSES, setOrderStatus, type OrderStatus } from "@/lib/orders";
 import { deleteReview, setReviewPublished, setReviewReply } from "@/lib/reviews";
 
 export type FormState = {
@@ -94,5 +95,14 @@ export async function replyToReview(form: FormData): Promise<void> {
   if (!(await isAdmin())) redirect("/admin");
   await setReviewReply(Number(form.get("id")), String(form.get("reply") ?? "").trim().slice(0, 2000));
   revalidatePath("/");
+  revalidatePath("/admin");
+}
+
+export async function updateOrder(form: FormData): Promise<void> {
+  if (!(await isAdmin())) redirect("/admin");
+  const id = Number(form.get("id"));
+  const action = String(form.get("action") ?? "");
+  if (action === "delete") await deleteOrder(id);
+  else if (action in ORDER_STATUSES) await setOrderStatus(id, action as OrderStatus);
   revalidatePath("/admin");
 }

@@ -218,3 +218,16 @@ footer.site p { margin: 10px 0 0; }
 .logofield { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
 .logonow { display: flex; gap: 10px; align-items: center; }
 .logonow img { height: 40px; max-width: 120px; object-fit: contain; background: #fff; border: 1px solid var(--line); border-radius: 4px; }
+
+/* Cennik */
+.plans { display: grid; gap: 14px; margin-top: 22px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.plan { display: grid; gap: 6px; align-content: start; position: relative; }
+.plan h2 { font: 800 15px var(--display); text-transform: uppercase; letter-spacing: .08em; color: var(--accent); margin: 0; }
+.plan .price { font: 800 40px/1.1 var(--display); margin: 4px 0 0; }
+.plan .price small { font-size: 16px; font-weight: 600; color: var(--muted); }
+.plan .note s { color: var(--bad); }
+.plan ul { margin: 8px 0 0; padding-left: 20px; display: grid; gap: 4px; }
+.plan.best { border: 2px solid var(--pay); }
+.plan.best .chip { justify-self: start; }
+.founder { margin: 16px 0; background: var(--pay-soft); border-color: transparent; }
+.founder b { font: 800 22px var(--display); margin-right: 8px; }
