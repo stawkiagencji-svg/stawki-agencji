@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { sign } from "@/lib/auth";
 import { FOUNDER_MONTHS, FOUNDER_SLOTS, FREE_FEATURES, PACKAGES, TRIAL_DAYS, type PackageKey } from "@/lib/packages";
 import { owner } from "@/lib/owner";
@@ -45,7 +46,7 @@ export default function PricingPage() {
       <p className="note">
         Uczciwe zasady: za pieniądze nie zmieniamy stawek ani warunków i nie usuwamy opinii. Oferty promowane są zawsze
         oznaczone. Podane ceny są cenami końcowymi: sprzedawca nie jest podatnikiem VAT, a za pakiet wystawiamy rachunek (nie fakturę VAT). Płatność przelewem po okresie bezpłatnym, co miesiąc z góry; pakiet możesz zakończyć w każdej chwili
-        z końcem opłaconego miesiąca. Pytania: {owner.email}.
+        z końcem opłaconego miesiąca. Przy płatności za 12 miesięcy z góry płacisz za 10. Jednocześnie wyświetlamy najwyżej trzy oferty promowane, rotacyjnie. Szczegóły: <Link href="/regulamin-agencji">Regulamin usług dla agencji</Link>. Pytania: {owner.email}.
       </p>
 
       <h2 style={{ margin: "28px 0 10px" }}>Zamów pakiet</h2>

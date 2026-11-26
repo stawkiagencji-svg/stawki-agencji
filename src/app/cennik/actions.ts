@@ -3,7 +3,7 @@
 import { headers } from "next/headers";
 import { sign } from "@/lib/auth";
 import { createOrder } from "@/lib/orders";
-import { PACKAGES, type PackageKey } from "@/lib/packages";
+import { BILLING, PACKAGES, type Billing, type PackageKey } from "@/lib/packages";
 
 export type OrderState = { error?: string; ok?: boolean; values?: Record<string, string>; n?: number };
 
@@ -27,6 +27,8 @@ export async function submitOrder(_: OrderState, form: FormData): Promise<OrderS
 
   const pkg = String(form.get("package") ?? "");
   if (!(pkg in PACKAGES)) return fail("Wybierz pakiet: Standard albo Premium.");
+  const billing = String(form.get("billing") ?? "monthly");
+  if (!(billing in BILLING)) return fail("Wybierz sposób płatności.");
   const agency = text(form, "agency", 120);
   const company = text(form, "company", 200);
   const contactName = text(form, "contactName", 120);
@@ -44,7 +46,7 @@ export async function submitOrder(_: OrderState, form: FormData): Promise<OrderS
   const h = await headers();
   const ip = (h.get("x-forwarded-for") ?? "").split(",")[0].trim() || h.get("x-real-ip") || "unknown";
   const error = await createOrder({
-    package: pkg as PackageKey, agency, company, nip, address: text(form, "address", 300), contactName,
+    package: pkg as PackageKey, billing: billing as Billing, agency, company, nip, address: text(form, "address", 300), contactName,
     phone: text(form, "phone", 40), email, applyUrl, startDate: text(form, "startDate", 10), notes: text(form, "notes", 1000),
   }, sign("ip:" + ip));
   if (error) return fail(error);

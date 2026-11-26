@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useActionState } from "react";
-import { PACKAGES, type PackageKey } from "@/lib/packages";
+import { BILLING, PACKAGES, type Billing, type PackageKey } from "@/lib/packages";
 import { submitOrder, type OrderState } from "./actions";
 
 export default function OrderForm({ token, email }: { token: string; email: string }) {
@@ -42,6 +42,17 @@ export default function OrderForm({ token, email }: { token: string; email: stri
         </div>
       </fieldset>
 
+      <fieldset>
+        <legend>Płatność *</legend>
+        <div className="row">
+          {(Object.keys(BILLING) as Billing[]).map((k) => (
+            <label className="chk" key={k}>
+              <input type="radio" name="billing" value={k} required defaultChecked={(val("billing") || "monthly") === k} /> {BILLING[k]}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
       <fieldset className="form">
         <legend className="full">Agencja i dane do rachunku</legend>
         <label>Nazwa agencji *<input type="text" name="agency" required maxLength={120} defaultValue={val("agency")} /></label>
@@ -67,8 +78,8 @@ export default function OrderForm({ token, email }: { token: string; email: stri
         <p className="note full">Logo agencji (PNG lub JPG) prześlij po potwierdzeniu zamówienia na adres {email}.</p>
         <label className="chk full">
           <input type="checkbox" name="terms" required defaultChecked={val("terms") === "on"} />
-          <span>Akceptuję <Link href="/regulamin">regulamin</Link> i zapoznałem się z{" "}
-            <Link href="/polityka-prywatnosci">polityką prywatności</Link>. *</span>
+          <span>Akceptuję <Link href="/regulamin-agencji">Regulamin usług dla agencji</Link> i zapoznałem się z{" "}
+            <Link href="/polityka-prywatnosci">polityką prywatności</Link>. Zamawiam w związku z prowadzoną działalnością gospodarczą. *</span>
         </label>
       </fieldset>
 

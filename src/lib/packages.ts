@@ -32,5 +32,8 @@ export const FOUNDER_SLOTS = 20;
 export const FOUNDER_MONTHS = 12;
 export const TRIAL_DAYS = 30;
 
+export const BILLING = { monthly: "Miesięcznie", yearly: "Rocznie z góry (12 miesięcy w cenie 10)" } as const;
+export type Billing = keyof typeof BILLING;
+
 export const ORDER_STATUSES = { new: "Nowe", active: "Aktywne", ended: "Zakończone" } as const;
 export type OrderStatus = keyof typeof ORDER_STATUSES;

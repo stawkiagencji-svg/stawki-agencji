@@ -1,11 +1,11 @@
 import { pool } from "./db";
-import type { OrderStatus, PackageKey } from "./packages";
+import type { Billing, OrderStatus, PackageKey } from "./packages";
 
-export { FOUNDER_MONTHS, FOUNDER_SLOTS, FREE_FEATURES, ORDER_STATUSES, PACKAGES, TRIAL_DAYS } from "./packages";
-export type { OrderStatus, PackageKey } from "./packages";
+export { BILLING, FOUNDER_MONTHS, FOUNDER_SLOTS, FREE_FEATURES, ORDER_STATUSES, PACKAGES, TRIAL_DAYS } from "./packages";
+export type { Billing, OrderStatus, PackageKey } from "./packages";
 
 export type OrderInput = {
-  package: PackageKey; agency: string; company: string; nip: string; address: string;
+  package: PackageKey; billing: Billing; agency: string; company: string; nip: string; address: string;
   contactName: string; phone: string; email: string; applyUrl: string; startDate: string; notes: string;
 };
 export type Order = OrderInput & { id: number; status: OrderStatus; date: string };
@@ -26,9 +26,9 @@ export async function createOrder(o: OrderInput, ipHash: string): Promise<string
   if (rows[0].recent >= ORDERS_PER_HOUR) return "Wysłano już kilka zamówień z tego urządzenia. Spróbuj ponownie za godzinę.";
   if (rows[0].pending >= MAX_NEW_ORDERS) return "Formularz jest chwilowo przepełniony. Napisz do nas e-mail.";
   await pool.query(
-    `INSERT INTO orders (package, agency, company, nip, address, contact_name, phone, email, apply_url, start_date, notes, ip_hash)
-     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`,
-    [o.package, o.agency, o.company, o.nip, o.address, o.contactName, o.phone, o.email, o.applyUrl, o.startDate, o.notes, ipHash],
+    `INSERT INTO orders (package, billing, agency, company, nip, address, contact_name, phone, email, apply_url, start_date, notes, ip_hash)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)`,
+    [o.package, o.billing, o.agency, o.company, o.nip, o.address, o.contactName, o.phone, o.email, o.applyUrl, o.startDate, o.notes, ipHash],
   );
   return null;
 }
@@ -39,7 +39,7 @@ export async function listOrders(): Promise<Order[]> {
     `SELECT * FROM orders ORDER BY CASE status WHEN 'new' THEN 0 WHEN 'active' THEN 1 ELSE 2 END, created_at DESC`,
   );
   return rows.map((r) => ({
-    id: r.id, package: r.package, agency: r.agency, company: r.company, nip: r.nip, address: r.address,
+    id: r.id, package: r.package, billing: r.billing, agency: r.agency, company: r.company, nip: r.nip, address: r.address,
     contactName: r.contact_name, phone: r.phone, email: r.email, applyUrl: r.apply_url, startDate: r.start_date,
     notes: r.notes, status: r.status, date: (r.created_at as Date).toISOString().slice(0, 10),
   }));

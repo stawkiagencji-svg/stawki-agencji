@@ -80,8 +80,10 @@ CREATE TABLE IF NOT EXISTS orders (
   apply_url     TEXT NOT NULL DEFAULT '',
   start_date    TEXT NOT NULL DEFAULT '',
   notes         TEXT NOT NULL DEFAULT '',
+  billing       TEXT NOT NULL DEFAULT 'monthly',
   status        TEXT NOT NULL DEFAULT 'new',
   ip_hash       TEXT,
   created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
 );
+ALTER TABLE orders ADD COLUMN IF NOT EXISTS billing TEXT NOT NULL DEFAULT 'monthly';
 `;

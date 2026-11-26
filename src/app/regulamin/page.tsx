@@ -43,11 +43,9 @@ export default function TermsPage() {
       <h2>§ 6. Oferty promowane</h2>
       <p>
         Agencje mogą zamówić płatny pakiet (Standard lub Premium) przez formularz na stronie „Cennik” albo e-mailem.
-        Zakres pakietów i ceny podaje strona „Cennik”. Umowa zostaje zawarta z chwilą potwierdzenia zamówienia przez
-        Usługodawcę e-mailem. Płatność następuje przelewem, co miesiąc z góry, po okresie bezpłatnym wskazanym w cenniku. Ceny są cenami końcowymi; Usługodawca nie jest podatnikiem VAT i za pakiet wystawia rachunek.
-        Agencja może zakończyć pakiet w każdej chwili z końcem opłaconego miesiąca. Oferty promowane są wyświetlane na
-        początku listy i zawsze oznaczone etykietą „Oferta promowana”. Opłata nie wpływa na prezentowane stawki,
-        warunki ani opinie. Zasady kolejności opisuje strona „Jak tworzymy ranking”.
+        Zakres pakietów, ceny, płatności i rezygnację określa „Regulamin usług dla agencji”. Oferty promowane są
+        wyświetlane na początku listy i zawsze oznaczone etykietą „Oferta promowana”. Opłata nie wpływa na prezentowane
+        stawki, warunki ani opinie. Zasady kolejności opisuje strona „Jak tworzymy ranking”.
       </p>
 
       <h2 id="opinie">§ 7. Opinie opiekunek</h2>

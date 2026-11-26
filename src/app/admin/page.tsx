@@ -167,7 +167,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
             {orders.map((o) => (
               <tr key={o.id}>
                 <td>{o.agency}<div className="note num">{o.date}{o.startDate && <> · start: {o.startDate}</>}</div></td>
-                <td>{PACKAGES[o.package]?.name ?? o.package}<div className="note num">{PACKAGES[o.package]?.founder ?? "—"} zł / mies.</div></td>
+                <td>{PACKAGES[o.package]?.name ?? o.package}<div className="note num">{PACKAGES[o.package]?.founder ?? "—"} zł / mies. · {o.billing === "yearly" ? "rocznie" : "miesięcznie"}</div></td>
                 <td>
                   <b>{o.contactName}</b> · <a href={`mailto:${o.email}`}>{o.email}</a>{o.phone && <> · {o.phone}</>}
                   <div className="note">{o.company}{o.nip && <> · NIP {o.nip}</>}{o.address && <> · {o.address}</>}</div>
