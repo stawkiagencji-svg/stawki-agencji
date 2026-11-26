@@ -44,7 +44,7 @@ export default function PricingPage() {
 
       <p className="note">
         Uczciwe zasady: za pieniądze nie zmieniamy stawek ani warunków i nie usuwamy opinii. Oferty promowane są zawsze
-        oznaczone. Płatność przelewem po okresie bezpłatnym, co miesiąc z góry; pakiet możesz zakończyć w każdej chwili
+        oznaczone. Podane ceny są cenami końcowymi: sprzedawca nie jest podatnikiem VAT, a za pakiet wystawiamy rachunek (nie fakturę VAT). Płatność przelewem po okresie bezpłatnym, co miesiąc z góry; pakiet możesz zakończyć w każdej chwili
         z końcem opłaconego miesiąca. Pytania: {owner.email}.
       </p>
 

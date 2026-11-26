@@ -156,6 +156,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
       <p className="note" style={{ marginBottom: 12 }}>
         Zamówienia z podstrony „Cennik”. Potwierdź zamówienie e-mailem, poproś o logo, uruchom pakiet w ofercie agencji
         (logo, link „Aplikuj”, „Oferta promowana”) i oznacz zamówienie jako „Aktywne”. Pierwsze 30 dni są bezpłatne.
+        Za każdą wpłatę wystaw rachunek (bez VAT) i pilnuj kwartalnego limitu przychodów działalności nierejestrowanej.
       </p>
       <div className="admintable panel">
         <table>
