@@ -139,7 +139,7 @@ export default function Comparator({ offers, reviews }: { offers: Offer[]; revie
           </p>
           {affiliated.length > 0 && (
             <p className="disclosure">
-              Porównywarkę prowadzi była opiekunka, dziś dyrektorka oddziału {affiliated.join(", ")}. Wszystkie
+              Porównywarkę prowadzi była opiekunka, która współpracuje z agencją {affiliated.join(", ")}. Wszystkie
               agencje porównuję według tych samych zasad i źródeł.
             </p>
           )}

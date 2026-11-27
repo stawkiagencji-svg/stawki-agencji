@@ -42,9 +42,10 @@ export default function TermsPage() {
 
       <h2>§ 6. Oferty promowane</h2>
       <p>
-        Agencje mogą wykupić promowanie oferty na podstawie odrębnego porozumienia z Usługodawcą. Oferty promowane są
+        Agencje mogą zamówić płatny pakiet (Standard lub Premium) przez formularz na stronie „Cennik” albo e-mailem.
+        Zakres pakietów, ceny, płatności i rezygnację określa „Regulamin usług dla agencji”. Oferty promowane są
         wyświetlane na początku listy i zawsze oznaczone etykietą „Oferta promowana”. Opłata nie wpływa na prezentowane
-        stawki ani warunki. Zasady kolejności opisuje strona „Jak tworzymy ranking”.
+        stawki, warunki ani opinie. Zasady kolejności opisuje strona „Jak tworzymy ranking”.
       </p>
 
       <h2 id="opinie">§ 7. Opinie opiekunek</h2>

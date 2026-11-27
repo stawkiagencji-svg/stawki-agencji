@@ -36,6 +36,12 @@ export default function PrivacyPage() {
           Dane zgłaszającego nigdy nie są publikowane.
         </li>
         <li>
+          <b>Zamówienie pakietu dla agencji.</b> Przetwarzamy dane podane w formularzu na stronie „Cennik”: nazwę agencji
+          i firmy, NIP, adres, imię i nazwisko, e-mail i telefon osoby do kontaktu oraz uwagi. Służą do zawarcia i
+          wykonania umowy (art. 6 ust. 1 lit. b RODO) oraz rozliczeń wymaganych przepisami (art. 6 ust. 1 lit. c RODO).
+          Przechowujemy je przez czas trwania umowy, a dane rozliczeniowe przez okres wymagany przepisami podatkowymi.
+        </li>
+        <li>
           <b>Opinie o agencjach.</b> Przetwarzamy ocenę, treść opinii, podpis i okres współpracy, jeśli je podasz.
           Publikujemy je przy agencji. Podstawa: prawnie uzasadniony interes, czyli informowanie innych opiekunek
           o warunkach pracy (art. 6 ust. 1 lit. f RODO). Opinię przechowujemy, dopóki agencja jest w serwisie albo do

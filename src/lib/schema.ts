@@ -66,4 +66,26 @@ CREATE TABLE IF NOT EXISTS reviews (
 ALTER TABLE reviews ADD COLUMN IF NOT EXISTS reply TEXT NOT NULL DEFAULT '';
 ALTER TABLE reviews ADD COLUMN IF NOT EXISTS reply_at TIMESTAMPTZ;
 CREATE INDEX IF NOT EXISTS reviews_offer_idx ON reviews (offer_id) WHERE published;
+-- Zamówienia płatnych pakietów z podstrony /cennik. Nie trafiają do publicznych widoków ani API.
+CREATE TABLE IF NOT EXISTS orders (
+  id            SERIAL PRIMARY KEY,
+  package       TEXT NOT NULL,
+  agency        TEXT NOT NULL,
+  company       TEXT NOT NULL,
+  nip           TEXT NOT NULL DEFAULT '',
+  address       TEXT NOT NULL DEFAULT '',
+  contact_name  TEXT NOT NULL,
+  phone         TEXT NOT NULL DEFAULT '',
+  email         TEXT NOT NULL,
+  apply_url     TEXT NOT NULL DEFAULT '',
+  start_date    TEXT NOT NULL DEFAULT '',
+  notes         TEXT NOT NULL DEFAULT '',
+  billing       TEXT NOT NULL DEFAULT 'monthly',
+  status        TEXT NOT NULL DEFAULT 'new',
+  ip_hash       TEXT,
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+ALTER TABLE orders ADD COLUMN IF NOT EXISTS billing TEXT NOT NULL DEFAULT 'monthly';
+-- Autorka nie współpracuje już z Antczak Care (od 20.11.2026): usuwamy etykietę „Tu pracuje autorka serwisu”.
+UPDATE offers SET affiliated = FALSE WHERE affiliated AND name = 'Antczak Care';
 `;

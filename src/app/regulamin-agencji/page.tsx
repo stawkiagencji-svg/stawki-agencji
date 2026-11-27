@@ -38,13 +38,13 @@ export default function AgencyTermsPage() {
         <li>Opłaty nie wpływają na prezentowane stawki i warunki pracy, na treść ani ocenę opinii, ani na kolejność ofert. Wyjątkiem jest oznaczona Oferta promowana, o której mowa w § 2 ust. 3.</li>
         <li>Usługodawca nie usuwa ani nie zmienia opinii zgodnych z <Link href="/regulamin">regulaminem Serwisu</Link> na prośbę Agencji, niezależnie od wykupionego pakietu.</li>
         <li>Oferty promowane i posty na Facebooku są zawsze wyraźnie oznaczone jako materiały promocyjne.</li>
-        <li>Usługodawca jest dyrektorką oddziału jednej z agencji (Antczak Care). Ta agencja jest oznaczona w Serwisie i korzysta z usług według tego samego regulaminu i cennika.</li>
+        <li>Jeśli Usługodawca współpracuje z którąś z agencji, jest ona oznaczona w Serwisie etykietą „Tu pracuje autorka serwisu” i korzysta z usług według tego samego regulaminu i cennika.</li>
       </ol>
 
       <h2>§ 4. Zawarcie umowy</h2>
       <ol>
         <li>Pakiet Podstawowy jest dostępny bez zawierania odrębnej umowy. Agencja może zgłosić lub poprawić swoje dane przez <Link href="/zglos-agencje">formularz</Link> albo e-mailem.</li>
-        <li>Aby zamówić Abonament, Agencja wysyła na adres {owner.email} zamówienie zawierające: nazwę firmy, NIP, adres, imię i nazwisko oraz e-mail osoby kontaktowej, wybrany pakiet i sposób płatności (miesięcznie albo rocznie), a także oświadczenie o akceptacji tego regulaminu.</li>
+        <li>Aby zamówić Abonament, Agencja wypełnia formularz na stronie <Link href="/cennik">Cennik</Link> albo wysyła na adres {owner.email} zamówienie zawierające: nazwę firmy, NIP, adres, imię i nazwisko oraz e-mail osoby kontaktowej, wybrany pakiet i sposób płatności (miesięcznie albo rocznie), a także oświadczenie o akceptacji tego regulaminu.</li>
         <li>Umowa zostaje zawarta z chwilą potwierdzenia zamówienia przez Usługodawcę e-mailem.</li>
         <li>Agencja oświadcza, że zawiera umowę w związku z prowadzoną działalnością gospodarczą i ma ona dla niej charakter zawodowy.</li>
       </ol>
@@ -53,12 +53,12 @@ export default function AgencyTermsPage() {
       <ol>
         <li>Pierwsze 20 Agencji, które zamówią Abonament, otrzymuje 30 dni korzystania z wybranego pakietu bez opłat.</li>
         <li>Najpóźniej 7 dni przed końcem okresu próbnego Usługodawca przypomina e-mailem o jego zakończeniu. Jeśli Agencja nie zrezygnuje przed końcem okresu próbnego, Abonament staje się płatny od następnego dnia.</li>
-        <li>Pierwszym 20 Agencjom przysługuje cena założycielska, niższa o 30% od ceny regularnej. Cena założycielska obowiązuje tak długo, jak Abonament trwa bez przerwy. Po rezygnacji i ponownym zamówieniu obowiązuje cena aktualna w dniu zamówienia.</li>
+        <li>Pierwszym 20 Agencjom przysługuje cena założycielska, niższa o 30% od ceny regularnej. Cena założycielska obowiązuje przez pierwsze 12 Okresów rozliczeniowych płatnego Abonamentu, o ile Abonament trwa bez przerwy. Po tym czasie obowiązuje aktualna cena regularna. Po rezygnacji i ponownym zamówieniu obowiązuje cena aktualna w dniu zamówienia.</li>
       </ol>
 
       <h2>§ 6. Ceny i płatności</h2>
       <ol>
-        <li>Ceny regularne wynoszą: Standard 149 zł, Premium 349 zł za Okres rozliczeniowy. Cena założycielska wynosi odpowiednio 104 zł i 244 zł.</li>
+        <li>Ceny regularne wynoszą: Standard 199 zł, Premium 449 zł za Okres rozliczeniowy. Cena założycielska wynosi odpowiednio 139 zł i 314 zł.</li>
         <li>Usługodawca nie jest czynnym podatnikiem VAT. Podane ceny są cenami końcowymi.</li>
         <li>Abonament jest płatny z góry za każdy Okres rozliczeniowy, przelewem na rachunek bankowy wskazany przez Usługodawcę, w terminie 7 dni od otrzymania rachunku. Usługodawca wystawia rachunek i wysyła go e-mailem.</li>
         <li>Przy płatności za 12 miesięcy z góry Agencja płaci za 10 miesięcy.</li>
@@ -102,7 +102,7 @@ export default function AgencyTermsPage() {
       <ol>
         <li>Usługodawca może zmienić regulamin lub ceny regularne z ważnych przyczyn, informując Agencje e-mailem co najmniej 14 dni przed zmianą.</li>
         <li>Agencja, która nie akceptuje zmiany, może zrezygnować z Abonamentu przed jej wejściem w życie.</li>
-        <li>Cena założycielska pozostaje o 30% niższa od aktualnej ceny regularnej.</li>
+        <li>W okresie, o którym mowa w § 5 ust. 3, cena założycielska pozostaje o 30% niższa od aktualnej ceny regularnej.</li>
       </ol>
 
       <h2>§ 13. Postanowienia końcowe</h2>

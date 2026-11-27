@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { isAdmin } from "@/lib/auth";
 import { getOffer, listAllOffers, SUBMITTER_ROLES } from "@/lib/offers";
+import { listOrders, ORDER_STATUSES, PACKAGES } from "@/lib/orders";
 import { listAllReviews } from "@/lib/reviews";
-import { logout, moderateReview, replyToReview } from "./actions";
+import { logout, moderateReview, replyToReview, updateOrder } from "./actions";
 import DeleteButton from "./DeleteButton";
 import LoginForm from "./LoginForm";
 import OfferForm from "./OfferForm";
@@ -23,9 +24,10 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
     );
   }
   const { edit, saved } = await searchParams;
-  const [offers, editing, reviews] = await Promise.all([
-    listAllOffers(), edit ? getOffer(Number(edit)) : Promise.resolve(null), listAllReviews(),
+  const [offers, editing, reviews, orders] = await Promise.all([
+    listAllOffers(), edit ? getOffer(Number(edit)) : Promise.resolve(null), listAllReviews(), listOrders(),
   ]);
+  const newOrders = orders.filter((o) => o.status === "new").length;
   const newSubmissions = offers.filter((o) => o.origin === "form" && !o.published).length;
   const reviewsToCheck = reviews.filter((r) => !r.published || r.reported).length;
 
@@ -46,6 +48,12 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
         <p className="panel" style={{ marginBottom: 16 }}>
           <b>Nowe zgłoszenia z formularza: {newSubmissions}.</b> Są na górze tabeli poniżej. Sprawdź je, uzupełnij
           i zaznacz „Opublikowana”, albo usuń, jeśli to spam lub duplikat.
+        </p>
+      )}
+
+      {newOrders > 0 && (
+        <p className="panel" style={{ marginBottom: 16 }}>
+          <b>Nowe zamówienia pakietów: {newOrders}.</b> Są w sekcji „Zamówienia pakietów” na dole strony.
         </p>
       )}
 
@@ -140,6 +148,45 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
               </tr>
             ))}
             {!reviews.length && <tr><td colSpan={4}>Nie ma jeszcze opinii.</td></tr>}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 style={{ margin: "32px 0 8px" }}>Zamówienia pakietów</h2>
+      <p className="note" style={{ marginBottom: 12 }}>
+        Zamówienia z podstrony „Cennik”. Potwierdź zamówienie e-mailem, poproś o logo, uruchom pakiet w ofercie agencji
+        (logo, link „Aplikuj”, „Oferta promowana”) i oznacz zamówienie jako „Aktywne”. Pierwsze 30 dni są bezpłatne.
+        Za każdą wpłatę wystaw rachunek (bez VAT) i pilnuj kwartalnego limitu przychodów działalności nierejestrowanej.
+      </p>
+      <div className="admintable panel">
+        <table>
+          <thead>
+            <tr><th scope="col">Agencja</th><th scope="col">Pakiet</th><th scope="col">Kontakt i rachunek</th><th scope="col">Status</th><th scope="col" /></tr>
+          </thead>
+          <tbody>
+            {orders.map((o) => (
+              <tr key={o.id}>
+                <td>{o.agency}<div className="note num">{o.date}{o.startDate && <> · start: {o.startDate}</>}</div></td>
+                <td>{PACKAGES[o.package]?.name ?? o.package}<div className="note num">{PACKAGES[o.package]?.founder ?? "—"} zł / mies. · {o.billing === "yearly" ? "rocznie" : "miesięcznie"}</div></td>
+                <td>
+                  <b>{o.contactName}</b> · <a href={`mailto:${o.email}`}>{o.email}</a>{o.phone && <> · {o.phone}</>}
+                  <div className="note">{o.company}{o.nip && <> · NIP {o.nip}</>}{o.address && <> · {o.address}</>}</div>
+                  {o.applyUrl && <div className="note">Formularz: <a href={o.applyUrl} rel="noopener noreferrer" target="_blank">{o.applyUrl}</a></div>}
+                  {o.notes && <p style={{ margin: "4px 0 0", whiteSpace: "pre-line" }}>{o.notes}</p>}
+                </td>
+                <td>{o.status === "active" ? <span className="chip ok">Aktywne</span> : o.status === "new" ? <span className="chip promo">Nowe</span> : <span className="chip no">Zakończone</span>}</td>
+                <td style={{ whiteSpace: "nowrap" }}>
+                  <form action={updateOrder} style={{ display: "inline-flex", gap: 6 }}>
+                    <input type="hidden" name="id" value={o.id} />
+                    {(Object.keys(ORDER_STATUSES) as (keyof typeof ORDER_STATUSES)[]).filter((s) => s !== o.status).map((s) => (
+                      <button type="submit" name="action" value={s} className={s === "active" ? "primary" : "ghost"} key={s}>{ORDER_STATUSES[s]}</button>
+                    ))}
+                    <button type="submit" name="action" value="delete" className="ghost danger">Usuń</button>
+                  </form>
+                </td>
+              </tr>
+            ))}
+            {!orders.length && <tr><td colSpan={5}>Nie ma jeszcze zamówień.</td></tr>}
           </tbody>
         </table>
       </div>

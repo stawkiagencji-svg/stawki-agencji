@@ -30,10 +30,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <footer className="site">
             <nav aria-label="Informacje">
               <Link href="/zglos-agencje">Zgłoś agencję</Link>
+              <Link href="/cennik">Cennik dla agencji</Link>
               <Link href="/jak-tworzymy-ranking">Jak tworzymy ranking</Link>
               <Link href="/regulamin">Regulamin</Link>
               <Link href="/polityka-prywatnosci">Polityka prywatności</Link>
-              <Link href="/regulamin-agencji">Dla agencji</Link>
+              <Link href="/regulamin-agencji">Regulamin dla agencji</Link>
             </nav>
             <p>Dane mają charakter informacyjny i nie stanowią oferty pracy. Zawsze potwierdź warunki bezpośrednio u agencji.</p>
           </footer>

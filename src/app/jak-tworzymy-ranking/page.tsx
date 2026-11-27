@@ -25,16 +25,17 @@ export default function RankingPage() {
       </p>
       <h2>O autorce</h2>
       <p>
-        Porównywarkę prowadzi była opiekunka, dziś dyrektorka oddziału Antczak Care. Ta agencja jest na liście
-        oznaczona etykietą „Tu pracuje autorka serwisu”. Kolejność ofert od tego nie zależy: wszystkie agencje są
-        sortowane według tych samych zasad, a dane o każdej z nich pochodzą ze źródeł podanych przy ofercie.
+        Porównywarkę prowadzi była opiekunka z doświadczeniem w pracy dla agencji opiekuńczej. Jeśli autorka
+        współpracuje z którąś z agencji, oznaczamy ją na liście etykietą „Tu pracuje autorka serwisu”. Kolejność ofert
+        od tego nie zależy: wszystkie agencje są sortowane według tych samych zasad, a dane o każdej z nich pochodzą ze
+        źródeł podanych przy ofercie.
       </p>
       <h2>Oferty promowane</h2>
       <p>
         Agencje mogą wykupić promowanie oferty. Oferty promowane wyświetlamy na początku listy i zawsze oznaczamy etykietą
         „Oferta promowana”. Opłata nie wpływa na podawane stawki ani na treść oferty.
       </p>
-      <p>Pytania o promowanie ofert: napisz na adres podany w regulaminie.</p>
+      <p>Pakiety i ceny dla agencji: <a href="/cennik">cennik</a>. Pytania: napisz na adres podany w regulaminie.</p>
     </article>
   );
 }
