@@ -86,4 +86,6 @@ CREATE TABLE IF NOT EXISTS orders (
   created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 ALTER TABLE orders ADD COLUMN IF NOT EXISTS billing TEXT NOT NULL DEFAULT 'monthly';
+-- Autorka nie współpracuje już z Antczak Care (od 20.11.2026): usuwamy etykietę „Tu pracuje autorka serwisu”.
+UPDATE offers SET affiliated = FALSE WHERE affiliated AND name = 'Antczak Care';
 `;
