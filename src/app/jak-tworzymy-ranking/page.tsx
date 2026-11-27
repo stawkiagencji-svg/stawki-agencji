@@ -25,9 +25,10 @@ export default function RankingPage() {
       </p>
       <h2>O autorce</h2>
       <p>
-        Porównywarkę prowadzi była opiekunka, dziś dyrektorka oddziału Antczak Care. Ta agencja jest na liście
-        oznaczona etykietą „Tu pracuje autorka serwisu”. Kolejność ofert od tego nie zależy: wszystkie agencje są
-        sortowane według tych samych zasad, a dane o każdej z nich pochodzą ze źródeł podanych przy ofercie.
+        Porównywarkę prowadzi była opiekunka, która zna tę pracę od środka. Do listopada 2026 r. pracowała jako
+        dyrektorka oddziału Antczak Care; obecnie nie jest związana z żadną agencją. Gdyby to się zmieniło, ta agencja
+        zostanie oznaczona na liście etykietą „Tu pracuje autorka serwisu”. Wszystkie agencje są sortowane według tych
+        samych zasad, a dane o każdej z nich pochodzą ze źródeł podanych przy ofercie.
       </p>
       <h2>Oferty promowane</h2>
       <p>

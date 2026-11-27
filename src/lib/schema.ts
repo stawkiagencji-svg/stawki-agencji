@@ -50,6 +50,9 @@ ALTER TABLE offers ADD COLUMN IF NOT EXISTS logo BYTEA;
 ALTER TABLE offers ADD COLUMN IF NOT EXISTS logo_type TEXT NOT NULL DEFAULT '';
 
 -- Opinie opiekunek. Nowe czekają na sprawdzenie (published = false); ip_hash służy tylko do limitu i znika po 30 dniach.
+-- Od listopada 2026 r. autorka nie pracuje w Antczak Care – zdejmujemy oznaczenie „Tu pracuje autorka serwisu”.
+UPDATE offers SET affiliated = FALSE WHERE affiliated AND name = 'Antczak Care';
+
 CREATE TABLE IF NOT EXISTS reviews (
   id          SERIAL PRIMARY KEY,
   offer_id    INTEGER NOT NULL REFERENCES offers(id) ON DELETE CASCADE,

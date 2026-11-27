@@ -12,7 +12,7 @@ export default function AgencyTermsPage() {
     <article className="prose">
       <div className="eyebrow">Dla agencji</div>
       <h1>Regulamin usług dla agencji</h1>
-      <p className="note">Obowiązuje od 20 listopada 2026 r.</p>
+      <p className="note">Obowiązuje od 27 listopada 2026 r.</p>
 
       <h2>§ 1. Definicje</h2>
       <ol>
@@ -38,7 +38,7 @@ export default function AgencyTermsPage() {
         <li>Opłaty nie wpływają na prezentowane stawki i warunki pracy, na treść ani ocenę opinii, ani na kolejność ofert. Wyjątkiem jest oznaczona Oferta promowana, o której mowa w § 2 ust. 3.</li>
         <li>Usługodawca nie usuwa ani nie zmienia opinii zgodnych z <Link href="/regulamin">regulaminem Serwisu</Link> na prośbę Agencji, niezależnie od wykupionego pakietu.</li>
         <li>Oferty promowane i posty na Facebooku są zawsze wyraźnie oznaczone jako materiały promocyjne.</li>
-        <li>Usługodawca jest dyrektorką oddziału jednej z agencji (Antczak Care). Ta agencja jest oznaczona w Serwisie i korzysta z usług według tego samego regulaminu i cennika.</li>
+        <li>Usługodawca nie jest związany z żadną agencją. Do listopada 2026 r. Usługodawca pełnił funkcję dyrektora oddziału Antczak Care. Gdyby w przyszłości Usługodawca był związany z którąś agencją, ta agencja zostanie oznaczona w Serwisie i będzie korzystać z usług według tego samego regulaminu i cennika.</li>
       </ol>
 
       <h2>§ 4. Zawarcie umowy</h2>
