@@ -53,12 +53,14 @@ ALTER TABLE offers ADD COLUMN IF NOT EXISTS logo_type TEXT NOT NULL DEFAULT '';
 -- Od listopada 2026 r. autorka nie pracuje w Antczak Care – zdejmujemy oznaczenie „Tu pracuje autorka serwisu”.
 UPDATE offers SET affiliated = FALSE WHERE affiliated AND name = 'Antczak Care';
 -- 28.11.2026: aktualne warunki od Active Intercare (e-mail od agencji). Warunek na datę weryfikacji, żeby nie nadpisać późniejszych zmian z panelu.
-UPDATE offers SET pay_min = 1900, pay_max = 2600, pay_note = 'Według informacji od agencji: 1 900–2 600 € netto/mies., zależnie od zlecenia.',
+UPDATE offers SET pay_min = 1900, pay_max = 2600, pay_note = '1 900–2 600 € netto/mies., zależnie od zlecenia (informacja od agencji).',
   contracts = '{de}', contract_note = 'Zatrudnienie w modelu niemieckim.',
   insurance = 'Ubezpieczenie społeczne w Niemczech (model niemiecki).',
   notes = 'Agencja deklaruje sprawdzone miejsca zleceń.', verified = '2026-11-28',
   source = source || ' | informacja od agencji (e-mail, 28.11.2026)', updated_at = now()
   WHERE name = 'Active Intercare' AND verified < '2026-11-28';
+UPDATE offers SET pay_note = '1 900–2 600 € netto/mies., zależnie od zlecenia (informacja od agencji).'
+  WHERE name = 'Active Intercare' AND pay_note LIKE 'Według informacji od agencji:%';
 
 CREATE TABLE IF NOT EXISTS reviews (
   id          SERIAL PRIMARY KEY,
