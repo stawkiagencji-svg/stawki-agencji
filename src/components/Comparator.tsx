@@ -324,7 +324,7 @@ function OfferCard({ o, reviews, minLine, selected, compareDisabled, onCompare }
               ? o.contracts.map((c) => <span className="chip" key={c}>{CONTRACTS[c]}</span>)
               : <span className="chip no">Umowa: brak informacji</span>}
             {o.travel && <span className="chip ok">Dojazd zapewniony</span>}
-            {(o.a1 || o.zusAvg) && <span className="chip ok">Składki ZUS opłacane</span>}
+            {(o.a1 || o.zusAvg) && <span className="chip ok">Składki / ubezpieczenie opłacane</span>}
             {o.bonus && <span className="chip ok">Premie / dodatki</span>}
           </div>
         </div>
